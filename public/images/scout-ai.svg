@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Fondo futurista con gradiente -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a192f" />
+      <stop offset="100%" stop-color="#253555" />
+    </linearGradient>
+    
+    <linearGradient id="glowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4d9fff" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#00ffcc" stop-opacity="0.4" />
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <radialGradient id="eyeGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#00ffff" stop-opacity="1" />
+      <stop offset="100%" stop-color="#00bfff" stop-opacity="0.6" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Fondo -->
+  <rect width="800" height="600" fill="url(#bgGradient)" />
+  
+  <!-- Circuitos de fondo -->
+  <g stroke="#2a5298" stroke-width="1" fill="none" opacity="0.3">
+    <path d="M0,100 L800,100" />
+    <path d="M0,200 L800,200" />
+    <path d="M0,300 L800,300" />
+    <path d="M0,400 L800,400" />
+    <path d="M0,500 L800,500" />
+    <path d="M100,0 L100,600" />
+    <path d="M200,0 L200,600" />
+    <path d="M300,0 L300,600" />
+    <path d="M400,0 L400,600" />
+    <path d="M500,0 L500,600" />
+    <path d="M600,0 L600,600" />
+    <path d="M700,0 L700,600" />
+  </g>
+  
+  <!-- Nodos de circuito -->
+  <circle cx="100" cy="100" r="4" fill="#4d9fff" />
+  <circle cx="300" cy="100" r="4" fill="#4d9fff" />
+  <circle cx="500" cy="100" r="4" fill="#4d9fff" />
+  <circle cx="700" cy="100" r="4" fill="#4d9fff" />
+  <circle cx="200" cy="200" r="4" fill="#4d9fff" />
+  <circle cx="400" cy="200" r="4" fill="#4d9fff" />
+  <circle cx="600" cy="200" r="4" fill="#4d9fff" />
+  <circle cx="100" cy="300" r="4" fill="#4d9fff" />
+  <circle cx="300" cy="300" r="4" fill="#4d9fff" />
+  <circle cx="500" cy="300" r="4" fill="#4d9fff" />
+  <circle cx="700" cy="300" r="4" fill="#4d9fff" />
+  <circle cx="200" cy="400" r="4" fill="#4d9fff" />
+  <circle cx="400" cy="400" r="4" fill="#4d9fff" />
+  <circle cx="600" cy="400" r="4" fill="#4d9fff" />
+  <circle cx="100" cy="500" r="4" fill="#4d9fff" />
+  <circle cx="300" cy="500" r="4" fill="#4d9fff" />
+  <circle cx="500" cy="500" r="4" fill="#4d9fff" />
+  <circle cx="700" cy="500" r="4" fill="#4d9fff" />
+  
+  <!-- Aura/Resplandor del robot -->
+  <circle cx="400" cy="300" r="200" fill="url(#glowGradient)" opacity="0.15" />
+  
+  <!-- Cuerpo del Robot Scout -->
+  
+  <!-- Cabeza -->
+  <rect x="350" y="160" width="100" height="80" rx="15" fill="#1e3a5f" stroke="#4d9fff" stroke-width="2" />
+  
+  <!-- Antena -->
+  <line x1="400" y1="160" x2="400" y2="140" stroke="#4d9fff" stroke-width="3" />
+  <circle cx="400" cy="135" r="6" fill="#00ffcc" filter="url(#glow)" />
+  
+  <!-- Visor/Ojos -->
+  <rect x="365" y="180" width="70" height="20" rx="5" fill="#000" stroke="#4d9fff" stroke-width="1" />
+  <rect x="370" y="185" width="60" height="10" rx="3" fill="url(#eyeGlow)" filter="url(#glow)" />
+  
+  <!-- Sombrero Scout Futurista -->
+  <path d="M330,160 L420,130 L470,160" fill="none" stroke="#338855" stroke-width="3" />
+  <path d="M350,145 L450,145" stroke="#338855" stroke-width="8" />
+  
+  <!-- Pañoleta digital -->
+  <path d="M375,240 L400,270 L425,240" fill="#cc2200" stroke="#ff6644" stroke-width="1" />
+  <circle cx="400" cy="250" r="5" fill="#00ffcc" filter="url(#glow)" />
+  
+  <!-- Torso -->
+  <rect x="350" y="240" width="100" height="120" rx="10" fill="#1e3a5f" stroke="#4d9fff" stroke-width="2" />
+  
+  <!-- Insignias/Logotipos Scout -->
+  <circle cx="375" cy="265" r="10" fill="#338855" stroke="#4d9fff" stroke-width="1" />
+  <text x="375" y="268" font-family="Arial" font-size="12" fill="#00ffcc" text-anchor="middle">S</text>
+  
+  <circle cx="425" cy="265" r="10" fill="#338855" stroke="#4d9fff" stroke-width="1" />
+  <text x="425" y="268" font-family="Arial" font-size="10" fill="#00ffcc" text-anchor="middle">AI</text>
+  
+  <!-- Panel de control en el pecho -->
+  <rect x="370" y="290" width="60" height="40" rx="5" fill="#0a192f" stroke="#4d9fff" stroke-width="1" />
+  <line x1="380" y1="300" x2="420" y2="300" stroke="#00ffcc" stroke-width="1" />
+  <line x1="380" y1="310" x2="410" y2="310" stroke="#00ffcc" stroke-width="1" />
+  <line x1="380" y1="320" x2="415" y2="320" stroke="#00ffcc" stroke-width="1" />
+  <circle cx="400" cy="310" r="15" fill="none" stroke="#00ffcc" stroke-width="1" opacity="0.6" />
+  
+  <!-- Brazos -->
+  <rect x="320" y="250" width="30" height="100" rx="10" fill="#1e3a5f" stroke="#4d9fff" stroke-width="2" />
+  <rect x="450" y="250" width="30" height="100" rx="10" fill="#1e3a5f" stroke="#4d9fff" stroke-width="2" />
+  
+  <!-- Manos -->
+  <circle cx="335" cy="360" r="12" fill="#1e3a5f" stroke="#4d9fff" stroke-width="2" />
+  <circle cx="465" cy="360" r="12" fill="#1e3a5f" stroke="#4d9fff" stroke-width="2" />
+  
+  <!-- Piernas -->
+  <rect x="365" y="360" width="30" height="110" rx="8" fill="#1e3a5f" stroke="#4d9fff" stroke-width="2" />
+  <rect x="405" y="360" width="30" height="110" rx="8" fill="#1e3a5f" stroke="#4d9fff" stroke-width="2" />
+  
+  <!-- Pies -->
+  <rect x="360" y="470" width="40" height="15" rx="5" fill="#1e3a5f" stroke="#4d9fff" stroke-width="2" />
+  <rect x="400" y="470" width="40" height="15" rx="5" fill="#1e3a5f" stroke="#4d9fff" stroke-width="2" />
+  
+  <!-- Elementos de Boy Scout Futuristas -->
+  
+  <!-- Brújula Holográfica -->
+  <circle cx="335" cy="385" r="15" fill="none" stroke="#00ffcc" stroke-width="1" />
+  <path d="M330,380 L340,390" stroke="#00ffcc" stroke-width="1.5" />
+  <path d="M330,390 L340,380" stroke="#00ffcc" stroke-width="1.5" />
+  <circle cx="335" cy="385" r="3" fill="#00ffcc" filter="url(#glow)" />
+  
+  <!-- Mochila Tecnológica -->
+  <rect x="340" y="240" width="120" height="20" rx="5" fill="#1e3a5f" stroke="#4d9fff" stroke-width="1" opacity="0.6" />
+  <rect x="370" y="240" width="60" height="10" rx="3" fill="#0a192f" stroke="#4d9fff" stroke-width="1" />
+  <circle cx="385" cy="245" r="3" fill="#00ffcc" filter="url(#glow)" />
+  <circle cx="400" cy="245" r="3" fill="#00ffcc" filter="url(#glow)" />
+  <circle cx="415" cy="245" r="3" fill="#00ffcc" filter="url(#glow)" />
+  
+  <!-- Efectos Brillantes -->
+  <circle cx="335" cy="360" r="3" fill="#00ffcc" filter="url(#glow)" />
+  <circle cx="465" cy="360" r="3" fill="#00ffcc" filter="url(#glow)" />
+  <circle cx="380" cy="480" r="3" fill="#00ffcc" filter="url(#glow)" />
+  <circle cx="420" cy="480" r="3" fill="#00ffcc" filter="url(#glow)" />
+  
+  <!-- Elementos de texto -->
+  <text x="400" y="530" font-family="Arial" font-size="24" fill="#4d9fff" text-anchor="middle" filter="url(#glow)">SCOUT-AI</text>
+  <text x="400" y="555" font-family="Arial" font-size="14" fill="#00ffcc" text-anchor="middle">EXPLORADOR DEL FUTURO</text>
+</svg>
+
