@@ -21,13 +21,85 @@ import {
   Users,
   Globe,
 } from "lucide-react"
-import { useState } from "react"
+import { useState, useRef, type FormEvent } from "react"
+import { sendContactEmail } from "./actions"
+import { ContactForm } from "@/components/contact-form"
+import { decodeToken, type DecodedToken } from "@/lib/token-utils"
+// Primero, importa el componente CheckoutButton
+import { CheckoutButton } from "@/components/checkout-button"
+import { PaymentCard } from "@/components/payment-card"
 
 export default function LandingPage() {
   const [language, setLanguage] = useState("en")
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formStatus, setFormStatus] = useState<{ success?: boolean; message?: string } | null>(null)
+  const formRef = useRef<HTMLFormElement>(null)
+  const [tokenData, setTokenData] = useState<{
+    decoded: DecodedToken | null
+    isValid: boolean
+    error: string | null
+  }>({
+    decoded: null,
+    isValid: false,
+    error: null,
+  })
 
   const toggleLanguage = () => {
     setLanguage(language === "en" ? "es" : "en")
+  }
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault()
+    if (!formRef.current) return
+
+    setIsSubmitting(true)
+    setFormStatus(null)
+
+    try {
+      const formData = new FormData(formRef.current)
+      const result = await sendContactEmail(formData)
+      setFormStatus(result)
+
+      if (result.success) {
+        formRef.current.reset()
+      }
+    } catch (error) {
+      setFormStatus({
+        success: false,
+        message: t[language].contactErrorMessage,
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const validateToken = (token: string) => {
+    try {
+      if (!token.trim()) {
+        setTokenData({
+          decoded: null,
+          isValid: false,
+          error: "Por favor, ingresa un token",
+        })
+        return
+      }
+
+      const decoded = decodeToken(token)
+      const now = Math.floor(Date.now() / 1000)
+      const isValid = decoded.exp > now
+
+      setTokenData({
+        decoded,
+        isValid,
+        error: null,
+      })
+    } catch (error) {
+      setTokenData({
+        decoded: null,
+        isValid: false,
+        error: "Token inválido. Asegúrate de que es un token JWT válido.",
+      })
+    }
   }
 
   const t = {
@@ -36,17 +108,18 @@ export default function LandingPage() {
       navTechnology: "Technology",
       navAbout: "About",
       navBlog: "Blog",
+      navContact: "Contact",
       signIn: "Sign In",
       tryDemo: "Try Demo",
       heroTitle: "Your Intelligent Assistant, Always Ready to Help",
       heroDescription:
-        "Boyscout IA combines cutting-edge LLMs from DeepSeek and OpenAI to deliver intelligent, context-aware assistance for all your needs.",
+        "BoyScout IA combines cutting-edge LLMs from DeepSeek and OpenAI to deliver intelligent, context-aware assistance for all your needs.",
       tryForFree: "Try For Free",
       learnMore: "Learn More",
       features: "Features",
       intelligentAssistance: "Intelligent Assistance, Powered by AI",
       featuresDescription:
-        "Boyscout IA leverages advanced language models to provide smart, contextual assistance across various domains.",
+        "BoyScout IA leverages advanced language models to provide smart, contextual assistance across various domains.",
       naturalConversations: "Natural Conversations",
       naturalConversationsDesc: "Engage in fluid, human-like conversations with contextual understanding and memory.",
       multiModelIntelligence: "Multi-Model Intelligence",
@@ -61,7 +134,7 @@ export default function LandingPage() {
       technology: "Technology",
       cuttingEdgeTech: "Built with Cutting-Edge Tech",
       techDescription:
-        "Boyscout IA combines the best technologies to deliver a powerful, reliable AI assistant experience.",
+        "BoyScout IA combines the best technologies to deliver a powerful, reliable AI assistant experience.",
       deepSeekDesc: "Advanced language models for complex reasoning and specialized knowledge.",
       openAIDesc: "State-of-the-art language processing for natural conversations and content generation.",
       pythonDesc: "Robust backend infrastructure with powerful data processing and AI capabilities.",
@@ -71,9 +144,9 @@ export default function LandingPage() {
       nextjsDesc:
         "React framework that enables server-side rendering and static site generation for improved performance and SEO.",
       interactiveDemo: "Interactive Demo",
-      experienceBoyscout: "Experience Boyscout IA in Action",
+      experienceBoyscout: "Experience BoyScout IA in Action",
       demoDescription:
-        "Try our interactive demo to see how Boyscout IA can assist with your questions, tasks, and challenges.",
+        "Try our interactive demo to see how BoyScout IA can assist with your questions, tasks, and challenges.",
       demoFeature1: "Ask complex questions and get detailed answers",
       demoFeature2: "Get help with coding and technical problems",
       demoFeature3: "Generate creative content and ideas",
@@ -84,11 +157,11 @@ export default function LandingPage() {
       aboutDescription:
         "Based in the heart of New York City, our team of AI researchers, engineers, and designers are dedicated to creating the most helpful AI assistant for businesses and individuals.",
       foundedIn:
-        "Founded in 2023, Boyscout IA brings together expertise in machine learning, natural language processing, and software development to push the boundaries of what AI assistants can do.",
+        "Founded in 2023, BoyScout IA brings together expertise in machine learning, natural language processing, and software development to push the boundaries of what AI assistants can do.",
       founders: "Our Founders",
       meetOurTeam: "Meet Our Team",
       readyToExperience: "Ready to Experience Smarter Assistance?",
-      joinUsers: "Join thousands of users already benefiting from Boyscout IA's intelligent assistance.",
+      joinUsers: "Join thousands of users already benefiting from BoyScout IA's intelligent assistance.",
       startFreeTrial: "Start Free Trial",
       scheduleDemo: "Schedule a Demo",
       noCardRequired: "No credit card required. 14-day free trial.",
@@ -96,23 +169,43 @@ export default function LandingPage() {
       terms: "Terms",
       privacy: "Privacy",
       cookies: "Cookies",
+      contactUs: "Contact Us",
+      getInTouch: "Get in Touch",
+      contactDescription: "Have questions or need more information? Send us a message and we'll get back to you soon.",
+      yourEmail: "Your Email",
+      emailPlaceholder: "Enter your email address",
+      message: "Message",
+      messagePlaceholder: "How can we help you?",
+      send: "Send Message",
+      sending: "Sending...",
+      contactSuccessMessage: "Your message has been sent successfully! We'll get back to you soon.",
+      contactErrorMessage: "There was an error sending your message. Please try again.",
+      payment: "Payment",
+      testPayment: "Test Payment",
+      paymentDescription: "Try our payment system with a test card. No real charges will be made.",
+      monthlySubscription: "Monthly Subscription",
+      monthlyPrice: "$19.99/month",
+      monthlyFeatures:
+        "Full access to all features, Priority support, Unlimited usage, Regular updates, Email notifications",
+      payNow: "Pay Now",
     },
     es: {
       navFeatures: "Características",
       navTechnology: "Tecnología",
       navAbout: "Acerca de",
       navBlog: "Blog",
+      navContact: "Contacto",
       signIn: "Iniciar Sesión",
       tryDemo: "Probar Demo",
       heroTitle: "Tu Asistente Inteligente, Siempre Listo para Ayudar",
       heroDescription:
-        "Boyscout IA combina los LLMs más avanzados de DeepSeek y OpenAI para ofrecer asistencia inteligente y contextual para todas tus necesidades.",
+        "BoyScout IA combina los LLMs más avanzados de DeepSeek y OpenAI para ofrecer asistencia inteligente y contextual para todas tus necesidades.",
       tryForFree: "Prueba Gratis",
       learnMore: "Más Información",
       features: "Características",
       intelligentAssistance: "Asistencia Inteligente, Impulsada por IA",
       featuresDescription:
-        "Boyscout IA utiliza modelos de lenguaje avanzados para proporcionar asistencia inteligente y contextual en diversos dominios.",
+        "BoyScout IA utiliza modelos de lenguaje avanzados para proporcionar asistencia inteligente y contextual en diversos dominios.",
       naturalConversations: "Conversaciones Naturales",
       naturalConversationsDesc: "Participa en conversaciones fluidas y humanas con comprensión contextual y memoria.",
       multiModelIntelligence: "Inteligencia Multi-Modelo",
@@ -127,7 +220,7 @@ export default function LandingPage() {
       technology: "Tecnología",
       cuttingEdgeTech: "Construido con Tecnología de Vanguardia",
       techDescription:
-        "Boyscout IA combina las mejores tecnologías para ofrecer una experiencia de asistente de IA potente y confiable.",
+        "BoyScout IA combina las mejores tecnologías para ofrecer una experiencia de asistente de IA potente y confiable.",
       deepSeekDesc: "Modelos de lenguaje avanzados para razonamiento complejo y conocimiento especializado.",
       openAIDesc:
         "Procesamiento de lenguaje de última generación para conversaciones naturales y generación de contenido.",
@@ -138,9 +231,9 @@ export default function LandingPage() {
       nextjsDesc:
         "Framework de React que permite renderizado del lado del servidor y generación de sitios estáticos para mejorar el rendimiento y SEO.",
       interactiveDemo: "Demo Interactiva",
-      experienceBoyscout: "Experimenta Boyscout IA en Acción",
+      experienceBoyscout: "Experimenta BoyScout IA en Acción",
       demoDescription:
-        "Prueba nuestra demo interactiva para ver cómo Boyscout IA puede ayudarte con tus preguntas, tareas y desafíos.",
+        "Prueba nuestra demo interactiva para ver cómo BoyScout IA puede ayudarte con tus preguntas, tareas y desafíos.",
       demoFeature1: "Haz preguntas complejas y obtén respuestas detalladas",
       demoFeature2: "Obtén ayuda con problemas de codificación y técnicos",
       demoFeature3: "Genera contenido creativo e ideas",
@@ -151,11 +244,11 @@ export default function LandingPage() {
       aboutDescription:
         "Desde el corazón de la ciudad de Nueva York, nuestro equipo de investigadores, ingenieros y diseñadores de IA está dedicado a crear el asistente de IA más útil para empresas e individuos.",
       foundedIn:
-        "Fundada en 2023, Boyscout IA reúne experiencia en aprendizaje automático, procesamiento de lenguaje natural y desarrollo de software para expandir los límites de lo que los asistentes de IA pueden hacer.",
+        "Fundada en 2023, BoyScout IA reúne experiencia en aprendizaje automático, procesamiento de lenguaje natural y desarrollo de software para expandir los límites de lo que los asistentes de IA pueden hacer.",
       founders: "Nuestros Fundadores",
       meetOurTeam: "Conoce a Nuestro Equipo",
       readyToExperience: "¿Listo para Experimentar una Asistencia más Inteligente?",
-      joinUsers: "Únete a miles de usuarios que ya se benefician de la asistencia inteligente de Boyscout IA.",
+      joinUsers: "Únete a miles de usuarios que ya se benefician de la asistencia inteligente de BoyScout IA.",
       startFreeTrial: "Comienza la Prueba Gratuita",
       scheduleDemo: "Programa una Demo",
       noCardRequired: "No se requiere tarjeta de crédito. Prueba gratuita de 14 días.",
@@ -163,6 +256,26 @@ export default function LandingPage() {
       terms: "Términos",
       privacy: "Privacidad",
       cookies: "Cookies",
+      contactUs: "Contáctanos",
+      getInTouch: "Ponte en Contacto",
+      contactDescription:
+        "¿Tienes preguntas o necesitas más información? Envíanos un mensaje y te responderemos pronto.",
+      yourEmail: "Tu Email",
+      emailPlaceholder: "Ingresa tu dirección de email",
+      message: "Mensaje",
+      messagePlaceholder: "¿Cómo podemos ayudarte?",
+      send: "Enviar Mensaje",
+      sending: "Enviando...",
+      contactSuccessMessage: "¡Tu mensaje ha sido enviado con éxito! Te responderemos pronto.",
+      contactErrorMessage: "Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo.",
+      payment: "Pago",
+      testPayment: "Pago de Prueba",
+      paymentDescription: "Prueba nuestro sistema de pago con una tarjeta de prueba. No se realizarán cargos reales.",
+      monthlySubscription: "Suscripción Mensual",
+      monthlyPrice: "$19.99/mes",
+      monthlyFeatures:
+        "Acceso completo a todas las funciones, Soporte prioritario, Uso ilimitado, Actualizaciones regulares, Notificaciones por email",
+      payNow: "Pagar Ahora",
     },
   }
 
@@ -173,7 +286,7 @@ export default function LandingPage() {
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <Bot className="h-8 w-8 text-purple-600" />
-            <span className="text-xl font-bold text-purple-900">Boyscout IA</span>
+            <span className="text-xl font-bold text-purple-900">BoyScout IA</span>
           </div>
           <nav className="hidden md:flex gap-6">
             <Link href="#features" className="text-sm font-medium text-slate-700 hover:text-purple-600">
@@ -185,6 +298,12 @@ export default function LandingPage() {
             <Link href="#about" className="text-sm font-medium text-slate-700 hover:text-purple-600">
               {t[language].navAbout}
             </Link>
+            <Link href="#payment" className="text-sm font-medium text-slate-700 hover:text-purple-600">
+              {t[language].payment}
+            </Link>
+            <Link href="#contact" className="text-sm font-medium text-slate-700 hover:text-purple-600">
+              {t[language].navContact}
+            </Link>
             <Link href="#" className="text-sm font-medium text-slate-700 hover:text-purple-600">
               {t[language].navBlog}
             </Link>
@@ -194,14 +313,13 @@ export default function LandingPage() {
               <Globe className="h-5 w-5" />
               <span className="sr-only">Toggle Language</span>
             </Button>
-            <Link
-              href="#"
-              className="text-sm font-medium text-slate-700 hover:text-purple-600 hover:underline underline-offset-4 hidden sm:inline-block"
-            >
+            {/* Modificar el enlace "Sign In" en el header */}
+            <span className="text-sm font-medium text-slate-500 opacity-60 cursor-not-allowed hidden sm:inline-block">
               {t[language].signIn}
-            </Link>
-            <Button className="bg-purple-600 hover:bg-purple-700" asChild>
-              <Link href="#demo">{t[language].tryDemo}</Link>
+            </span>
+            {/* Modificar el botón "Try Demo" en el header */}
+            <Button className="bg-purple-600 hover:bg-purple-700 opacity-60 cursor-not-allowed" disabled={true}>
+              {t[language].tryDemo}
             </Button>
           </div>
         </div>
@@ -223,18 +341,23 @@ export default function LandingPage() {
                   <p className="max-w-[600px] text-slate-600 md:text-xl">{t[language].heroDescription}</p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button size="lg" className="bg-purple-600 hover:bg-purple-700" asChild>
-                    <Link href="#demo">{t[language].tryForFree}</Link>
+                  {/* Modificar los botones en la sección Hero */}
+                  <Button
+                    size="lg"
+                    className="bg-purple-600 hover:bg-purple-700 opacity-60 cursor-not-allowed"
+                    disabled={true}
+                  >
+                    {t[language].tryForFree}
                   </Button>
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-purple-200 text-purple-700 hover:bg-purple-50"
-                    asChild
+                    className="border-purple-200 text-purple-700 hover:bg-purple-50 opacity-60 cursor-not-allowed"
+                    disabled={true}
                   >
-                    <Link href="#" className="flex items-center gap-1">
+                    <span className="flex items-center gap-1">
                       {t[language].learnMore} <ChevronRight className="h-4 w-4" />
-                    </Link>
+                    </span>
                   </Button>
                 </div>
               </div>
@@ -275,9 +398,9 @@ export default function LandingPage() {
                   <CardDescription className="text-slate-600">{t[language].naturalConversationsDesc}</CardDescription>
                 </CardHeader>
                 <CardFooter>
-                  <Link href="#" className="text-sm text-purple-600 flex items-center hover:text-purple-700">
+                  <span className="text-sm text-purple-400 flex items-center opacity-60 cursor-not-allowed">
                     {t[language].learnMore} <ChevronRight className="h-4 w-4 ml-1" />
-                  </Link>
+                  </span>
                 </CardFooter>
               </Card>
               <Card className="border-purple-100 bg-white shadow-sm">
@@ -287,9 +410,9 @@ export default function LandingPage() {
                   <CardDescription className="text-slate-600">{t[language].multiModelIntelligenceDesc}</CardDescription>
                 </CardHeader>
                 <CardFooter>
-                  <Link href="#" className="text-sm text-purple-600 flex items-center hover:text-purple-700">
+                  <span className="text-sm text-purple-400 flex items-center opacity-60 cursor-not-allowed">
                     {t[language].learnMore} <ChevronRight className="h-4 w-4 ml-1" />
-                  </Link>
+                  </span>
                 </CardFooter>
               </Card>
               <Card className="border-purple-100 bg-white shadow-sm">
@@ -299,9 +422,9 @@ export default function LandingPage() {
                   <CardDescription className="text-slate-600">{t[language].codeAssistanceDesc}</CardDescription>
                 </CardHeader>
                 <CardFooter>
-                  <Link href="#" className="text-sm text-purple-600 flex items-center hover:text-purple-700">
+                  <span className="text-sm text-purple-400 flex items-center opacity-60 cursor-not-allowed">
                     {t[language].learnMore} <ChevronRight className="h-4 w-4 ml-1" />
-                  </Link>
+                  </span>
                 </CardFooter>
               </Card>
               <Card className="border-purple-100 bg-white shadow-sm md:col-span-2 lg:col-span-3">
@@ -311,9 +434,9 @@ export default function LandingPage() {
                   <CardDescription className="text-slate-600">{t[language].enterpriseSecurityDesc}</CardDescription>
                 </CardHeader>
                 <CardFooter>
-                  <Link href="#" className="text-sm text-purple-600 flex items-center hover:text-purple-700">
+                  <span className="text-sm text-purple-400 flex items-center opacity-60 cursor-not-allowed">
                     {t[language].learnMore} <ChevronRight className="h-4 w-4 ml-1" />
-                  </Link>
+                  </span>
                 </CardFooter>
               </Card>
             </div>
@@ -435,8 +558,9 @@ export default function LandingPage() {
                   ))}
                 </ul>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button className="bg-purple-600 hover:bg-purple-700" asChild>
-                    <Link href="#">{t[language].startChatting}</Link>
+                  {/* Modificar el botón "Start Chatting Now" en la sección Demo */}
+                  <Button className="bg-purple-600 hover:bg-purple-700 opacity-60 cursor-not-allowed" disabled={true}>
+                    {t[language].startChatting}
                   </Button>
                 </div>
               </div>
@@ -444,11 +568,11 @@ export default function LandingPage() {
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-purple-50 opacity-50"></div>
                 <div className="relative p-6 md:p-8">
                   <div className="bg-white rounded-lg shadow-sm p-4 mb-4 ml-auto max-w-[80%]">
-                    <p className="text-slate-700">How can Boyscout IA help my business?</p>
+                    <p className="text-slate-700">How can BoyScout IA help my business?</p>
                   </div>
-                  <div className="bg-purple-600 rounded-lg shadow-sm p-4 mb-4 max-w-[80%] text-white">
-                    <p>
-                      Boyscout IA can help your business by automating customer support, assisting with data analysis,
+                  <div className="bg-purple-600 rounded-lg shadow-sm p-4 mb-4 max-w-[80%]">
+                    <p className="text-white">
+                      BoyScout IA can help your business by automating customer support, assisting with data analysis,
                       generating content, and providing insights from your business data. Our AI assistant integrates
                       with your existing tools and workflows to boost productivity and reduce operational costs.
                     </p>
@@ -456,8 +580,8 @@ export default function LandingPage() {
                   <div className="bg-white rounded-lg shadow-sm p-4 mb-4 ml-auto max-w-[80%]">
                     <p className="text-slate-700">Can you help with technical documentation?</p>
                   </div>
-                  <div className="bg-purple-600 rounded-lg shadow-sm p-4 max-w-[80%] text-white">
-                    <p>
+                  <div className="bg-purple-600 rounded-lg shadow-sm p-4 max-w-[80%]">
+                    <p className="text-white">
                       I can help create, review, and improve technical documentation. I can generate code examples,
                       explain complex concepts in simple terms, and ensure your documentation is comprehensive and
                       user-friendly.
@@ -502,12 +626,13 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                  {/* Modificar el botón "Meet Our Team" en la sección About */}
                   <Button
                     variant="outline"
-                    className="bg-transparent border-purple-300 text-white hover:bg-purple-800"
-                    asChild
+                    className="bg-transparent border-purple-300 text-white hover:bg-purple-800 opacity-60 cursor-not-allowed"
+                    disabled={true}
                   >
-                    <Link href="#">{t[language].meetOurTeam}</Link>
+                    {t[language].meetOurTeam}
                   </Button>
                 </div>
               </div>
@@ -524,6 +649,65 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {/* Payment Section */}
+        <section id="payment" className="w-full py-12 md:py-24 lg:py-32 bg-white">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8">
+              <div className="space-y-2">
+                <Badge variant="outline" className="border-purple-200 text-purple-700">
+                  {t[language].payment}
+                </Badge>
+                <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
+                  {t[language].testPayment}
+                </h2>
+                <p className="max-w-[600px] text-slate-600 md:text-xl/relaxed">{t[language].paymentDescription}</p>
+              </div>
+            </div>
+
+            <div className="mx-auto max-w-5xl">
+              <PaymentCard
+                title={t[language].monthlySubscription}
+                price={t[language].monthlyPrice}
+                features={t[language].monthlyFeatures.split(",")}
+                stripeUrl="https://buy.stripe.com/test_14A8wP1XJ9eV1jR0ik7Zu00"
+                buttonText={t[language].payNow}
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Form Section */}
+        <section id="contact" className="w-full py-12 md:py-24 lg:py-32 bg-white">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8">
+              <div className="space-y-2">
+                <Badge variant="outline" className="border-purple-200 text-purple-700">
+                  {t[language].contactUs}
+                </Badge>
+                <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
+                  {t[language].getInTouch}
+                </h2>
+                <p className="max-w-[600px] text-slate-600 md:text-xl/relaxed">{t[language].contactDescription}</p>
+              </div>
+            </div>
+            <div className="mx-auto max-w-md space-y-6 bg-white p-6 rounded-xl shadow-sm border border-purple-100">
+              {/* Reemplazar el formulario existente con el nuevo componente */}
+              <ContactForm
+                translations={{
+                  yourEmail: t[language].yourEmail,
+                  emailPlaceholder: t[language].emailPlaceholder,
+                  message: t[language].message,
+                  messagePlaceholder: t[language].messagePlaceholder,
+                  send: t[language].send,
+                  sending: t[language].sending,
+                  contactSuccessMessage: t[language].contactSuccessMessage,
+                  contactErrorMessage: t[language].contactErrorMessage,
+                }}
+              />
+            </div>
+          </div>
+        </section>
+
         {/* Final CTA Section */}
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-white to-purple-50">
           <div className="container px-4 md:px-6">
@@ -535,16 +719,18 @@ export default function LandingPage() {
                 <p className="max-w-[600px] text-slate-600 md:text-xl/relaxed">{t[language].joinUsers}</p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button size="lg" className="bg-purple-600 hover:bg-purple-700" asChild>
-                  <Link href="#">{t[language].startFreeTrial}</Link>
-                </Button>
+                {/* Modificar los botones en la sección CTA final */}
+                {/* Luego, en la sección "Final CTA Section", reemplaza el botón "Start Free Trial" con: */}
+                <CheckoutButton stripeUrl="https://buy.stripe.com/test_14A8wP1XJ9eV1jR0ik7Zu00">
+                  {t[language].startFreeTrial}
+                </CheckoutButton>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-purple-200 text-purple-700 hover:bg-purple-50"
-                  asChild
+                  className="border-purple-200 text-purple-700 hover:bg-purple-50 opacity-60 cursor-not-allowed"
+                  disabled={true}
                 >
-                  <Link href="#">{t[language].scheduleDemo}</Link>
+                  {t[language].scheduleDemo}
                 </Button>
               </div>
               <p className="text-sm text-slate-500">{t[language].noCardRequired}</p>
@@ -559,7 +745,7 @@ export default function LandingPage() {
           <div className="flex items-center gap-2">
             <Bot className="h-5 w-5 text-purple-600" />
             <p className="text-sm font-medium text-slate-700">
-              © {new Date().getFullYear()} Boyscout IA. {t[language].allRightsReserved}
+              © {new Date().getFullYear()} BoyScout IA. {t[language].allRightsReserved}
             </p>
           </div>
           <div className="flex gap-4">
@@ -601,4 +787,3 @@ export default function LandingPage() {
     </div>
   )
 }
-

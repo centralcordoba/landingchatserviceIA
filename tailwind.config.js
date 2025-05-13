@@ -51,30 +51,6 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        blue: {
-          50: "#f0f7ff",
-          100: "#e0eefe",
-          200: "#bae0fd",
-          300: "#7cc8fb",
-          400: "#36aff5",
-          500: "#0c96e6",
-          600: "#0077c2",
-          700: "#015f9e",
-          800: "#065183",
-          900: "#0a446d",
-        },
-        slate: {
-          50: "#f8fafc",
-          100: "#f1f5f9",
-          200: "#e2e8f0",
-          300: "#cbd5e1",
-          400: "#94a3b8",
-          500: "#64748b",
-          600: "#475569",
-          700: "#334155",
-          800: "#1e293b",
-          900: "#0f172a",
-        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -99,4 +75,3 @@ module.exports = {
   },
   plugins: [require("tailwindcss-animate")],
 }
-
