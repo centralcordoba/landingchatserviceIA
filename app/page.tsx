@@ -3,34 +3,35 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Card, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
+import { Card, CardDescription, CardHeader, CardTitle, CardFooter, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import {
   Bot,
-  Brain,
-  Code,
-  MessageSquare,
   Shield,
   Zap,
   ChevronRight,
   Github,
   Twitter,
   Linkedin,
-  MapPin,
-  User,
-  Users,
   Globe,
+  Upload,
+  Settings,
+  LinkIcon,
+  Heart,
+  DollarSign,
+  ShoppingCart,
+  Building,
+  Check,
+  X,
+  BarChart3,
 } from "lucide-react"
 import { useState, useRef, type FormEvent } from "react"
 import { sendContactEmail } from "./actions"
 import { ContactForm } from "@/components/contact-form"
 import { decodeToken, type DecodedToken } from "@/lib/token-utils"
-// Primero, importa el componente CheckoutButton
-import { CheckoutButton } from "@/components/checkout-button"
-import { PaymentCard } from "@/components/payment-card"
 
 export default function LandingPage() {
-  const [language, setLanguage] = useState("en")
+  const [language, setLanguage] = useState("es")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formStatus, setFormStatus] = useState<{ success?: boolean; message?: string } | null>(null)
   const formRef = useRef<HTMLFormElement>(null)
@@ -45,7 +46,7 @@ export default function LandingPage() {
   })
 
   const toggleLanguage = () => {
-    setLanguage(language === "en" ? "es" : "en")
+    setLanguage(language === "es" ? "en" : "es")
   }
 
   const handleSubmit = async (e: FormEvent) => {
@@ -103,159 +104,158 @@ export default function LandingPage() {
   }
 
   const t = {
-    en: {
-      navFeatures: "Features",
-      navTechnology: "Technology",
-      navAbout: "About",
-      navBlog: "Blog",
-      navContact: "Contact",
-      signIn: "Sign In",
-      tryDemo: "Try Demo",
-      heroTitle: "Your Intelligent Assistant, Always Ready to Help",
-      heroDescription:
-        "BoyScout IA combines cutting-edge LLMs from DeepSeek and OpenAI to deliver intelligent, context-aware assistance for all your needs.",
-      tryForFree: "Try For Free",
-      learnMore: "Learn More",
-      features: "Features",
-      intelligentAssistance: "Intelligent Assistance, Powered by AI",
-      featuresDescription:
-        "BoyScout IA leverages advanced language models to provide smart, contextual assistance across various domains.",
-      naturalConversations: "Natural Conversations",
-      naturalConversationsDesc: "Engage in fluid, human-like conversations with contextual understanding and memory.",
-      multiModelIntelligence: "Multi-Model Intelligence",
-      multiModelIntelligenceDesc:
-        "Combines DeepSeek and OpenAI models for enhanced reasoning and problem-solving capabilities.",
-      codeAssistance: "Code Assistance",
-      codeAssistanceDesc:
-        "Get help with programming tasks, debugging, and technical documentation across multiple languages.",
-      enterpriseSecurity: "Enterprise-Grade Security",
-      enterpriseSecurityDesc:
-        "Your data stays private with end-to-end encryption, secure processing, and compliance with industry standards.",
-      technology: "Technology",
-      cuttingEdgeTech: "Built with Cutting-Edge Tech",
-      techDescription:
-        "BoyScout IA combines the best technologies to deliver a powerful, reliable AI assistant experience.",
-      deepSeekDesc: "Advanced language models for complex reasoning and specialized knowledge.",
-      openAIDesc: "State-of-the-art language processing for natural conversations and content generation.",
-      pythonDesc: "Robust backend infrastructure with powerful data processing and AI capabilities.",
-      angularDesc: "Responsive, dynamic frontend for seamless user interactions and experiences.",
-      reactDesc:
-        "Component-based library for building interactive user interfaces with a virtual DOM for optimal performance.",
-      nextjsDesc:
-        "React framework that enables server-side rendering and static site generation for improved performance and SEO.",
-      interactiveDemo: "Interactive Demo",
-      experienceBoyscout: "Experience BoyScout IA in Action",
-      demoDescription:
-        "Try our interactive demo to see how BoyScout IA can assist with your questions, tasks, and challenges.",
-      demoFeature1: "Ask complex questions and get detailed answers",
-      demoFeature2: "Get help with coding and technical problems",
-      demoFeature3: "Generate creative content and ideas",
-      demoFeature4: "Analyze data and provide insights",
-      startChatting: "Start Chatting Now",
-      aboutUs: "About Us",
-      innovatingAI: "Innovating AI Assistance from New York",
-      aboutDescription:
-        "Based in the heart of New York City, our team of AI researchers, engineers, and designers are dedicated to creating the most helpful AI assistant for businesses and individuals.",
-      foundedIn:
-        "Founded in 2023, BoyScout IA brings together expertise in machine learning, natural language processing, and software development to push the boundaries of what AI assistants can do.",
-      founders: "Our Founders",
-      meetOurTeam: "Meet Our Team",
-      readyToExperience: "Ready to Experience Smarter Assistance?",
-      joinUsers: "Join thousands of users already benefiting from BoyScout IA's intelligent assistance.",
-      startFreeTrial: "Start Free Trial",
-      scheduleDemo: "Schedule a Demo",
-      noCardRequired: "No credit card required. 14-day free trial.",
-      allRightsReserved: "All rights reserved.",
-      terms: "Terms",
-      privacy: "Privacy",
-      cookies: "Cookies",
-      contactUs: "Contact Us",
-      getInTouch: "Get in Touch",
-      contactDescription: "Have questions or need more information? Send us a message and we'll get back to you soon.",
-      yourEmail: "Your Email",
-      emailPlaceholder: "Enter your email address",
-      message: "Message",
-      messagePlaceholder: "How can we help you?",
-      send: "Send Message",
-      sending: "Sending...",
-      contactSuccessMessage: "Your message has been sent successfully! We'll get back to you soon.",
-      contactErrorMessage: "There was an error sending your message. Please try again.",
-      payment: "Payment",
-      testPayment: "Test Payment",
-      paymentDescription: "Try our payment system with a test card. No real charges will be made.",
-      monthlySubscription: "Monthly Subscription",
-      monthlyPrice: "$19.99/month",
-      monthlyFeatures:
-        "Full access to all features, Priority support, Unlimited usage, Regular updates, Email notifications",
-      payNow: "Pay Now",
-    },
     es: {
-      navFeatures: "Características",
+      // Navigation
+      navHowItWorks: "Cómo Funciona",
+      navUseCases: "Casos de Uso",
       navTechnology: "Tecnología",
-      navAbout: "Acerca de",
-      navBlog: "Blog",
+      navPricing: "Precios",
       navContact: "Contacto",
       signIn: "Iniciar Sesión",
-      tryDemo: "Probar Demo",
-      heroTitle: "Tu Asistente Inteligente, Siempre Listo para Ayudar",
+      tryDemo: "Ver Demo",
+
+      // Hero Section - Exactamente como en la guía
+      heroTitle: "Convierte Tu Documentación en un Experto IA Para Tu Web",
+      heroSubtitle:
+        "Sube tus archivos, define el rol de experto, y obtén un asistente especializado que se embebe en tu sitio. Sin programar, sin entrenar modelos.",
       heroDescription:
-        "BoyScout IA combina los LLMs más avanzados de DeepSeek y OpenAI para ofrecer asistencia inteligente y contextual para todas tus necesidades.",
-      tryForFree: "Prueba Gratis",
-      learnMore: "Más Información",
-      features: "Características",
-      intelligentAssistance: "Asistencia Inteligente, Impulsada por IA",
-      featuresDescription:
-        "BoyScout IA utiliza modelos de lenguaje avanzados para proporcionar asistencia inteligente y contextual en diversos dominios.",
-      naturalConversations: "Conversaciones Naturales",
-      naturalConversationsDesc: "Participa en conversaciones fluidas y humanas con comprensión contextual y memoria.",
-      multiModelIntelligence: "Inteligencia Multi-Modelo",
-      multiModelIntelligenceDesc:
-        "Combina modelos de DeepSeek y OpenAI para mejorar el razonamiento y la resolución de problemas.",
-      codeAssistance: "Asistencia de Código",
-      codeAssistanceDesc:
-        "Obtén ayuda con tareas de programación, depuración y documentación técnica en múltiples lenguajes.",
-      enterpriseSecurity: "Seguridad de Nivel Empresarial",
+        "Desde hospitales que automatizan turnos hasta fintech que ofrece recomendaciones 24/7. BoyScout IA transforma tu conocimiento empresarial en asistentes inteligentes que trabajan mientras duermes.",
+      heroCtaPrimary: "CREAR MI ASISTENTE GRATIS - 14 DÍAS",
+      heroCtaSecondary: "Ver Demo en Vivo",
+      noCardRequired: "No requiere tarjeta de crédito",
+
+      // How It Works Section - Exactamente como en la guía
+      howItWorksTitle: "De Documentos a Experto Web en 3 Pasos",
+      step1Title: "📁 Sube Tu Documentación",
+      step1Subtitle: "Carga PDFs, bases de datos, manuales",
+      step1Description:
+        "Precios, horarios, políticas, FAQ, catálogos de productos. Cualquier información que manejas en tu negocio se convierte en conocimiento del asistente.",
+      step2Title: "🎭 Define El Rol del Experto",
+      step2Subtitle: "Crea especialistas para tu industria",
+      step2Description:
+        '• "Asistente de Hospital" → Maneja turnos, especialidades, precios\n• "Asesor Financiero" → Analiza inversiones, recomienda portafolios\n• "Soporte E-commerce" → Conoce productos, envíos, devoluciones',
+      step3Title: "🔗 Agrega a tu sitio",
+      step3Subtitle: "Integración instantánea con código iframe",
+      step3Description:
+        "Recibes un script simple que pegas en tu web. Compatible con WordPress, Shopify, Wix, y cualquier plataforma. Funciona inmediatamente.",
+
+      // Use Cases Section - Exactamente como en la guía
+      useCasesTitle: "Asistentes IA Especializados Para Cada Industria",
+
+      hospitalTitle: "🏥 HOSPITALES Y CLÍNICAS",
+      hospitalSubtitle: "Tu Recepcionista Virtual 24/7",
+      hospitalBefore: "Antes: 300+ llamadas diarias preguntando horarios y precios",
+      hospitalAfter: "Después: Pacientes obtienen respuestas inmediatas sobre:",
+      hospitalFeatures:
+        "• Turnos disponibles por especialidad\n• Precios según obra social\n• Ubicación de consultorios\n• Preparación para estudios",
+      hospitalResult: "Resultado: 75% menos llamadas al call center",
+
+      fintechTitle: "💰 FINTECH Y ASESORES FINANCIEROS",
+      fintechSubtitle: "Tu Asesor de Inversiones Siempre Disponible",
+      fintechBefore: "Antes: Clientes consultan fuera de horario y pierdes oportunidades",
+      fintechAfter: "Después: Asesoramiento especializado 24/7:",
+      fintechFeatures:
+        "• Análisis de acciones en tiempo real\n• Recomendaciones de portafolio personalizadas\n• Explicación de productos financieros complejos\n• Cálculos de riesgo y rendimiento",
+      fintechResult: "Resultado: 3x más consultas convertidas en clientes",
+
+      ecommerceTitle: "🛒 E-COMMERCE",
+      ecommerceSubtitle: "Tu Vendedor Virtual Experto",
+      ecommerceBefore: "Antes: Clientes abandonan el carrito por dudas sin resolver",
+      ecommerceAfter: "Después: Soporte especializado que impulsa ventas:",
+      ecommerceFeatures:
+        "• Recomendaciones de productos personalizadas\n• Información detallada de compatibilidad\n• Consultas sobre envíos y devoluciones\n• Comparaciones técnicas entre productos",
+      ecommerceResult: "Resultado: 40% más ventas en horarios no laborales",
+
+      realEstateTitle: "🏢 INMOBILIARIAS",
+      realEstateSubtitle: "Tu Agente Virtual de Propiedades",
+      realEstateBefore: "Antes: Leads se pierden por falta de atención inmediata",
+      realEstateAfter: "Después: Atención especializada en bienes raíces:",
+      realEstateFeatures:
+        "• Búsqueda de propiedades por presupuesto y zona\n• Cálculos de hipoteca y financiamiento\n• Programación automática de visitas\n• Comparación de características de inmuebles",
+      realEstateResult: "Resultado: 60% más leads calificados",
+
+      // Competitive Advantages - Exactamente como en la guía
+      advantagesTitle: "¿Por Qué BoyScout IA vs. Otras Opciones?",
+      vsGenericTitle: "VS. CHATBOTS GENÉRICOS",
+      vsGenericBad: '❌ Otros chatbots: "No sé sobre tus horarios específicos"',
+      vsGenericGood: '✅ BoyScout IA: "Hay turno con cardiología el martes a las 3PM"',
+      vsGenericBad2: "❌ Otros chatbots: Respuestas genéricas de internet",
+      vsGenericGood2: "✅ BoyScout IA: Conoce TUS precios, políticas y procedimientos",
+      vsCustomTitle: "VS. DESARROLLO PERSONALIZADO",
+      vsCustomBad: "❌ Desarrollo custom: Necesitas equipo técnico para mantenimiento",
+      vsCustomGood: "✅ BoyScout IA: Actualizaciones automáticas, cero mantenimiento",
+
+      // Technology Section - Exactamente como en la guía
+      technologyTitle: "Tecnología de Vanguardia, Simplicidad de Uso",
+      dualIntelligenceTitle: "🤖 Inteligencia Dual",
+      dualIntelligenceDesc:
+        "Elige DeepSeek, OpenAI, Grok como motor de IA para respuestas más precisas y contextualmente relevantes que cualquier modelo individual.",
+      enterpriseSecurityTitle: "🔒 Seguridad Empresarial",
       enterpriseSecurityDesc:
-        "Tus datos permanecen privados con encriptación de extremo a extremo, procesamiento seguro y cumplimiento de estándares de la industria.",
-      technology: "Tecnología",
-      cuttingEdgeTech: "Construido con Tecnología de Vanguardia",
-      techDescription:
-        "BoyScout IA combina las mejores tecnologías para ofrecer una experiencia de asistente de IA potente y confiable.",
-      deepSeekDesc: "Modelos de lenguaje avanzados para razonamiento complejo y conocimiento especializado.",
-      openAIDesc:
-        "Procesamiento de lenguaje de última generación para conversaciones naturales y generación de contenido.",
-      pythonDesc: "Infraestructura backend robusta con potentes capacidades de procesamiento de datos e IA.",
-      angularDesc: "Frontend dinámico y responsivo para interacciones y experiencias de usuario fluidas.",
-      reactDesc:
-        "Biblioteca basada en componentes para crear interfaces de usuario interactivas con un DOM virtual para un rendimiento óptimo.",
-      nextjsDesc:
-        "Framework de React que permite renderizado del lado del servidor y generación de sitios estáticos para mejorar el rendimiento y SEO.",
-      interactiveDemo: "Demo Interactiva",
-      experienceBoyscout: "Experimenta BoyScout IA en Acción",
-      demoDescription:
-        "Prueba nuestra demo interactiva para ver cómo BoyScout IA puede ayudarte con tus preguntas, tareas y desafíos.",
-      demoFeature1: "Haz preguntas complejas y obtén respuestas detalladas",
-      demoFeature2: "Obtén ayuda con problemas de codificación y técnicos",
-      demoFeature3: "Genera contenido creativo e ideas",
-      demoFeature4: "Analiza datos y proporciona insights",
-      startChatting: "Comienza a Chatear Ahora",
-      aboutUs: "Sobre Nosotros",
-      innovatingAI: "Innovando en Asistencia de IA desde Nueva York",
-      aboutDescription:
-        "Desde el corazón de la ciudad de Nueva York, nuestro equipo de investigadores, ingenieros y diseñadores de IA está dedicado a crear el asistente de IA más útil para empresas e individuos.",
-      foundedIn:
-        "Fundada en 2023, BoyScout IA reúne experiencia en aprendizaje automático, procesamiento de lenguaje natural y desarrollo de software para expandir los límites de lo que los asistentes de IA pueden hacer.",
-      founders: "Nuestros Fundadores",
-      meetOurTeam: "Conoce a Nuestro Equipo",
-      readyToExperience: "¿Listo para Experimentar una Asistencia más Inteligente?",
-      joinUsers: "Únete a miles de usuarios que ya se benefician de la asistencia inteligente de BoyScout IA.",
-      startFreeTrial: "Comienza la Prueba Gratuita",
-      scheduleDemo: "Programa una Demo",
-      noCardRequired: "No se requiere tarjeta de crédito. Prueba gratuita de 14 días.",
-      allRightsReserved: "Todos los derechos reservados.",
-      terms: "Términos",
-      privacy: "Privacidad",
-      cookies: "Cookies",
+        "Tus datos permanecen privados. Encriptación end-to-end, procesamiento seguro, cumplimiento con regulaciones de privacidad. Tu información nunca se comparte.",
+      universalIntegrationTitle: "⚡ Integración Universal",
+      universalIntegrationDesc:
+        "Funciona con cualquier plataforma web. WordPress, Shopify, Wix, sitios custom. Si tiene web, BoyScout IA se integra.",
+      smartAnalyticsTitle: "📊 Analytics Inteligentes",
+      smartAnalyticsDesc:
+        "Dashboard con métricas claras. Ve qué preguntan tus clientes, identifica oportunidades de mejora, mide el ROI real de tu asistente.",
+
+      // Pricing Section - Exactamente como en la guía
+      pricingTitle: "Precios Transparentes, ROI Inmediato",
+      starterTitle: "STARTER",
+      starterPrice: "$19.99/mes",
+      starterSubtitle: "Perfecto para empezar",
+      starterFeatures:
+        "1 asistente especializado,Hasta 1,000 consultas/mes,Documentación hasta 100MB,Integración iframe simple,Soporte por email",
+
+      professionalTitle: "PROFESSIONAL",
+      professionalPrice: "$49.99/mes",
+      professionalSubtitle: "Para empresas en crecimiento",
+      professionalFeatures:
+        "3 asistentes especializados,Hasta 10,000 consultas/mes,Documentación hasta 500MB,Dashboard con analytics avanzados,Múltiples roles por asistente,Soporte prioritario",
+
+      enterpriseTitle: "ENTERPRISE",
+      enterprisePrice: "Precio personalizado",
+      enterpriseSubtitle: "Para grandes operaciones",
+      enterpriseFeatures:
+        "Asistentes ilimitados,Consultas ilimitadas,Integración API personalizada,White-label disponible,Soporte dedicado con SLA",
+
+      startFreeTrial: "EMPEZAR PRUEBA GRATIS",
+
+      // FAQ Section - Exactamente como en la guía (incluyendo la pregunta faltante)
+      faqTitle: "Preguntas Frecuentes",
+      faq1Q: "¿Qué tipo de documentación puedo subir?",
+      faq1A:
+        "PDFs, archivos Word, Excel, CSV, páginas web, manuales, FAQ. Cualquier información de tu negocio: precios, horarios, políticas, catálogos de productos.",
+      faq2Q: "¿Necesito saber programar para usarlo?",
+      faq2A:
+        "No. Solo subes documentos, defines el rol del asistente, y obtienes un código para pegar en tu web. Sin programación necesaria.",
+      faq3Q: "¿Se integra con mi página web actual?",
+      faq3A:
+        "Sí, funciona con WordPress, Shopify, Wix, sitios hechos a medida, y cualquier plataforma web mediante un simple iframe.",
+      faq4Q: "¿Cuánto tiempo tarda en estar funcionando?",
+      faq4A: "Desde que subes tu documentación hasta tener el asistente respondiendo en tu web: menos de 1 hora.",
+      faq5Q: "¿Qué pasa si actualizo mi información?",
+      faq5A:
+        "Solo reemplazas los documentos en el panel. El asistente se actualiza automáticamente sin interrumpir el servicio.",
+      faq6Q: "¿El asistente puede manejar múltiples idiomas?",
+      faq6A: "Sí, responde en el idioma en que le pregunten. Perfecto para empresas con clientes internacionales.",
+      faq7Q: "¿Hay límite en la complejidad de las respuestas?",
+      faq7A:
+        "No. Puede manejar desde consultas simples como horarios hasta análisis complejos como recomendaciones de inversión basadas en perfiles de riesgo.",
+
+      // Final CTA Section - Exactamente como en la guía
+      finalCtaTitle: "¿Listo Para Automatizar Tu Atención Al Cliente?",
+      finalCtaSubtitle:
+        "Únete a más de 1,000 empresas que ya usan BoyScout IA para convertir visitantes en clientes mientras duermen",
+      finalBenefits:
+        "✅ Crea tu primer asistente en 10 minutos\n✅ Prueba gratis 14 días, sin tarjeta de crédito\n✅ Soporte personalizado incluido\n✅ Integración garantizada o te devolvemos tu dinero",
+      finalCtaPrimary: "CREAR MI ASISTENTE GRATIS AHORA",
+      seeDemo: "Ver Demo en Vivo",
+      calculateRoi: "Calcular Mi ROI",
+      talkToSpecialist: "Hablar con un Especialista",
+
+      // Contact
       contactUs: "Contáctanos",
       getInTouch: "Ponte en Contacto",
       contactDescription:
@@ -268,14 +268,199 @@ export default function LandingPage() {
       sending: "Enviando...",
       contactSuccessMessage: "¡Tu mensaje ha sido enviado con éxito! Te responderemos pronto.",
       contactErrorMessage: "Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo.",
-      payment: "Pago",
-      testPayment: "Pago de Prueba",
-      paymentDescription: "Prueba nuestro sistema de pago con una tarjeta de prueba. No se realizarán cargos reales.",
-      monthlySubscription: "Suscripción Mensual",
-      monthlyPrice: "$19.99/mes",
-      monthlyFeatures:
-        "Acceso completo a todas las funciones, Soporte prioritario, Uso ilimitado, Actualizaciones regulares, Notificaciones por email",
-      payNow: "Pagar Ahora",
+
+      // Footer - Exactamente como en la guía
+      footerDescription:
+        "Fundada en 2025 por expertos en IA, ML y desarrollo de software. Comprometidos con democratizar la inteligencia artificial para empresas de todos los tamaños.",
+      guarantees: "Garantías",
+      guarantee1: "✅ Garantía de satisfacción 30 días",
+      guarantee2: "✅ Uptime 99.9% garantizado",
+      guarantee3: "✅ Soporte técnico incluido",
+      guarantee4: "✅ Datos encriptados y seguros",
+      support: "📧 Soporte: soporte@boyscout.dev",
+      liveChat: "💬 Chat en vivo disponible",
+      allRightsReserved: "Todos los derechos reservados.",
+      terms: "Términos",
+      privacy: "Privacidad",
+      cookies: "Cookies",
+    },
+    en: {
+      // Navigation
+      navHowItWorks: "How It Works",
+      navUseCases: "Use Cases",
+      navTechnology: "Technology",
+      navPricing: "Pricing",
+      navContact: "Contact",
+      signIn: "Sign In",
+      tryDemo: "Try Demo",
+
+      // Hero Section
+      heroTitle: "Turn Your Documentation into an AI Expert for Your Website",
+      heroSubtitle:
+        "Upload your files, define the expert role, and get a specialized assistant that embeds on your site. No coding, no model training.",
+      heroDescription:
+        "From hospitals automating appointments to fintech offering 24/7 recommendations. BoyScout AI transforms your business knowledge into intelligent assistants that work while you sleep.",
+      heroCtaPrimary: "CREATE MY FREE ASSISTANT - 14 DAYS",
+      heroCtaSecondary: "See Live Demo",
+      noCardRequired: "No credit card required",
+
+      // How It Works Section
+      howItWorksTitle: "From Documents to Web Expert in 3 Steps",
+      step1Title: "📁 Upload Your Documentation",
+      step1Subtitle: "Load PDFs, databases, manuals",
+      step1Description:
+        "Prices, schedules, policies, FAQs, product catalogs. Any information you handle in your business becomes assistant knowledge.",
+      step2Title: "🎭 Define The Expert Role",
+      step2Subtitle: "Create specialists for your industry",
+      step2Description:
+        '• "Hospital Assistant" → Manages appointments, specialties, prices\n• "Financial Advisor" → Analyzes investments, recommends portfolios\n• "E-commerce Support" → Knows products, shipping, returns',
+      step3Title: "🔗 Embed on Your Website",
+      step3Subtitle: "Instant integration with iframe code",
+      step3Description:
+        "You receive a simple script to paste on your website. Compatible with WordPress, Shopify, Wix, and any platform. Works immediately.",
+
+      // Use Cases Section
+      useCasesTitle: "Specialized AI Assistants for Every Industry",
+
+      hospitalTitle: "🏥 HOSPITALS & CLINICS",
+      hospitalSubtitle: "Your 24/7 Virtual Receptionist",
+      hospitalBefore: "Before: 300+ daily calls asking about schedules and prices",
+      hospitalAfter: "After: Patients get immediate answers about:",
+      hospitalFeatures:
+        "• Available appointments by specialty\n• Prices according to insurance\n• Office locations\n• Study preparation",
+      hospitalResult: "Result: 75% fewer calls to call center",
+
+      fintechTitle: "💰 FINTECH & FINANCIAL ADVISORS",
+      fintechSubtitle: "Your Always Available Investment Advisor",
+      fintechBefore: "Before: Clients inquire outside hours and you lose opportunities",
+      fintechAfter: "After: Specialized 24/7 advisory:",
+      fintechFeatures:
+        "• Real-time stock analysis\n• Personalized portfolio recommendations\n• Complex financial product explanations\n• Risk and return calculations",
+      fintechResult: "Result: 3x more inquiries converted to clients",
+
+      ecommerceTitle: "🛒 E-COMMERCE",
+      ecommerceSubtitle: "Your Expert Virtual Salesperson",
+      ecommerceBefore: "Before: Customers abandon cart due to unresolved doubts",
+      ecommerceAfter: "After: Specialized support that drives sales:",
+      ecommerceFeatures:
+        "• Personalized product recommendations\n• Detailed compatibility information\n• Shipping and return inquiries\n• Technical product comparisons",
+      ecommerceResult: "Result: 40% more sales during non-business hours",
+
+      realEstateTitle: "🏢 REAL ESTATE",
+      realEstateSubtitle: "Your Virtual Property Agent",
+      realEstateBefore: "Before: Leads are lost due to lack of immediate attention",
+      realEstateAfter: "After: Specialized real estate attention:",
+      realEstateFeatures:
+        "• Property search by budget and area\n• Mortgage and financing calculations\n• Automatic visit scheduling\n• Property feature comparisons",
+      realEstateResult: "Result: 60% more qualified leads",
+
+      // Competitive Advantages
+      advantagesTitle: "Why BoyScout AI vs. Other Options?",
+      vsGenericTitle: "VS. GENERIC CHATBOTS",
+      vsGenericBad: '❌ Other chatbots: "I don\'t know about your specific schedules"',
+      vsGenericGood: '✅ BoyScout AI: "There\'s an appointment with cardiology Tuesday at 3PM"',
+      vsGenericBad2: "❌ Other chatbots: Generic internet responses",
+      vsGenericGood2: "✅ BoyScout AI: Knows YOUR prices, policies and procedures",
+      vsCustomTitle: "VS. CUSTOM DEVELOPMENT",
+      vsCustomBad: "❌ Custom development: Need technical team for maintenance",
+      vsCustomGood: "✅ BoyScout AI: Automatic updates, zero maintenance",
+
+      // Technology Section
+      technologyTitle: "Cutting-Edge Technology, Simple to Use",
+      dualIntelligenceTitle: "🤖 Dual Intelligence",
+      dualIntelligenceDesc:
+        "Choose DeepSeek, OpenAI, Grok as AI engine for more precise and contextually relevant responses than any individual model.",
+      enterpriseSecurityTitle: "🔒 Enterprise Security",
+      enterpriseSecurityDesc:
+        "Your data stays private. End-to-end encryption, secure processing, privacy regulation compliance. Your information is never shared.",
+      universalIntegrationTitle: "⚡ Universal Integration",
+      universalIntegrationDesc:
+        "Works with any web platform. WordPress, Shopify, Wix, custom sites. If it has a website, BoyScout AI integrates.",
+      smartAnalyticsTitle: "📊 Smart Analytics",
+      smartAnalyticsDesc:
+        "Dashboard with clear metrics. See what your customers ask, identify improvement opportunities, measure real ROI of your assistant.",
+
+      // Pricing Section
+      pricingTitle: "Transparent Pricing, Immediate ROI",
+      starterTitle: "STARTER",
+      starterPrice: "$19.99/month",
+      starterSubtitle: "Perfect to get started",
+      starterFeatures:
+        "1 specialized assistant,Up to 1,000 queries/month,Documentation up to 100MB,Simple iframe integration,Email support",
+
+      professionalTitle: "PROFESSIONAL",
+      professionalPrice: "$49.99/month",
+      professionalSubtitle: "For growing businesses",
+      professionalFeatures:
+        "3 specialized assistants,Up to 10,000 queries/month,Documentation up to 500MB,Dashboard with advanced analytics,Multiple roles per assistant,Priority support",
+
+      enterpriseTitle: "ENTERPRISE",
+      enterprisePrice: "Custom pricing",
+      enterpriseSubtitle: "For large operations",
+      enterpriseFeatures:
+        "Unlimited assistants,Unlimited queries,Custom API integration,White-label available,Dedicated support with SLA",
+
+      startFreeTrial: "START FREE TRIAL",
+
+      // FAQ Section
+      faqTitle: "Frequently Asked Questions",
+      faq1Q: "What type of documentation can I upload?",
+      faq1A:
+        "PDFs, Word files, Excel, CSV, web pages, manuals, FAQs. Any business information: prices, schedules, policies, product catalogs.",
+      faq2Q: "Do I need to know how to code to use it?",
+      faq2A:
+        "No. Just upload documents, define the assistant role, and get code to paste on your website. No programming needed.",
+      faq3Q: "Does it integrate with my current website?",
+      faq3A: "Yes, works with WordPress, Shopify, Wix, custom sites, and any web platform through a simple iframe.",
+      faq4Q: "How long does it take to be working?",
+      faq4A: "From uploading your documentation to having the assistant responding on your website: less than 1 hour.",
+      faq5Q: "What happens if I update my information?",
+      faq5A:
+        "Just replace the documents in the panel. The assistant updates automatically without interrupting service.",
+      faq6Q: "Can the assistant handle multiple languages?",
+      faq6A: "Yes, responds in the language they're asked in. Perfect for companies with international clients.",
+      faq7Q: "Is there a limit to response complexity?",
+      faq7A:
+        "No. Can handle from simple queries like schedules to complex analysis like investment recommendations based on risk profiles.",
+
+      // Final CTA Section
+      finalCtaTitle: "Ready to Automate Your Customer Service?",
+      finalCtaSubtitle:
+        "Join over 1,000 companies already using BoyScout AI to convert visitors into customers while they sleep",
+      finalBenefits:
+        "✅ Create your first assistant in 10 minutes\n✅ Free 14-day trial, no credit card\n✅ Personalized support included\n✅ Integration guaranteed or money back",
+      finalCtaPrimary: "CREATE MY FREE ASSISTANT NOW",
+      seeDemo: "See Live Demo",
+      calculateRoi: "Calculate My ROI",
+      talkToSpecialist: "Talk to a Specialist",
+
+      // Contact
+      contactUs: "Contact Us",
+      getInTouch: "Get in Touch",
+      contactDescription: "Have questions or need more information? Send us a message and we'll get back to you soon.",
+      yourEmail: "Your Email",
+      emailPlaceholder: "Enter your email address",
+      message: "Message",
+      messagePlaceholder: "How can we help you?",
+      send: "Send Message",
+      sending: "Sending...",
+      contactSuccessMessage: "Your message has been sent successfully! We'll get back to you soon.",
+      contactErrorMessage: "There was an error sending your message. Please try again.",
+
+      // Footer
+      footerDescription:
+        "Founded in 2025 by experts in AI, ML and software development. Committed to democratizing artificial intelligence for businesses of all sizes.",
+      guarantees: "Guarantees",
+      guarantee1: "✅ 30-day satisfaction guarantee",
+      guarantee2: "✅ 99.9% uptime guaranteed",
+      guarantee3: "✅ Technical support included",
+      guarantee4: "✅ Encrypted and secure data",
+      support: "📧 Support: soporte@boyscout.dev",
+      liveChat: "💬 Live chat available",
+      allRightsReserved: "All rights reserved.",
+      terms: "Terms",
+      privacy: "Privacy",
+      cookies: "Cookies",
     },
   }
 
@@ -289,23 +474,20 @@ export default function LandingPage() {
             <span className="text-xl font-bold text-purple-900">BoyScout IA</span>
           </div>
           <nav className="hidden md:flex gap-6">
-            <Link href="#features" className="text-sm font-medium text-slate-700 hover:text-purple-600">
-              {t[language].navFeatures}
+            <Link href="#how-it-works" className="text-sm font-medium text-slate-700 hover:text-purple-600">
+              {t[language].navHowItWorks}
+            </Link>
+            <Link href="#use-cases" className="text-sm font-medium text-slate-700 hover:text-purple-600">
+              {t[language].navUseCases}
             </Link>
             <Link href="#technology" className="text-sm font-medium text-slate-700 hover:text-purple-600">
               {t[language].navTechnology}
             </Link>
-            <Link href="#about" className="text-sm font-medium text-slate-700 hover:text-purple-600">
-              {t[language].navAbout}
-            </Link>
-            <Link href="#payment" className="text-sm font-medium text-slate-700 hover:text-purple-600">
-              {t[language].payment}
+            <Link href="#pricing" className="text-sm font-medium text-slate-700 hover:text-purple-600">
+              {t[language].navPricing}
             </Link>
             <Link href="#contact" className="text-sm font-medium text-slate-700 hover:text-purple-600">
               {t[language].navContact}
-            </Link>
-            <Link href="#" className="text-sm font-medium text-slate-700 hover:text-purple-600">
-              {t[language].navBlog}
             </Link>
           </nav>
           <div className="flex items-center gap-4">
@@ -313,11 +495,9 @@ export default function LandingPage() {
               <Globe className="h-5 w-5" />
               <span className="sr-only">Toggle Language</span>
             </Button>
-            {/* Modificar el enlace "Sign In" en el header */}
             <span className="text-sm font-medium text-slate-500 opacity-60 cursor-not-allowed hidden sm:inline-block">
               {t[language].signIn}
             </span>
-            {/* Modificar el botón "Try Demo" en el header */}
             <Button className="bg-purple-600 hover:bg-purple-700 opacity-60 cursor-not-allowed" disabled={true}>
               {t[language].tryDemo}
             </Button>
@@ -333,21 +513,21 @@ export default function LandingPage() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <Badge className="inline-flex bg-purple-100 text-purple-800 hover:bg-purple-200" variant="secondary">
-                    AI Assistant
+                    Asistente IA Especializado
                   </Badge>
                   <h1 className="text-3xl font-bold tracking-tighter text-purple-900 sm:text-5xl xl:text-6xl/none">
                     {t[language].heroTitle}
                   </h1>
-                  <p className="max-w-[600px] text-slate-600 md:text-xl">{t[language].heroDescription}</p>
+                  <p className="max-w-[600px] text-slate-600 md:text-xl">{t[language].heroSubtitle}</p>
+                  <p className="max-w-[600px] text-slate-500 md:text-lg">{t[language].heroDescription}</p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  {/* Modificar los botones en la sección Hero */}
                   <Button
                     size="lg"
                     className="bg-purple-600 hover:bg-purple-700 opacity-60 cursor-not-allowed"
                     disabled={true}
                   >
-                    {t[language].tryForFree}
+                    {t[language].heroCtaPrimary}
                   </Button>
                   <Button
                     size="lg"
@@ -356,17 +536,18 @@ export default function LandingPage() {
                     disabled={true}
                   >
                     <span className="flex items-center gap-1">
-                      {t[language].learnMore} <ChevronRight className="h-4 w-4" />
+                      {t[language].heroCtaSecondary} <ChevronRight className="h-4 w-4" />
                     </span>
                   </Button>
                 </div>
+                <p className="text-sm text-slate-500">{t[language].noCardRequired}</p>
               </div>
               <div className="relative lg:order-last">
                 <Image
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-aFX2YanolQKXPc11XjLUtq1gJvrMCy.png"
                   width={600}
                   height={600}
-                  alt="Friendly AI Scout Robot"
+                  alt="BoyScout IA Assistant"
                   className="relative mx-auto aspect-square overflow-hidden rounded-3xl object-contain object-center shadow-xl bg-[#0a192f]"
                 />
               </div>
@@ -374,70 +555,199 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Features Section */}
-        <section id="features" className="w-full py-12 md:py-24 lg:py-32">
+        {/* How It Works Section */}
+        <section id="how-it-works" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <Badge variant="outline" className="border-purple-200 text-purple-700">
-                  {t[language].features}
+                  Proceso Simple
                 </Badge>
                 <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
-                  {t[language].intelligentAssistance}
+                  {t[language].howItWorksTitle}
                 </h2>
-                <p className="max-w-[900px] text-slate-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  {t[language].featuresDescription}
-                </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 md:grid-cols-2 lg:grid-cols-3 lg:gap-12">
+            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 md:grid-cols-3 lg:gap-12">
               <Card className="border-purple-100 bg-white shadow-sm">
                 <CardHeader>
-                  <MessageSquare className="h-10 w-10 text-purple-600 mb-2" />
-                  <CardTitle className="text-purple-900">{t[language].naturalConversations}</CardTitle>
-                  <CardDescription className="text-slate-600">{t[language].naturalConversationsDesc}</CardDescription>
+                  <Upload className="h-10 w-10 text-purple-600 mb-2" />
+                  <CardTitle className="text-purple-900">{t[language].step1Title}</CardTitle>
+                  <CardDescription className="text-slate-600 font-medium">{t[language].step1Subtitle}</CardDescription>
+                  <CardDescription className="text-slate-600">{t[language].step1Description}</CardDescription>
                 </CardHeader>
-                <CardFooter>
-                  <span className="text-sm text-purple-400 flex items-center opacity-60 cursor-not-allowed">
-                    {t[language].learnMore} <ChevronRight className="h-4 w-4 ml-1" />
-                  </span>
-                </CardFooter>
               </Card>
               <Card className="border-purple-100 bg-white shadow-sm">
                 <CardHeader>
-                  <Brain className="h-10 w-10 text-purple-600 mb-2" />
-                  <CardTitle className="text-purple-900">{t[language].multiModelIntelligence}</CardTitle>
-                  <CardDescription className="text-slate-600">{t[language].multiModelIntelligenceDesc}</CardDescription>
+                  <Settings className="h-10 w-10 text-purple-600 mb-2" />
+                  <CardTitle className="text-purple-900">{t[language].step2Title}</CardTitle>
+                  <CardDescription className="text-slate-600 font-medium">{t[language].step2Subtitle}</CardDescription>
+                  <CardDescription className="text-slate-600 whitespace-pre-line">
+                    {t[language].step2Description}
+                  </CardDescription>
                 </CardHeader>
-                <CardFooter>
-                  <span className="text-sm text-purple-400 flex items-center opacity-60 cursor-not-allowed">
-                    {t[language].learnMore} <ChevronRight className="h-4 w-4 ml-1" />
-                  </span>
-                </CardFooter>
               </Card>
               <Card className="border-purple-100 bg-white shadow-sm">
                 <CardHeader>
-                  <Code className="h-10 w-10 text-purple-600 mb-2" />
-                  <CardTitle className="text-purple-900">{t[language].codeAssistance}</CardTitle>
-                  <CardDescription className="text-slate-600">{t[language].codeAssistanceDesc}</CardDescription>
+                  <LinkIcon className="h-10 w-10 text-purple-600 mb-2" />
+                  <CardTitle className="text-purple-900">{t[language].step3Title}</CardTitle>
+                  <CardDescription className="text-slate-600 font-medium">{t[language].step3Subtitle}</CardDescription>
+                  <CardDescription className="text-slate-600">{t[language].step3Description}</CardDescription>
                 </CardHeader>
-                <CardFooter>
-                  <span className="text-sm text-purple-400 flex items-center opacity-60 cursor-not-allowed">
-                    {t[language].learnMore} <ChevronRight className="h-4 w-4 ml-1" />
-                  </span>
-                </CardFooter>
               </Card>
-              <Card className="border-purple-100 bg-white shadow-sm md:col-span-2 lg:col-span-3">
+            </div>
+          </div>
+        </section>
+
+        {/* Use Cases Section */}
+        <section id="use-cases" className="w-full py-12 md:py-24 lg:py-32 bg-purple-50">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <Badge variant="outline" className="border-purple-200 text-purple-700">
+                  Casos de Uso
+                </Badge>
+                <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
+                  {t[language].useCasesTitle}
+                </h2>
+              </div>
+            </div>
+            <div className="mx-auto grid max-w-6xl gap-6 py-12 md:grid-cols-2">
+              {/* Hospital Use Case */}
+              <Card className="border-purple-100 bg-white shadow-sm">
                 <CardHeader>
-                  <Shield className="h-10 w-10 text-purple-600 mb-2" />
-                  <CardTitle className="text-purple-900">{t[language].enterpriseSecurity}</CardTitle>
-                  <CardDescription className="text-slate-600">{t[language].enterpriseSecurityDesc}</CardDescription>
+                  <Heart className="h-10 w-10 text-purple-600 mb-2" />
+                  <CardTitle className="text-purple-900">{t[language].hospitalTitle}</CardTitle>
+                  <CardDescription className="text-lg font-medium text-purple-700">
+                    {t[language].hospitalSubtitle}
+                  </CardDescription>
                 </CardHeader>
-                <CardFooter>
-                  <span className="text-sm text-purple-400 flex items-center opacity-60 cursor-not-allowed">
-                    {t[language].learnMore} <ChevronRight className="h-4 w-4 ml-1" />
-                  </span>
-                </CardFooter>
+                <CardContent>
+                  <div className="space-y-3">
+                    <p className="text-sm text-slate-600">{t[language].hospitalBefore}</p>
+                    <p className="text-sm text-slate-600 font-medium">{t[language].hospitalAfter}</p>
+                    <p className="text-sm text-slate-600 whitespace-pre-line">{t[language].hospitalFeatures}</p>
+                    <p className="text-sm text-green-700 font-medium">{t[language].hospitalResult}</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Fintech Use Case */}
+              <Card className="border-purple-100 bg-white shadow-sm">
+                <CardHeader>
+                  <DollarSign className="h-10 w-10 text-purple-600 mb-2" />
+                  <CardTitle className="text-purple-900">{t[language].fintechTitle}</CardTitle>
+                  <CardDescription className="text-lg font-medium text-purple-700">
+                    {t[language].fintechSubtitle}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    <p className="text-sm text-slate-600">{t[language].fintechBefore}</p>
+                    <p className="text-sm text-slate-600 font-medium">{t[language].fintechAfter}</p>
+                    <p className="text-sm text-slate-600 whitespace-pre-line">{t[language].fintechFeatures}</p>
+                    <p className="text-sm text-green-700 font-medium">{t[language].fintechResult}</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* E-commerce Use Case */}
+              <Card className="border-purple-100 bg-white shadow-sm">
+                <CardHeader>
+                  <ShoppingCart className="h-10 w-10 text-purple-600 mb-2" />
+                  <CardTitle className="text-purple-900">{t[language].ecommerceTitle}</CardTitle>
+                  <CardDescription className="text-lg font-medium text-purple-700">
+                    {t[language].ecommerceSubtitle}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    <p className="text-sm text-slate-600">{t[language].ecommerceBefore}</p>
+                    <p className="text-sm text-slate-600 font-medium">{t[language].ecommerceAfter}</p>
+                    <p className="text-sm text-slate-600 whitespace-pre-line">{t[language].ecommerceFeatures}</p>
+                    <p className="text-sm text-green-700 font-medium">{t[language].ecommerceResult}</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Real Estate Use Case */}
+              <Card className="border-purple-100 bg-white shadow-sm">
+                <CardHeader>
+                  <Building className="h-10 w-10 text-purple-600 mb-2" />
+                  <CardTitle className="text-purple-900">{t[language].realEstateTitle}</CardTitle>
+                  <CardDescription className="text-lg font-medium text-purple-700">
+                    {t[language].realEstateSubtitle}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    <p className="text-sm text-slate-600">{t[language].realEstateBefore}</p>
+                    <p className="text-sm text-slate-600 font-medium">{t[language].realEstateAfter}</p>
+                    <p className="text-sm text-slate-600 whitespace-pre-line">{t[language].realEstateFeatures}</p>
+                    <p className="text-sm text-green-700 font-medium">{t[language].realEstateResult}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Competitive Advantages Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <Badge variant="outline" className="border-purple-200 text-purple-700">
+                  Ventajas Competitivas
+                </Badge>
+                <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
+                  {t[language].advantagesTitle}
+                </h2>
+              </div>
+            </div>
+            <div className="mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-2">
+              <Card className="border-purple-100 bg-white shadow-sm">
+                <CardHeader>
+                  <CardTitle className="text-purple-900">{t[language].vsGenericTitle}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-2">
+                      <X className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" />
+                      <p className="text-sm text-slate-600">{t[language].vsGenericBad}</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <p className="text-sm text-slate-600">{t[language].vsGenericGood}</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <X className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" />
+                      <p className="text-sm text-slate-600">{t[language].vsGenericBad2}</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <p className="text-sm text-slate-600">{t[language].vsGenericGood2}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="border-purple-100 bg-white shadow-sm">
+                <CardHeader>
+                  <CardTitle className="text-purple-900">{t[language].vsCustomTitle}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-2">
+                      <X className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" />
+                      <p className="text-sm text-slate-600">{t[language].vsCustomBad}</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <p className="text-sm text-slate-600">{t[language].vsCustomGood}</p>
+                    </div>
+                  </div>
+                </CardContent>
               </Card>
             </div>
           </div>
@@ -449,229 +759,211 @@ export default function LandingPage() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <Badge variant="outline" className="border-purple-200 text-purple-700">
-                  {t[language].technology}
+                  Tecnología
                 </Badge>
                 <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
-                  {t[language].cuttingEdgeTech}
+                  {t[language].technologyTitle}
                 </h2>
-                <p className="max-w-[900px] text-slate-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  {t[language].techDescription}
-                </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-2 lg:grid-cols-3">
-              <Card className="border-purple-100 bg-white shadow-sm flex flex-col items-center text-center p-6">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-AnR8qo2FbDvkzNiYYhQQk3Pzt2xIxe.png"
-                  width={80}
-                  height={80}
-                  alt="DeepSeek Logo"
-                  className="mb-4"
-                />
-                <h3 className="text-lg font-bold text-purple-900">DeepSeek LLM</h3>
-                <p className="text-sm text-slate-600 mt-2">{t[language].deepSeekDesc}</p>
+            <div className="mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-2 lg:grid-cols-4">
+              <Card className="border-purple-100 bg-white shadow-sm">
+                <CardHeader>
+                  <Bot className="h-10 w-10 text-purple-600 mb-2" />
+                  <CardTitle className="text-purple-900 text-lg">{t[language].dualIntelligenceTitle}</CardTitle>
+                  <CardDescription className="text-slate-600">{t[language].dualIntelligenceDesc}</CardDescription>
+                </CardHeader>
               </Card>
-              <Card className="border-purple-100 bg-white shadow-sm flex flex-col items-center text-center p-6">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-j10V9I8Pg6Y8VL201NZIulQDnckKMp.png"
-                  width={80}
-                  height={80}
-                  alt="OpenAI & Microsoft Logo"
-                  className="mb-4"
-                />
-                <h3 className="text-lg font-bold text-purple-900">OpenAI</h3>
-                <p className="text-sm text-slate-600 mt-2">{t[language].openAIDesc}</p>
+              <Card className="border-purple-100 bg-white shadow-sm">
+                <CardHeader>
+                  <Shield className="h-10 w-10 text-purple-600 mb-2" />
+                  <CardTitle className="text-purple-900 text-lg">{t[language].enterpriseSecurityTitle}</CardTitle>
+                  <CardDescription className="text-slate-600">{t[language].enterpriseSecurityDesc}</CardDescription>
+                </CardHeader>
               </Card>
-              <Card className="border-purple-100 bg-white shadow-sm flex flex-col items-center text-center p-6">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-BzBzItlzwTVjU4jwwr7uHqj0fp9d9H.png"
-                  width={80}
-                  height={80}
-                  alt="Python Logo"
-                  className="mb-4"
-                />
-                <h3 className="text-lg font-bold text-purple-900">Python</h3>
-                <p className="text-sm text-slate-600 mt-2">{t[language].pythonDesc}</p>
+              <Card className="border-purple-100 bg-white shadow-sm">
+                <CardHeader>
+                  <Zap className="h-10 w-10 text-purple-600 mb-2" />
+                  <CardTitle className="text-purple-900 text-lg">{t[language].universalIntegrationTitle}</CardTitle>
+                  <CardDescription className="text-slate-600">{t[language].universalIntegrationDesc}</CardDescription>
+                </CardHeader>
               </Card>
-              <Card className="border-purple-100 bg-white shadow-sm flex flex-col items-center text-center p-6">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-nkQnieKKLMb3ui0b8EZcWb5PqdmNws.png"
-                  width={80}
-                  height={80}
-                  alt="Angular Logo"
-                  className="mb-4"
-                />
-                <h3 className="text-lg font-bold text-purple-900">Angular</h3>
-                <p className="text-sm text-slate-600 mt-2">{t[language].angularDesc}</p>
-              </Card>
-              <Card className="border-purple-100 bg-white shadow-sm flex flex-col items-center text-center p-6">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-c41buWQJpVvPHjMhOAiJvM4UdfyXWT.png"
-                  width={80}
-                  height={80}
-                  alt="React Logo"
-                  className="mb-4"
-                />
-                <h3 className="text-lg font-bold text-purple-900">React</h3>
-                <p className="text-sm text-slate-600 mt-2">{t[language].reactDesc}</p>
-              </Card>
-              <Card className="border-purple-100 bg-white shadow-sm flex flex-col items-center text-center p-6">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-VcdInmwimlFzgQNbWqMdBgoli9dRaX.png"
-                  width={80}
-                  height={80}
-                  alt="Next.js Logo"
-                  className="mb-4"
-                />
-                <h3 className="text-lg font-bold text-purple-900">Next.js</h3>
-                <p className="text-sm text-slate-600 mt-2">{t[language].nextjsDesc}</p>
+              <Card className="border-purple-100 bg-white shadow-sm">
+                <CardHeader>
+                  <BarChart3 className="h-10 w-10 text-purple-600 mb-2" />
+                  <CardTitle className="text-purple-900 text-lg">{t[language].smartAnalyticsTitle}</CardTitle>
+                  <CardDescription className="text-slate-600">{t[language].smartAnalyticsDesc}</CardDescription>
+                </CardHeader>
               </Card>
             </div>
           </div>
         </section>
 
-        {/* Demo Section */}
-        <section id="demo" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
-                  <Badge variant="outline" className="border-purple-200 text-purple-700">
-                    {t[language].interactiveDemo}
-                  </Badge>
-                  <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
-                    {t[language].experienceBoyscout}
-                  </h2>
-                  <p className="max-w-[600px] text-slate-600 md:text-xl/relaxed">{t[language].demoDescription}</p>
-                </div>
-                <ul className="grid gap-2">
-                  {[
-                    t[language].demoFeature1,
-                    t[language].demoFeature2,
-                    t[language].demoFeature3,
-                    t[language].demoFeature4,
-                  ].map((feature) => (
-                    <li key={feature} className="flex items-center gap-2">
-                      <Zap className="h-4 w-4 text-purple-600" />
-                      <span className="text-slate-700">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  {/* Modificar el botón "Start Chatting Now" en la sección Demo */}
-                  <Button className="bg-purple-600 hover:bg-purple-700 opacity-60 cursor-not-allowed" disabled={true}>
-                    {t[language].startChatting}
-                  </Button>
-                </div>
-              </div>
-              <div className="relative rounded-xl overflow-hidden border-2 border-purple-100 shadow-xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-purple-50 opacity-50"></div>
-                <div className="relative p-6 md:p-8">
-                  <div className="bg-white rounded-lg shadow-sm p-4 mb-4 ml-auto max-w-[80%]">
-                    <p className="text-slate-700">How can BoyScout IA help my business?</p>
-                  </div>
-                  <div className="bg-purple-600 rounded-lg shadow-sm p-4 mb-4 max-w-[80%]">
-                    <p className="text-white">
-                      BoyScout IA can help your business by automating customer support, assisting with data analysis,
-                      generating content, and providing insights from your business data. Our AI assistant integrates
-                      with your existing tools and workflows to boost productivity and reduce operational costs.
-                    </p>
-                  </div>
-                  <div className="bg-white rounded-lg shadow-sm p-4 mb-4 ml-auto max-w-[80%]">
-                    <p className="text-slate-700">Can you help with technical documentation?</p>
-                  </div>
-                  <div className="bg-purple-600 rounded-lg shadow-sm p-4 max-w-[80%]">
-                    <p className="text-white">
-                      I can help create, review, and improve technical documentation. I can generate code examples,
-                      explain complex concepts in simple terms, and ensure your documentation is comprehensive and
-                      user-friendly.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* About/Location Section */}
-        <section id="about" className="w-full py-12 md:py-24 lg:py-32 bg-purple-900 text-white">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
-                  <Badge variant="outline" className="border-purple-300 text-purple-100">
-                    {t[language].aboutUs}
-                  </Badge>
-                  <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">{t[language].innovatingAI}</h2>
-                  <p className="max-w-[600px] text-purple-100 md:text-xl/relaxed">{t[language].aboutDescription}</p>
-                </div>
-                <div className="flex items-center gap-2 text-purple-100">
-                  <MapPin className="h-5 w-5" />
-                  <span>Manhattan, New York, NY</span>
-                </div>
-                <p className="text-purple-100">{t[language].foundedIn}</p>
-                <div className="space-y-2 mt-4">
-                  <h3 className="text-xl font-semibold">{t[language].founders}</h3>
-                  <div className="flex flex-col space-y-2">
-                    <div className="flex items-center space-x-2">
-                      <User className="h-5 w-5 text-purple-300" />
-                      <span className="font-medium">Emanuel Jimenez</span>
-                      <span className="text-purple-300">- Software Developer</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Users className="h-5 w-5 text-purple-300" />
-                      <span className="font-medium">Betsabe Jimenez</span>
-                      <span className="text-purple-300">- Human Resources</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  {/* Modificar el botón "Meet Our Team" en la sección About */}
-                  <Button
-                    variant="outline"
-                    className="bg-transparent border-purple-300 text-white hover:bg-purple-800 opacity-60 cursor-not-allowed"
-                    disabled={true}
-                  >
-                    {t[language].meetOurTeam}
-                  </Button>
-                </div>
-              </div>
-              <div className="relative">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-aFX2YanolQKXPc11XjLUtq1gJvrMCy.png"
-                  width={550}
-                  height={550}
-                  alt="Scout-AI Robot"
-                  className="mx-auto aspect-square overflow-hidden rounded-xl object-contain object-center shadow-xl bg-[#0a192f]"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Payment Section */}
-        <section id="payment" className="w-full py-12 md:py-24 lg:py-32 bg-white">
+        {/* Pricing Section */}
+        <section id="pricing" className="w-full py-12 md:py-24 lg:py-32 bg-white">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8">
               <div className="space-y-2">
                 <Badge variant="outline" className="border-purple-200 text-purple-700">
-                  {t[language].payment}
+                  Precios
                 </Badge>
                 <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
-                  {t[language].testPayment}
+                  {t[language].pricingTitle}
                 </h2>
-                <p className="max-w-[600px] text-slate-600 md:text-xl/relaxed">{t[language].paymentDescription}</p>
               </div>
             </div>
 
-            <div className="mx-auto max-w-5xl">
-              <PaymentCard
-                title={t[language].monthlySubscription}
-                price={t[language].monthlyPrice}
-                features={t[language].monthlyFeatures.split(",")}
-                stripeUrl="https://buy.stripe.com/test_14A8wP1XJ9eV1jR0ik7Zu00"
-                buttonText={t[language].payNow}
-              />
+            <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
+              {/* Starter Plan */}
+              <Card className="border-purple-300 shadow-md bg-white">
+                <CardHeader className="text-center">
+                  <CardTitle className="text-2xl text-purple-900">{t[language].starterTitle}</CardTitle>
+                  <CardDescription className="text-3xl font-bold text-purple-700 mt-2">
+                    {t[language].starterPrice}
+                  </CardDescription>
+                  <CardDescription className="text-slate-600">{t[language].starterSubtitle}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    {t[language].starterFeatures.split(",").map((feature, index) => (
+                      <div key={index} className="flex items-start">
+                        <Check className="h-5 w-5 text-purple-600 mr-2 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm text-slate-600">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Button
+                    className="w-full bg-purple-600 hover:bg-purple-700 opacity-60 cursor-not-allowed"
+                    disabled={true}
+                  >
+                    {t[language].startFreeTrial}
+                  </Button>
+                </CardFooter>
+              </Card>
+
+              {/* Professional Plan */}
+              <Card className="border-purple-300 shadow-md bg-purple-50 relative">
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                  <Badge className="bg-purple-600 text-white">Más Popular</Badge>
+                </div>
+                <CardHeader className="text-center">
+                  <CardTitle className="text-2xl text-purple-900">{t[language].professionalTitle}</CardTitle>
+                  <CardDescription className="text-3xl font-bold text-purple-700 mt-2">
+                    {t[language].professionalPrice}
+                  </CardDescription>
+                  <CardDescription className="text-slate-600">{t[language].professionalSubtitle}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    {t[language].professionalFeatures.split(",").map((feature, index) => (
+                      <div key={index} className="flex items-start">
+                        <Check className="h-5 w-5 text-purple-600 mr-2 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm text-slate-600">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Button
+                    className="w-full bg-purple-600 hover:bg-purple-700 opacity-60 cursor-not-allowed"
+                    disabled={true}
+                  >
+                    {t[language].startFreeTrial}
+                  </Button>
+                </CardFooter>
+              </Card>
+
+              {/* Enterprise Plan */}
+              <Card className="border-purple-300 shadow-md bg-white">
+                <CardHeader className="text-center">
+                  <CardTitle className="text-2xl text-purple-900">{t[language].enterpriseTitle}</CardTitle>
+                  <CardDescription className="text-3xl font-bold text-purple-700 mt-2">
+                    {t[language].enterprisePrice}
+                  </CardDescription>
+                  <CardDescription className="text-slate-600">{t[language].enterpriseSubtitle}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    {t[language].enterpriseFeatures.split(",").map((feature, index) => (
+                      <div key={index} className="flex items-start">
+                        <Check className="h-5 w-5 text-purple-600 mr-2 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm text-slate-600">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Button
+                    variant="outline"
+                    className="w-full border-purple-600 text-purple-600 hover:bg-purple-50 opacity-60 cursor-not-allowed"
+                    disabled={true}
+                  >
+                    Contactar Ventas
+                  </Button>
+                </CardFooter>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-purple-50">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8">
+              <div className="space-y-2">
+                <Badge variant="outline" className="border-purple-200 text-purple-700">
+                  FAQ
+                </Badge>
+                <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
+                  {t[language].faqTitle}
+                </h2>
+              </div>
+            </div>
+            <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
+              <Card className="border-purple-100 bg-white shadow-sm">
+                <CardHeader>
+                  <CardTitle className="text-purple-900 text-lg">{t[language].faq1Q}</CardTitle>
+                  <CardDescription className="text-slate-600">{t[language].faq1A}</CardDescription>
+                </CardHeader>
+              </Card>
+              <Card className="border-purple-100 bg-white shadow-sm">
+                <CardHeader>
+                  <CardTitle className="text-purple-900 text-lg">{t[language].faq2Q}</CardTitle>
+                  <CardDescription className="text-slate-600">{t[language].faq2A}</CardDescription>
+                </CardHeader>
+              </Card>
+              <Card className="border-purple-100 bg-white shadow-sm">
+                <CardHeader>
+                  <CardTitle className="text-purple-900 text-lg">{t[language].faq3Q}</CardTitle>
+                  <CardDescription className="text-slate-600">{t[language].faq3A}</CardDescription>
+                </CardHeader>
+              </Card>
+              <Card className="border-purple-100 bg-white shadow-sm">
+                <CardHeader>
+                  <CardTitle className="text-purple-900 text-lg">{t[language].faq4Q}</CardTitle>
+                  <CardDescription className="text-slate-600">{t[language].faq4A}</CardDescription>
+                </CardHeader>
+              </Card>
+              <Card className="border-purple-100 bg-white shadow-sm">
+                <CardHeader>
+                  <CardTitle className="text-purple-900 text-lg">{t[language].faq5Q}</CardTitle>
+                  <CardDescription className="text-slate-600">{t[language].faq5A}</CardDescription>
+                </CardHeader>
+              </Card>
+              <Card className="border-purple-100 bg-white shadow-sm">
+                <CardHeader>
+                  <CardTitle className="text-purple-900 text-lg">{t[language].faq6Q}</CardTitle>
+                  <CardDescription className="text-slate-600">{t[language].faq6A}</CardDescription>
+                </CardHeader>
+              </Card>
+              <Card className="border-purple-100 bg-white shadow-sm">
+                <CardHeader>
+                  <CardTitle className="text-purple-900 text-lg">{t[language].faq7Q}</CardTitle>
+                  <CardDescription className="text-slate-600">{t[language].faq7A}</CardDescription>
+                </CardHeader>
+              </Card>
             </div>
           </div>
         </section>
@@ -691,7 +983,6 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="mx-auto max-w-md space-y-6 bg-white p-6 rounded-xl shadow-sm border border-purple-100">
-              {/* Reemplazar el formulario existente con el nuevo componente */}
               <ContactForm
                 translations={{
                   yourEmail: t[language].yourEmail,
@@ -714,73 +1005,115 @@ export default function LandingPage() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
-                  {t[language].readyToExperience}
+                  {t[language].finalCtaTitle}
                 </h2>
-                <p className="max-w-[600px] text-slate-600 md:text-xl/relaxed">{t[language].joinUsers}</p>
+                <p className="max-w-[600px] text-slate-600 md:text-xl/relaxed">{t[language].finalCtaSubtitle}</p>
+                <div className="max-w-[600px] text-slate-600 whitespace-pre-line">{t[language].finalBenefits}</div>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                {/* Modificar los botones en la sección CTA final */}
-                {/* Luego, en la sección "Final CTA Section", reemplaza el botón "Start Free Trial" con: */}
-                <CheckoutButton stripeUrl="https://buy.stripe.com/test_14A8wP1XJ9eV1jR0ik7Zu00">
-                  {t[language].startFreeTrial}
-                </CheckoutButton>
+                <Button
+                  size="lg"
+                  className="bg-purple-600 hover:bg-purple-700 opacity-60 cursor-not-allowed"
+                  disabled={true}
+                >
+                  {t[language].finalCtaPrimary}
+                </Button>
                 <Button
                   size="lg"
                   variant="outline"
                   className="border-purple-200 text-purple-700 hover:bg-purple-50 opacity-60 cursor-not-allowed"
                   disabled={true}
                 >
-                  {t[language].scheduleDemo}
+                  {t[language].seeDemo}
                 </Button>
               </div>
-              <p className="text-sm text-slate-500">{t[language].noCardRequired}</p>
+              <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                <Button
+                  variant="ghost"
+                  className="text-purple-600 hover:text-purple-700 opacity-60 cursor-not-allowed"
+                  disabled={true}
+                >
+                  {t[language].calculateRoi}
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="text-purple-600 hover:text-purple-700 opacity-60 cursor-not-allowed"
+                  disabled={true}
+                >
+                  {t[language].talkToSpecialist}
+                </Button>
+              </div>
             </div>
           </div>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="w-full border-t border-purple-100 bg-white py-6 md:py-0">
-        <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
-          <div className="flex items-center gap-2">
-            <Bot className="h-5 w-5 text-purple-600" />
-            <p className="text-sm font-medium text-slate-700">
+      <footer className="w-full border-t border-purple-100 bg-white py-12">
+        <div className="container px-4 md:px-6">
+          <div className="grid gap-8 md:grid-cols-3">
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <Bot className="h-6 w-6 text-purple-600" />
+                <span className="text-lg font-bold text-purple-900">BoyScout IA</span>
+              </div>
+              <p className="text-sm text-slate-600">{t[language].footerDescription}</p>
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-purple-900">{t[language].guarantees}</h3>
+              <div className="space-y-2">
+                <p className="text-sm text-slate-600">{t[language].guarantee1}</p>
+                <p className="text-sm text-slate-600">{t[language].guarantee2}</p>
+                <p className="text-sm text-slate-600">{t[language].guarantee3}</p>
+                <p className="text-sm text-slate-600">{t[language].guarantee4}</p>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-purple-900">Contacto</h3>
+              <div className="space-y-2">
+                <p className="text-sm text-slate-600">{t[language].support}</p>
+                <p className="text-sm text-slate-600">{t[language].liveChat}</p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 pt-8 border-t border-purple-100 flex flex-col items-center justify-between gap-4 md:flex-row">
+            <p className="text-sm text-slate-600">
               © {new Date().getFullYear()} BoyScout IA. {t[language].allRightsReserved}
             </p>
-          </div>
-          <div className="flex gap-4">
-            <Link
-              href="#"
-              className="text-sm font-medium text-slate-700 hover:text-purple-600 hover:underline underline-offset-4"
-            >
-              {t[language].terms}
-            </Link>
-            <Link
-              href="#"
-              className="text-sm font-medium text-slate-700 hover:text-purple-600 hover:underline underline-offset-4"
-            >
-              {t[language].privacy}
-            </Link>
-            <Link
-              href="#"
-              className="text-sm font-medium text-slate-700 hover:text-purple-600 hover:underline underline-offset-4"
-            >
-              {t[language].cookies}
-            </Link>
-          </div>
-          <div className="flex items-center gap-4">
-            <Link href="#" className="text-slate-500 hover:text-purple-600">
-              <Twitter className="h-5 w-5" />
-              <span className="sr-only">Twitter</span>
-            </Link>
-            <Link href="#" className="text-slate-500 hover:text-purple-600">
-              <Github className="h-5 w-5" />
-              <span className="sr-only">GitHub</span>
-            </Link>
-            <Link href="#" className="text-slate-500 hover:text-purple-600">
-              <Linkedin className="h-5 w-5" />
-              <span className="sr-only">LinkedIn</span>
-            </Link>
+            <div className="flex gap-4">
+              <Link
+                href="#"
+                className="text-sm font-medium text-slate-700 hover:text-purple-600 hover:underline underline-offset-4"
+              >
+                {t[language].terms}
+              </Link>
+              <Link
+                href="#"
+                className="text-sm font-medium text-slate-700 hover:text-purple-600 hover:underline underline-offset-4"
+              >
+                {t[language].privacy}
+              </Link>
+              <Link
+                href="#"
+                className="text-sm font-medium text-slate-700 hover:text-purple-600 hover:underline underline-offset-4"
+              >
+                {t[language].cookies}
+              </Link>
+            </div>
+            <div className="flex items-center gap-4">
+              <Link href="#" className="text-slate-500 hover:text-purple-600">
+                <Twitter className="h-5 w-5" />
+                <span className="sr-only">Twitter</span>
+              </Link>
+              <Link href="#" className="text-slate-500 hover:text-purple-600">
+                <Github className="h-5 w-5" />
+                <span className="sr-only">GitHub</span>
+              </Link>
+              <Link href="#" className="text-slate-500 hover:text-purple-600">
+                <Linkedin className="h-5 w-5" />
+                <span className="sr-only">LinkedIn</span>
+              </Link>
+            </div>
           </div>
         </div>
       </footer>
