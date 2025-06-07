@@ -544,10 +544,10 @@ export default function LandingPage() {
               </div>
               <div className="relative lg:order-last">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-aFX2YanolQKXPc11XjLUtq1gJvrMCy.png"
+                  src="/images/ia-boyscout-hero.jpg"
                   width={600}
                   height={600}
-                  alt="BoyScout IA Assistant"
+                  alt="IA BoyScout - Tu Asistente Inteligente"
                   className="relative mx-auto aspect-square overflow-hidden rounded-3xl object-contain object-center shadow-xl bg-[#0a192f]"
                 />
               </div>
