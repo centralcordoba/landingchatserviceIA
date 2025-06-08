@@ -117,7 +117,7 @@ export default function LandingPage() {
       // Hero Section - Exactamente como en la guía
       heroTitle: "Convierte Tu Documentación en un Experto IA Para Tu Web",
       heroSubtitle:
-        "Sube tus archivos, define el rol de experto, y obtén un asistente especializado que se embebe en tu sitio. Sin programar, sin entrenar modelos.",
+        "Sube tus archivos, define el rol de experto, y obtén un asistente especializado que se inserta en tu sitio. Sin programar, sin entrenar modelos.",
       heroDescription:
         "Desde hospitales que automatizan turnos hasta fintech que ofrece recomendaciones 24/7. BoyScout IA transforma tu conocimiento empresarial en asistentes inteligentes que trabajan mientras duermes.",
       heroCtaPrimary: "CREAR MI ASISTENTE GRATIS - 14 DÍAS",
@@ -206,19 +206,19 @@ export default function LandingPage() {
       starterPrice: "$19.99/mes",
       starterSubtitle: "Perfecto para empezar",
       starterFeatures:
-        "1 asistente especializado,Hasta 1,000 consultas/mes,Documentación hasta 100MB,Integración iframe simple,Soporte por email",
+        "1 asistente especializado,Documentación hasta 100MB,Integración iframe simple,Soporte por email",
 
       professionalTitle: "PROFESSIONAL",
       professionalPrice: "$49.99/mes",
       professionalSubtitle: "Para empresas en crecimiento",
       professionalFeatures:
-        "3 asistentes especializados,Hasta 10,000 consultas/mes,Documentación hasta 500MB,Dashboard con analytics avanzados,Múltiples roles por asistente,Soporte prioritario",
+        "Hasta 3 asistentes especializados,Documentación hasta 500MB,Dashboard con analytics avanzados,Múltiples roles por asistente,Soporte prioritario",
 
       enterpriseTitle: "ENTERPRISE",
       enterprisePrice: "Precio personalizado",
       enterpriseSubtitle: "Para grandes operaciones",
       enterpriseFeatures:
-        "Asistentes ilimitados,Consultas ilimitadas,Integración API personalizada,White-label disponible,Soporte dedicado con SLA",
+        "Asistentes ilimitados,Integración API personalizada,White-label disponible,Soporte dedicado con SLA",
 
       startFreeTrial: "EMPEZAR PRUEBA GRATIS",
 
@@ -246,8 +246,6 @@ export default function LandingPage() {
 
       // Final CTA Section - Exactamente como en la guía
       finalCtaTitle: "¿Listo Para Automatizar Tu Atención Al Cliente?",
-      finalCtaSubtitle:
-        "Únete a más de 1,000 empresas que ya usan BoyScout IA para convertir visitantes en clientes mientras duermen",
       finalBenefits:
         "✅ Crea tu primer asistente en 10 minutos\n✅ Prueba gratis 14 días, sin tarjeta de crédito\n✅ Soporte personalizado incluido\n✅ Integración garantizada o te devolvemos tu dinero",
       finalCtaPrimary: "CREAR MI ASISTENTE GRATIS AHORA",
@@ -297,7 +295,7 @@ export default function LandingPage() {
       // Hero Section
       heroTitle: "Turn Your Documentation into an AI Expert for Your Website",
       heroSubtitle:
-        "Upload your files, define the expert role, and get a specialized assistant that embeds on your site. No coding, no model training.",
+        "Upload your files, define the expert role, and get a specialized assistant that inserts on your site. No coding, no model training.",
       heroDescription:
         "From hospitals automating appointments to fintech offering 24/7 recommendations. BoyScout AI transforms your business knowledge into intelligent assistants that work while you sleep.",
       heroCtaPrimary: "CREATE MY FREE ASSISTANT - 14 DAYS",
@@ -385,20 +383,19 @@ export default function LandingPage() {
       starterTitle: "STARTER",
       starterPrice: "$19.99/month",
       starterSubtitle: "Perfect to get started",
-      starterFeatures:
-        "1 specialized assistant,Up to 1,000 queries/month,Documentation up to 100MB,Simple iframe integration,Email support",
+      starterFeatures: "1 specialized assistant,Documentation up to 100MB,Simple iframe integration,Email support",
 
       professionalTitle: "PROFESSIONAL",
       professionalPrice: "$49.99/month",
       professionalSubtitle: "For growing businesses",
       professionalFeatures:
-        "3 specialized assistants,Up to 10,000 queries/month,Documentation up to 500MB,Dashboard with advanced analytics,Multiple roles per assistant,Priority support",
+        "Up to 3 specialized assistants,Documentation up to 500MB,Dashboard with advanced analytics,Multiple roles per assistant,Priority support",
 
       enterpriseTitle: "ENTERPRISE",
       enterprisePrice: "Custom pricing",
       enterpriseSubtitle: "For large operations",
       enterpriseFeatures:
-        "Unlimited assistants,Unlimited queries,Custom API integration,White-label available,Dedicated support with SLA",
+        "Unlimited assistants,Custom API integration,White-label available,Dedicated support with SLA",
 
       startFreeTrial: "START FREE TRIAL",
 
@@ -425,8 +422,6 @@ export default function LandingPage() {
 
       // Final CTA Section
       finalCtaTitle: "Ready to Automate Your Customer Service?",
-      finalCtaSubtitle:
-        "Join over 1,000 companies already using BoyScout AI to convert visitors into customers while they sleep",
       finalBenefits:
         "✅ Create your first assistant in 10 minutes\n✅ Free 14-day trial, no credit card\n✅ Personalized support included\n✅ Integration guaranteed or money back",
       finalCtaPrimary: "CREATE MY FREE ASSISTANT NOW",
@@ -835,8 +830,8 @@ export default function LandingPage() {
                 </CardContent>
                 <CardFooter>
                   <Button
-                    className="w-full bg-purple-600 hover:bg-purple-700 opacity-60 cursor-not-allowed"
-                    disabled={true}
+                    onClick={() => window.open("https://buy.stripe.com/test_14A8wP1XJ9eV1jR0ik7Zu00", "_blank")}
+                    className="w-full bg-purple-600 hover:bg-purple-700"
                   >
                     {t[language].startFreeTrial}
                   </Button>
@@ -1007,7 +1002,6 @@ export default function LandingPage() {
                 <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
                   {t[language].finalCtaTitle}
                 </h2>
-                <p className="max-w-[600px] text-slate-600 md:text-xl/relaxed">{t[language].finalCtaSubtitle}</p>
                 <div className="max-w-[600px] text-slate-600 whitespace-pre-line">{t[language].finalBenefits}</div>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
