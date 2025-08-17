@@ -12,7 +12,6 @@ import {
   Globe,
   Check,
   TrendingDown,
-  Users,
   Clock,
   AlertTriangle,
   TrendingUp,
@@ -441,90 +440,140 @@ export default function LandingPage() {
         {/* Talent Search Section */}
         <section id="talent-search" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-              <div className="space-y-4">
-                <Badge variant="outline" className="border-purple-200 text-purple-700">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <Badge variant="outline" className="border-purple-200 text-purple-700 mb-4">
                   Búsqueda Inteligente
                 </Badge>
-                <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
-                  {t[language].talentSearchTitle}
+                <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl mb-6">
+                  🔍 Búsqueda de Talento Inteligente
                 </h2>
-                <p className="text-xl text-slate-600">{t[language].talentSearchSubtitle}</p>
-                <p className="text-slate-600">{t[language].talentSearchDescription}</p>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <Check className="h-5 w-5 text-purple-600" />
-                    <span className="text-slate-600">{t[language].talentSearchFeature1}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Check className="h-5 w-5 text-purple-600" />
-                    <span className="text-slate-600">{t[language].talentSearchFeature2}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Check className="h-5 w-5 text-purple-600" />
-                    <span className="text-slate-600">{t[language].talentSearchFeature3}</span>
-                  </div>
-                </div>
               </div>
-              <div className="grid gap-4">
-                <Card className="border-purple-100 bg-white shadow-sm">
-                  <CardHeader className="pb-3">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
-                          <Users className="h-5 w-5 text-purple-600" />
-                        </div>
-                        <div>
-                          <CardTitle className="text-sm">Ana García</CardTitle>
-                          <CardDescription className="text-xs">Full Stack Developer</CardDescription>
-                        </div>
+
+              <div className="space-y-8">
+                <div className="text-center">
+                  <h3 className="text-xl font-semibold text-purple-800 mb-4">
+                    Encuentra a los mejores candidatos en minutos, no en semanas
+                  </h3>
+                  <p className="text-slate-600 text-lg leading-relaxed">
+                    Nuestro agente de IA va más allá de los CVs tradicionales. Rastrea y analiza código real en GitHub,
+                    actividad técnica en Stack Overflow, contribuciones en comunidades de Dev.to, y perfiles
+                    profesionales a través de web scraping inteligente en múltiples plataformas.
+                  </p>
+                </div>
+
+                <div className="grid gap-8 md:grid-cols-2">
+                  <Card className="border-purple-100 bg-white shadow-sm">
+                    <CardHeader>
+                      <CardTitle className="text-lg text-purple-900 flex items-center gap-2">
+                        🔍 Búsqueda Multi-Plataforma Automatizada
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <div className="space-y-2">
+                        <p className="text-sm">
+                          <strong>GitHub Analytics:</strong> Evalúa calidad de código, frecuencia de commits,
+                          tecnologías dominadas y contribuciones open source
+                        </p>
+                        <p className="text-sm">
+                          <strong>Web Scraping Avanzado:</strong> Rastrea job boards, comunidades tech y plataformas
+                          profesionales con técnicas anti-detección
+                        </p>
+                        <p className="text-sm">
+                          <strong>Social Coding Platforms:</strong> Monitorea GitLab, Bitbucket y otras plataformas de
+                          desarrollo
+                        </p>
                       </div>
-                      <Badge className="bg-green-100 text-green-800">95% Match</Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <div className="flex gap-2 flex-wrap">
-                      <Badge variant="outline" className="text-xs">
-                        React
-                      </Badge>
-                      <Badge variant="outline" className="text-xs">
-                        Node.js
-                      </Badge>
-                      <Badge variant="outline" className="text-xs">
-                        AWS
-                      </Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card className="border-purple-100 bg-white shadow-sm">
-                  <CardHeader className="pb-3">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
-                          <Users className="h-5 w-5 text-purple-600" />
-                        </div>
-                        <div>
-                          <CardTitle className="text-sm">Carlos López</CardTitle>
-                          <CardDescription className="text-xs">DevOps Engineer</CardDescription>
-                        </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-purple-100 bg-white shadow-sm">
+                    <CardHeader>
+                      <CardTitle className="text-lg text-purple-900 flex items-center gap-2">
+                        🎯 Filtrado Inteligente Basado en Evidencia Real
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <div className="space-y-2">
+                        <p className="text-sm">
+                          <strong>Skills Validation:</strong> Verificación de habilidades basada en código real, no solo
+                          keywords en CV
+                        </p>
+                        <p className="text-sm">
+                          <strong>Experience Scoring:</strong> Algoritmo que evalúa años de experiencia real vs.
+                          proyectos completados
+                        </p>
+                        <p className="text-sm">
+                          <strong>Tech Stack Matching:</strong> Coincidencia exacta entre tecnologías del proyecto y
+                          expertise demostrable
+                        </p>
+                        <p className="text-sm">
+                          <strong>Activity Patterns:</strong> Análisis de consistencia y evolución técnica del candidato
+                        </p>
                       </div>
-                      <Badge className="bg-yellow-100 text-yellow-800">87% Match</Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <div className="flex gap-2 flex-wrap">
-                      <Badge variant="outline" className="text-xs">
-                        Docker
-                      </Badge>
-                      <Badge variant="outline" className="text-xs">
-                        Kubernetes
-                      </Badge>
-                      <Badge variant="outline" className="text-xs">
-                        CI/CD
-                      </Badge>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-purple-100 bg-white shadow-sm">
+                    <CardHeader>
+                      <CardTitle className="text-lg text-purple-900 flex items-center gap-2">
+                        📊 Ranking Inteligente Multi-Dimensional
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <div className="space-y-2">
+                        <p className="text-sm">
+                          <strong>Technical Excellence Score:</strong> Puntuación basada en calidad de código y
+                          contribuciones técnicas
+                        </p>
+                        <p className="text-sm">
+                          <strong>Market Demand Index:</strong> Análisis de qué tan demandado está el perfil en el
+                          mercado actual
+                        </p>
+                        <p className="text-sm">
+                          <strong>Availability Prediction:</strong> Algoritmo que predice disponibilidad basado en
+                          patrones de actividad
+                        </p>
+                        <p className="text-sm">
+                          <strong>Retention Probability:</strong> Predicción de permanencia en el puesto basado en
+                          historial de actividad
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-purple-100 bg-white shadow-sm">
+                    <CardHeader>
+                      <CardTitle className="text-lg text-purple-900 flex items-center gap-2">
+                        ⚡ Ventajas Competitivas
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <div className="space-y-2">
+                        <p className="text-sm">• 85% más rápido que métodos tradicionales de búsqueda</p>
+                        <p className="text-sm">• Datos en tiempo real de múltiples fuentes técnicas</p>
+                        <p className="text-sm">• Verificación automática de habilidades con evidencia tangible</p>
+                        <p className="text-sm">• Reducción del 70% en falsos positivos de candidatos</p>
+                        <p className="text-sm">• Acceso a desarrolladores pasivos que no buscan activamente trabajo</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="text-center">
+                  <Card className="border-purple-200 bg-purple-50 shadow-sm max-w-3xl mx-auto">
+                    <CardContent className="p-6">
+                      <div className="flex items-center justify-center gap-2 mb-3">
+                        <span className="text-2xl">💡</span>
+                        <h4 className="text-lg font-semibold text-purple-900">Resultado</h4>
+                      </div>
+                      <p className="text-purple-800 font-medium">
+                        Candidatos pre-validados técnicamente con evidencia real de sus habilidades, listos para
+                        entrevistas técnicas directas.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
             </div>
           </div>
