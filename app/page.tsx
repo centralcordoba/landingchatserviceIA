@@ -1124,7 +1124,7 @@ export default function LandingPage() {
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-purple-900">Contacto</h3>
               <div className="space-y-2">
-                <p className="text-sm text-slate-600">📧 soporte@boyscout.com</p>
+                <p className="text-sm text-slate-600">📧 soporte@boyscout.dev</p>
                 <p className="text-sm text-slate-600">💬 Chat en vivo disponible</p>
               </div>
             </div>
