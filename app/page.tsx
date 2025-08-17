@@ -1,34 +1,28 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Card, CardDescription, CardHeader, CardTitle, CardFooter, CardContent } from "@/components/ui/card"
+import { Card, CardDescription, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import {
-  Bot,
-  Shield,
-  Zap,
   ChevronRight,
   Github,
   Twitter,
   Linkedin,
   Globe,
-  Upload,
-  Settings,
-  LinkIcon,
-  Heart,
-  DollarSign,
-  ShoppingCart,
-  Building,
   Check,
-  X,
-  BarChart3,
+  TrendingDown,
+  Users,
+  Clock,
+  AlertTriangle,
+  TrendingUp,
+  CheckCircle,
 } from "lucide-react"
 import { useState, useRef, type FormEvent } from "react"
 import { sendContactEmail } from "./actions"
 import { ContactForm } from "@/components/contact-form"
 import { decodeToken, type DecodedToken } from "@/lib/token-utils"
+import Image from "next/image"
 
 export default function LandingPage() {
   const [language, setLanguage] = useState("es")
@@ -106,177 +100,122 @@ export default function LandingPage() {
   const t = {
     es: {
       // Navigation
-      navHowItWorks: "Cómo Funciona",
-      navUseCases: "Casos de Uso",
-      navTechnology: "Tecnología",
+      navTalentSearch: "Búsqueda de Talento",
+      navTraining: "Formación",
+      navAnalytics: "Análisis",
+      navProposals: "Propuestas",
+      navContracts: "Contratos",
       navPricing: "Precios",
       navContact: "Contacto",
-      signIn: "Iniciar Sesión",
-      tryDemo: "Ver Demo",
+      requestDemo: "Solicitar Demo",
 
-      // Hero Section - Exactamente como en la guía
-      heroTitle: "Convierte Tu Documentación en un Experto IA Para Tu Web",
+      // Hero Section
+      heroTitle: "Impulsa tu consultora de outsourcing con IA",
       heroSubtitle:
-        "Sube tus archivos, define el rol de experto, y obtén un asistente especializado que se inserta en tu sitio. Sin programar, sin entrenar modelos.",
+        "Un agente inteligente que conecta talento, formación, análisis de mercado y contratos en un solo lugar",
       heroDescription:
-        "Desde hospitales que automatizan turnos hasta fintech que ofrece recomendaciones 24/7. BoyScout IA transforma tu conocimiento empresarial en asistentes inteligentes que trabajan mientras duermes.",
-      heroCtaPrimary: "CREAR MI ASISTENTE GRATIS - 14 DÍAS",
-      heroCtaSecondary: "Ver Demo en Vivo",
-      noCardRequired: "No requiere tarjeta de crédito",
+        "Automatiza la gestión completa de tu consultora: desde la búsqueda de candidatos hasta la administración de contratos, todo potenciado por inteligencia artificial.",
+      heroCtaPrimary: "Solicitar Demo",
+      heroCtaSecondary: "Ver Funcionalidades",
 
-      // How It Works Section - Exactamente como en la guía
-      howItWorksTitle: "De Documentos a Experto Web en 3 Pasos",
-      step1Title: "📁 Sube Tu Documentación",
-      step1Subtitle: "Carga PDFs, bases de datos, manuales",
-      step1Description:
-        "Precios, horarios, políticas, FAQ, catálogos de productos. Cualquier información que manejas en tu negocio se convierte en conocimiento del asistente.",
-      step2Title: "🎭 Define El Rol del Experto",
-      step2Subtitle: "Crea especialistas para tu industria",
-      step2Description:
-        '• "Asistente de Hospital" → Maneja turnos, especialidades, precios\n• "Asesor Financiero" → Analiza inversiones, recomienda portafolios\n• "Soporte E-commerce" → Conoce productos, envíos, devoluciones',
-      step3Title: "🔗 Agrega a tu sitio",
-      step3Subtitle: "Integración instantánea con código iframe",
-      step3Description:
-        "Recibes un script simple que pegas en tu web. Compatible con WordPress, Shopify, Wix, y cualquier plataforma. Funciona inmediatamente.",
+      // Talent Search Section
+      talentSearchTitle: "🔍 Búsqueda de Talento Inteligente",
+      talentSearchSubtitle: "Encuentra a los mejores candidatos en minutos, no en semanas",
+      talentSearchDescription:
+        "Nuestro agente de IA analiza miles de perfiles, evalúa competencias técnicas y soft skills, y te presenta solo los candidatos que realmente encajan con tus requisitos.",
+      talentSearchFeature1: "Filtrado automático por skills y experiencia",
+      talentSearchFeature2: "Evaluación de compatibilidad cultural",
+      talentSearchFeature3: "Ranking inteligente de candidatos",
 
-      // Use Cases Section - Exactamente como en la guía
-      useCasesTitle: "Asistentes IA Especializados Para Cada Industria",
+      // Training Section
+      trainingTitle: "🎓 Recomendaciones de Formación Personalizadas",
+      trainingSubtitle: "Identifica brechas de habilidades y ciérralas con formación dirigida",
+      trainingDescription:
+        "La IA detecta automáticamente las diferencias entre las habilidades actuales de tu equipo y las demandas del mercado, sugiriendo programas de formación específicos.",
+      trainingFeature1: "Análisis de gaps de habilidades",
+      trainingFeature2: "Recomendaciones de cursos personalizados",
+      trainingFeature3: "Seguimiento de progreso automatizado",
 
-      hospitalTitle: "🏥 HOSPITALES Y CLÍNICAS",
-      hospitalSubtitle: "Tu Recepcionista Virtual 24/7",
-      hospitalBefore: "Antes: 300+ llamadas diarias preguntando horarios y precios",
-      hospitalAfter: "Después: Pacientes obtienen respuestas inmediatas sobre:",
-      hospitalFeatures:
-        "• Turnos disponibles por especialidad\n• Precios según obra social\n• Ubicación de consultorios\n• Preparación para estudios",
-      hospitalResult: "Resultado: 75% menos llamadas al call center",
+      // Churn Prediction Section
+      churnTitle: "📉 Predicción de Rotación de Personal",
+      churnSubtitle: "Anticipa la salida de empleados clave y actúa a tiempo",
+      churnDescription:
+        "Algoritmos predictivos analizan patrones de comportamiento, satisfacción y engagement para alertarte sobre posibles renuncias antes de que ocurran.",
+      churnFeature1: "Alertas tempranas de riesgo de salida",
+      churnFeature2: "Análisis de factores de retención",
+      churnFeature3: "Estrategias personalizadas de retención",
 
-      fintechTitle: "💰 FINTECH Y ASESORES FINANCIEROS",
-      fintechSubtitle: "Tu Asesor de Inversiones Siempre Disponible",
-      fintechBefore: "Antes: Clientes consultan fuera de horario y pierdes oportunidades",
-      fintechAfter: "Después: Asesoramiento especializado 24/7:",
-      fintechFeatures:
-        "• Análisis de acciones en tiempo real\n• Recomendaciones de portafolio personalizadas\n• Explicación de productos financieros complejos\n• Cálculos de riesgo y rendimiento",
-      fintechResult: "Resultado: 3x más consultas convertidas en clientes",
+      // Market Analysis Section
+      marketTitle: "📊 Análisis de Mercado en Tiempo Real",
+      marketSubtitle: "Mantente adelante con insights del mercado laboral",
+      marketDescription:
+        "Monitorea tendencias salariales, demanda de perfiles y competencia en tu sector para tomar decisiones estratégicas basadas en datos.",
+      marketFeature1: "Tendencias salariales por rol y región",
+      marketFeature2: "Demanda de perfiles emergentes",
+      marketFeature3: "Análisis competitivo del mercado",
 
-      ecommerceTitle: "🛒 E-COMMERCE",
-      ecommerceSubtitle: "Tu Vendedor Virtual Experto",
-      ecommerceBefore: "Antes: Clientes abandonan el carrito por dudas sin resolver",
-      ecommerceAfter: "Después: Soporte especializado que impulsa ventas:",
-      ecommerceFeatures:
-        "• Recomendaciones de productos personalizadas\n• Información detallada de compatibilidad\n• Consultas sobre envíos y devoluciones\n• Comparaciones técnicas entre productos",
-      ecommerceResult: "Resultado: 40% más ventas en horarios no laborales",
+      // Proposals Section
+      proposalsTitle: "📝 Generación Automática de Propuestas",
+      proposalsSubtitle: "Crea propuestas ganadoras en minutos, no en horas",
+      proposalsDescription:
+        "La IA genera propuestas comerciales personalizadas basadas en el perfil del cliente, historial de proyectos y mejores prácticas del sector.",
+      proposalsFeature1: "Templates inteligentes por industria",
+      proposalsFeature2: "Pricing automático basado en mercado",
+      proposalsFeature3: "Personalización según cliente objetivo",
 
-      realEstateTitle: "🏢 INMOBILIARIAS",
-      realEstateSubtitle: "Tu Agente Virtual de Propiedades",
-      realEstateBefore: "Antes: Leads se pierden por falta de atención inmediata",
-      realEstateAfter: "Después: Atención especializada en bienes raíces:",
-      realEstateFeatures:
-        "• Búsqueda de propiedades por presupuesto y zona\n• Cálculos de hipoteca y financiamiento\n• Programación automática de visitas\n• Comparación de características de inmuebles",
-      realEstateResult: "Resultado: 60% más leads calificados",
+      // Contracts Section
+      contractsTitle: "📑 Gestión Inteligente de Contratos",
+      contractsSubtitle: "Automatiza el ciclo completo de administración contractual",
+      contractsDescription:
+        "Desde la creación hasta el seguimiento de cumplimiento, gestiona todos tus contratos con alertas automáticas y control de vencimientos.",
+      contractsFeature1: "Alertas de vencimientos y renovaciones",
+      contractsFeature2: "Seguimiento de cumplimiento automático",
+      contractsFeature3: "Dashboard de estado de contratos",
 
-      // Competitive Advantages - Exactamente como en la guía
-      advantagesTitle: "¿Por Qué BoyScout IA vs. Otras Opciones?",
-      vsGenericTitle: "VS. CHATBOTS GENÉRICOS",
-      vsGenericBad: '❌ Otros chatbots: "No sé sobre tus horarios específicos"',
-      vsGenericGood: '✅ BoyScout IA: "Hay turno con cardiología el martes a las 3PM"',
-      vsGenericBad2: "❌ Otros chatbots: Respuestas genéricas de internet",
-      vsGenericGood2: "✅ BoyScout IA: Conoce TUS precios, políticas y procedimientos",
-      vsCustomTitle: "VS. DESARROLLO PERSONALIZADO",
-      vsCustomBad: "❌ Desarrollo custom: Necesitas equipo técnico para mantenimiento",
-      vsCustomGood: "✅ BoyScout IA: Actualizaciones automáticas, cero mantenimiento",
-
-      // Technology Section - Exactamente como en la guía
-      technologyTitle: "Tecnología de Vanguardia, Simplicidad de Uso",
-      dualIntelligenceTitle: "🤖 Inteligencia Dual",
-      dualIntelligenceDesc:
-        "Elige DeepSeek, OpenAI, Grok como motor de IA para respuestas más precisas y contextualmente relevantes que cualquier modelo individual.",
-      enterpriseSecurityTitle: "🔒 Seguridad Empresarial",
-      enterpriseSecurityDesc:
-        "Tus datos permanecen privados. Encriptación end-to-end, procesamiento seguro, cumplimiento con regulaciones de privacidad. Tu información nunca se comparte.",
-      universalIntegrationTitle: "⚡ Integración Universal",
-      universalIntegrationDesc:
-        "Funciona con cualquier plataforma web. WordPress, Shopify, Wix, sitios custom. Si tiene web, BoyScout IA se integra.",
-      smartAnalyticsTitle: "📊 Analytics Inteligentes",
-      smartAnalyticsDesc:
-        "Dashboard con métricas claras. Ve qué preguntan tus clientes, identifica oportunidades de mejora, mide el ROI real de tu asistente.",
-
-      // Pricing Section - Exactamente como en la guía
-      pricingTitle: "Precios Transparentes, ROI Inmediato",
+      // Pricing Section
+      pricingTitle: "Planes Transparentes, ROI Inmediato",
       starterTitle: "STARTER",
-      starterPrice: "$19.99/mes",
-      starterSubtitle: "Perfecto para empezar",
-      starterFeatures:
-        "1 asistente especializado,Documentación hasta 100MB,Integración iframe simple,Soporte por email",
+      starterPrice: "$299/mes",
+      starterSubtitle: "Perfecto para consultoras pequeñas",
+      starterFeatures: "Hasta 50 perfiles gestionados,Búsqueda IA básica,Dashboard de contratos,Soporte por email",
 
       professionalTitle: "PROFESSIONAL",
-      professionalPrice: "$49.99/mes",
-      professionalSubtitle: "Para empresas en crecimiento",
+      professionalPrice: "$599/mes",
+      professionalSubtitle: "Para consultoras en crecimiento",
       professionalFeatures:
-        "Hasta 3 asistentes especializados,Documentación hasta 500MB,Dashboard con analytics avanzados,Múltiples roles por asistente,Soporte prioritario",
+        "Hasta 200 perfiles gestionados,IA avanzada + predicción de rotación,Analytics de mercado completos,Generación automática de propuestas,Soporte prioritario",
 
       enterpriseTitle: "ENTERPRISE",
       enterprisePrice: "Precio personalizado",
       enterpriseSubtitle: "Para grandes operaciones",
       enterpriseFeatures:
-        "Asistentes ilimitados,Integración API personalizada,White-label disponible,Soporte dedicado con SLA",
+        "Perfiles ilimitados,API personalizada,White-label disponible,Integración con sistemas existentes,Soporte dedicado con SLA",
 
       startFreeTrial: "EMPEZAR PRUEBA GRATIS",
 
-      // FAQ Section - Exactamente como en la guía (incluyendo la pregunta faltante)
-      faqTitle: "Preguntas Frecuentes",
-      faq1Q: "¿Qué tipo de documentación puedo subir?",
-      faq1A:
-        "PDFs, archivos Word, Excel, CSV, páginas web, manuales, FAQ. Cualquier información de tu negocio: precios, horarios, políticas, catálogos de productos.",
-      faq2Q: "¿Necesito saber programar para usarlo?",
-      faq2A:
-        "No. Solo subes documentos, defines el rol del asistente, y obtienes un código para pegar en tu web. Sin programación necesaria.",
-      faq3Q: "¿Se integra con mi página web actual?",
-      faq3A:
-        "Sí, funciona con WordPress, Shopify, Wix, sitios hechos a medida, y cualquier plataforma web mediante un simple iframe.",
-      faq4Q: "¿Cuánto tiempo tarda en estar funcionando?",
-      faq4A: "Desde que subes tu documentación hasta tener el asistente respondiendo en tu web: menos de 1 hora.",
-      faq5Q: "¿Qué pasa si actualizo mi información?",
-      faq5A:
-        "Solo reemplazas los documentos en el panel. El asistente se actualiza automáticamente sin interrumpir el servicio.",
-      faq6Q: "¿El asistente puede manejar múltiples idiomas?",
-      faq6A: "Sí, responde en el idioma en que le pregunten. Perfecto para empresas con clientes internacionales.",
-      faq7Q: "¿Hay límite en la complejidad de las respuestas?",
-      faq7A:
-        "No. Puede manejar desde consultas simples como horarios hasta análisis complejos como recomendaciones de inversión basadas en perfiles de riesgo.",
-
-      // Final CTA Section - Exactamente como en la guía
-      finalCtaTitle: "¿Listo Para Automatizar Tu Atención Al Cliente?",
-      finalBenefits:
-        "✅ Crea tu primer asistente en 10 minutos\n✅ Prueba gratis 14 días, sin tarjeta de crédito\n✅ Soporte personalizado incluido\n✅ Integración garantizada o te devolvemos tu dinero",
-      finalCtaPrimary: "CREAR MI ASISTENTE GRATIS AHORA",
-      seeDemo: "Ver Demo en Vivo",
-      calculateRoi: "Calcular Mi ROI",
-      talkToSpecialist: "Hablar con un Especialista",
+      // Final CTA Section
+      finalCtaTitle: "Transforma tu consultora de outsourcing con IA hoy mismo",
+      finalCtaSubtitle: "Únete a las consultoras que ya están revolucionando su gestión con inteligencia artificial",
+      finalCtaPrimary: "Hablar con un asesor",
+      finalCtaSecondary: "Probar gratis",
 
       // Contact
       contactUs: "Contáctanos",
-      getInTouch: "Ponte en Contacto",
+      getInTouch: "Solicita tu Demo Personalizada",
       contactDescription:
-        "¿Tienes preguntas o necesitas más información? Envíanos un mensaje y te responderemos pronto.",
+        "¿Listo para revolucionar tu consultora? Agenda una demo personalizada y descubre cómo la IA puede transformar tu negocio.",
       yourEmail: "Tu Email",
       emailPlaceholder: "Ingresa tu dirección de email",
       message: "Mensaje",
-      messagePlaceholder: "¿Cómo podemos ayudarte?",
-      send: "Enviar Mensaje",
+      messagePlaceholder: "Cuéntanos sobre tu consultora y necesidades específicas",
+      send: "Solicitar Demo",
       sending: "Enviando...",
-      contactSuccessMessage: "¡Tu mensaje ha sido enviado con éxito! Te responderemos pronto.",
-      contactErrorMessage: "Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo.",
+      contactSuccessMessage: "¡Tu solicitud ha sido enviada! Te contactaremos pronto para agendar tu demo.",
+      contactErrorMessage: "Hubo un error al enviar tu solicitud. Por favor, inténtalo de nuevo.",
 
-      // Footer - Exactamente como en la guía
+      // Footer
       footerDescription:
-        "Fundada en 2025 por expertos en IA, ML y desarrollo de software. Comprometidos con democratizar la inteligencia artificial para empresas de todos los tamaños.",
-      guarantees: "Garantías",
-      guarantee1: "✅ Garantía de satisfacción 30 días",
-      guarantee2: "✅ Uptime 99.9% garantizado",
-      guarantee3: "✅ Soporte técnico incluido",
-      guarantee4: "✅ Datos encriptados y seguros",
-      support: "📧 Soporte: soporte@boyscout.dev",
-      liveChat: "💬 Chat en vivo disponible",
+        "Especialistas en soluciones de IA para consultoras de outsourcing. Transformamos la gestión de talento con tecnología de vanguardia.",
       allRightsReserved: "Todos los derechos reservados.",
       terms: "Términos",
       privacy: "Privacidad",
@@ -284,174 +223,122 @@ export default function LandingPage() {
     },
     en: {
       // Navigation
-      navHowItWorks: "How It Works",
-      navUseCases: "Use Cases",
-      navTechnology: "Technology",
+      navTalentSearch: "Talent Search",
+      navTraining: "Training",
+      navAnalytics: "Analytics",
+      navProposals: "Proposals",
+      navContracts: "Contracts",
       navPricing: "Pricing",
       navContact: "Contact",
-      signIn: "Sign In",
-      tryDemo: "Try Demo",
+      requestDemo: "Request Demo",
 
       // Hero Section
-      heroTitle: "Turn Your Documentation into an AI Expert for Your Website",
-      heroSubtitle:
-        "Upload your files, define the expert role, and get a specialized assistant that inserts on your site. No coding, no model training.",
+      heroTitle: "Boost your outsourcing consultancy with AI",
+      heroSubtitle: "An intelligent agent that connects talent, training, market analysis and contracts in one place",
       heroDescription:
-        "From hospitals automating appointments to fintech offering 24/7 recommendations. BoyScout AI transforms your business knowledge into intelligent assistants that work while you sleep.",
-      heroCtaPrimary: "CREATE MY FREE ASSISTANT - 14 DAYS",
-      heroCtaSecondary: "See Live Demo",
-      noCardRequired: "No credit card required",
+        "Automate your consultancy's complete management: from candidate search to contract administration, all powered by artificial intelligence.",
+      heroCtaPrimary: "Request Demo",
+      heroCtaSecondary: "See Features",
 
-      // How It Works Section
-      howItWorksTitle: "From Documents to Web Expert in 3 Steps",
-      step1Title: "📁 Upload Your Documentation",
-      step1Subtitle: "Load PDFs, databases, manuals",
-      step1Description:
-        "Prices, schedules, policies, FAQs, product catalogs. Any information you handle in your business becomes assistant knowledge.",
-      step2Title: "🎭 Define The Expert Role",
-      step2Subtitle: "Create specialists for your industry",
-      step2Description:
-        '• "Hospital Assistant" → Manages appointments, specialties, prices\n• "Financial Advisor" → Analyzes investments, recommends portfolios\n• "E-commerce Support" → Knows products, shipping, returns',
-      step3Title: "🔗 Embed on Your Website",
-      step3Subtitle: "Instant integration with iframe code",
-      step3Description:
-        "You receive a simple script to paste on your website. Compatible with WordPress, Shopify, Wix, and any platform. Works immediately.",
+      // Talent Search Section
+      talentSearchTitle: "🔍 Intelligent Talent Search",
+      talentSearchSubtitle: "Find the best candidates in minutes, not weeks",
+      talentSearchDescription:
+        "Our AI agent analyzes thousands of profiles, evaluates technical and soft skills, and presents only candidates that truly fit your requirements.",
+      talentSearchFeature1: "Automatic filtering by skills and experience",
+      talentSearchFeature2: "Cultural compatibility assessment",
+      talentSearchFeature3: "Intelligent candidate ranking",
 
-      // Use Cases Section
-      useCasesTitle: "Specialized AI Assistants for Every Industry",
+      // Training Section
+      trainingTitle: "🎓 Personalized Training Recommendations",
+      trainingSubtitle: "Identify skill gaps and close them with targeted training",
+      trainingDescription:
+        "AI automatically detects differences between your team's current skills and market demands, suggesting specific training programs.",
+      trainingFeature1: "Skills gap analysis",
+      trainingFeature2: "Personalized course recommendations",
+      trainingFeature3: "Automated progress tracking",
 
-      hospitalTitle: "🏥 HOSPITALS & CLINICS",
-      hospitalSubtitle: "Your 24/7 Virtual Receptionist",
-      hospitalBefore: "Before: 300+ daily calls asking about schedules and prices",
-      hospitalAfter: "After: Patients get immediate answers about:",
-      hospitalFeatures:
-        "• Available appointments by specialty\n• Prices according to insurance\n• Office locations\n• Study preparation",
-      hospitalResult: "Result: 75% fewer calls to call center",
+      // Churn Prediction Section
+      churnTitle: "📉 Staff Turnover Prediction",
+      churnSubtitle: "Anticipate key employee departures and act in time",
+      churnDescription:
+        "Predictive algorithms analyze behavior patterns, satisfaction and engagement to alert you about possible resignations before they happen.",
+      churnFeature1: "Early departure risk alerts",
+      churnFeature2: "Retention factor analysis",
+      churnFeature3: "Personalized retention strategies",
 
-      fintechTitle: "💰 FINTECH & FINANCIAL ADVISORS",
-      fintechSubtitle: "Your Always Available Investment Advisor",
-      fintechBefore: "Before: Clients inquire outside hours and you lose opportunities",
-      fintechAfter: "After: Specialized 24/7 advisory:",
-      fintechFeatures:
-        "• Real-time stock analysis\n• Personalized portfolio recommendations\n• Complex financial product explanations\n• Risk and return calculations",
-      fintechResult: "Result: 3x more inquiries converted to clients",
+      // Market Analysis Section
+      marketTitle: "📊 Real-Time Market Analysis",
+      marketSubtitle: "Stay ahead with labor market insights",
+      marketDescription:
+        "Monitor salary trends, profile demand and competition in your sector to make data-driven strategic decisions.",
+      marketFeature1: "Salary trends by role and region",
+      marketFeature2: "Emerging profile demand",
+      marketFeature3: "Competitive market analysis",
 
-      ecommerceTitle: "🛒 E-COMMERCE",
-      ecommerceSubtitle: "Your Expert Virtual Salesperson",
-      ecommerceBefore: "Before: Customers abandon cart due to unresolved doubts",
-      ecommerceAfter: "After: Specialized support that drives sales:",
-      ecommerceFeatures:
-        "• Personalized product recommendations\n• Detailed compatibility information\n• Shipping and return inquiries\n• Technical product comparisons",
-      ecommerceResult: "Result: 40% more sales during non-business hours",
+      // Proposals Section
+      proposalsTitle: "📝 Automatic Proposal Generation",
+      proposalsSubtitle: "Create winning proposals in minutes, not hours",
+      proposalsDescription:
+        "AI generates personalized commercial proposals based on client profile, project history and industry best practices.",
+      proposalsFeature1: "Smart templates by industry",
+      proposalsFeature2: "Automatic market-based pricing",
+      proposalsFeature3: "Target client customization",
 
-      realEstateTitle: "🏢 REAL ESTATE",
-      realEstateSubtitle: "Your Virtual Property Agent",
-      realEstateBefore: "Before: Leads are lost due to lack of immediate attention",
-      realEstateAfter: "After: Specialized real estate attention:",
-      realEstateFeatures:
-        "• Property search by budget and area\n• Mortgage and financing calculations\n• Automatic visit scheduling\n• Property feature comparisons",
-      realEstateResult: "Result: 60% more qualified leads",
-
-      // Competitive Advantages
-      advantagesTitle: "Why BoyScout AI vs. Other Options?",
-      vsGenericTitle: "VS. GENERIC CHATBOTS",
-      vsGenericBad: '❌ Other chatbots: "I don\'t know about your specific schedules"',
-      vsGenericGood: '✅ BoyScout AI: "There\'s an appointment with cardiology Tuesday at 3PM"',
-      vsGenericBad2: "❌ Other chatbots: Generic internet responses",
-      vsGenericGood2: "✅ BoyScout AI: Knows YOUR prices, policies and procedures",
-      vsCustomTitle: "VS. CUSTOM DEVELOPMENT",
-      vsCustomBad: "❌ Custom development: Need technical team for maintenance",
-      vsCustomGood: "✅ BoyScout AI: Automatic updates, zero maintenance",
-
-      // Technology Section
-      technologyTitle: "Cutting-Edge Technology, Simple to Use",
-      dualIntelligenceTitle: "🤖 Dual Intelligence",
-      dualIntelligenceDesc:
-        "Choose DeepSeek, OpenAI, Grok as AI engine for more precise and contextually relevant responses than any individual model.",
-      enterpriseSecurityTitle: "🔒 Enterprise Security",
-      enterpriseSecurityDesc:
-        "Your data stays private. End-to-end encryption, secure processing, privacy regulation compliance. Your information is never shared.",
-      universalIntegrationTitle: "⚡ Universal Integration",
-      universalIntegrationDesc:
-        "Works with any web platform. WordPress, Shopify, Wix, custom sites. If it has a website, BoyScout AI integrates.",
-      smartAnalyticsTitle: "📊 Smart Analytics",
-      smartAnalyticsDesc:
-        "Dashboard with clear metrics. See what your customers ask, identify improvement opportunities, measure real ROI of your assistant.",
+      // Contracts Section
+      contractsTitle: "📑 Intelligent Contract Management",
+      contractsSubtitle: "Automate the complete contractual administration cycle",
+      contractsDescription:
+        "From creation to compliance tracking, manage all your contracts with automatic alerts and expiration control.",
+      contractsFeature1: "Expiration and renewal alerts",
+      contractsFeature2: "Automatic compliance tracking",
+      contractsFeature3: "Contract status dashboard",
 
       // Pricing Section
-      pricingTitle: "Transparent Pricing, Immediate ROI",
+      pricingTitle: "Transparent Plans, Immediate ROI",
       starterTitle: "STARTER",
-      starterPrice: "$19.99/month",
-      starterSubtitle: "Perfect to get started",
-      starterFeatures: "1 specialized assistant,Documentation up to 100MB,Simple iframe integration,Email support",
+      starterPrice: "$299/month",
+      starterSubtitle: "Perfect for small consultancies",
+      starterFeatures: "Up to 50 managed profiles,Basic AI search,Contract dashboard,Email support",
 
       professionalTitle: "PROFESSIONAL",
-      professionalPrice: "$49.99/month",
-      professionalSubtitle: "For growing businesses",
+      professionalPrice: "$599/month",
+      professionalSubtitle: "For growing consultancies",
       professionalFeatures:
-        "Up to 3 specialized assistants,Documentation up to 500MB,Dashboard with advanced analytics,Multiple roles per assistant,Priority support",
+        "Up to 200 managed profiles,Advanced AI + churn prediction,Complete market analytics,Automatic proposal generation,Priority support",
 
       enterpriseTitle: "ENTERPRISE",
       enterprisePrice: "Custom pricing",
       enterpriseSubtitle: "For large operations",
       enterpriseFeatures:
-        "Unlimited assistants,Custom API integration,White-label available,Dedicated support with SLA",
+        "Unlimited profiles,Custom API,White-label available,Integration with existing systems,Dedicated support with SLA",
 
       startFreeTrial: "START FREE TRIAL",
 
-      // FAQ Section
-      faqTitle: "Frequently Asked Questions",
-      faq1Q: "What type of documentation can I upload?",
-      faq1A:
-        "PDFs, Word files, Excel, CSV, web pages, manuals, FAQs. Any business information: prices, schedules, policies, product catalogs.",
-      faq2Q: "Do I need to know how to code to use it?",
-      faq2A:
-        "No. Just upload documents, define the assistant role, and get code to paste on your website. No programming needed.",
-      faq3Q: "Does it integrate with my current website?",
-      faq3A: "Yes, works with WordPress, Shopify, Wix, custom sites, and any web platform through a simple iframe.",
-      faq4Q: "How long does it take to be working?",
-      faq4A: "From uploading your documentation to having the assistant responding on your website: less than 1 hour.",
-      faq5Q: "What happens if I update my information?",
-      faq5A:
-        "Just replace the documents in the panel. The assistant updates automatically without interrupting service.",
-      faq6Q: "Can the assistant handle multiple languages?",
-      faq6A: "Yes, responds in the language they're asked in. Perfect for companies with international clients.",
-      faq7Q: "Is there a limit to response complexity?",
-      faq7A:
-        "No. Can handle from simple queries like schedules to complex analysis like investment recommendations based on risk profiles.",
-
       // Final CTA Section
-      finalCtaTitle: "Ready to Automate Your Customer Service?",
-      finalBenefits:
-        "✅ Create your first assistant in 10 minutes\n✅ Free 14-day trial, no credit card\n✅ Personalized support included\n✅ Integration guaranteed or money back",
-      finalCtaPrimary: "CREATE MY FREE ASSISTANT NOW",
-      seeDemo: "See Live Demo",
-      calculateRoi: "Calculate My ROI",
-      talkToSpecialist: "Talk to a Specialist",
+      finalCtaTitle: "Transform your outsourcing consultancy with AI today",
+      finalCtaSubtitle:
+        "Join consultancies that are already revolutionizing their management with artificial intelligence",
+      finalCtaPrimary: "Talk to an advisor",
+      finalCtaSecondary: "Try for free",
 
       // Contact
       contactUs: "Contact Us",
-      getInTouch: "Get in Touch",
-      contactDescription: "Have questions or need more information? Send us a message and we'll get back to you soon.",
+      getInTouch: "Request your Personalized Demo",
+      contactDescription:
+        "Ready to revolutionize your consultancy? Schedule a personalized demo and discover how AI can transform your business.",
       yourEmail: "Your Email",
       emailPlaceholder: "Enter your email address",
       message: "Message",
-      messagePlaceholder: "How can we help you?",
-      send: "Send Message",
+      messagePlaceholder: "Tell us about your consultancy and specific needs",
+      send: "Request Demo",
       sending: "Sending...",
-      contactSuccessMessage: "Your message has been sent successfully! We'll get back to you soon.",
-      contactErrorMessage: "There was an error sending your message. Please try again.",
+      contactSuccessMessage: "Your request has been sent! We'll contact you soon to schedule your demo.",
+      contactErrorMessage: "There was an error sending your request. Please try again.",
 
       // Footer
       footerDescription:
-        "Founded in 2025 by experts in AI, ML and software development. Committed to democratizing artificial intelligence for businesses of all sizes.",
-      guarantees: "Guarantees",
-      guarantee1: "✅ 30-day satisfaction guarantee",
-      guarantee2: "✅ 99.9% uptime guaranteed",
-      guarantee3: "✅ Technical support included",
-      guarantee4: "✅ Encrypted and secure data",
-      support: "📧 Support: soporte@boyscout.dev",
-      liveChat: "💬 Live chat available",
+        "Specialists in AI solutions for outsourcing consultancies. We transform talent management with cutting-edge technology.",
       allRightsReserved: "All rights reserved.",
       terms: "Terms",
       privacy: "Privacy",
@@ -465,18 +352,30 @@ export default function LandingPage() {
       <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
-            <Bot className="h-8 w-8 text-purple-600" />
-            <span className="text-xl font-bold text-purple-900">BoyScout IA</span>
+            <Image
+              src="/images/outsourcing-ai-logo.png"
+              alt="OutsourcingAI Logo"
+              width={32}
+              height={32}
+              className="h-8 w-8"
+            />
+            <span className="text-xl font-bold text-purple-900">OutsourcingAI</span>
           </div>
           <nav className="hidden md:flex gap-6">
-            <Link href="#how-it-works" className="text-sm font-medium text-slate-700 hover:text-purple-600">
-              {t[language].navHowItWorks}
+            <Link href="#talent-search" className="text-sm font-medium text-slate-700 hover:text-purple-600">
+              {t[language].navTalentSearch}
             </Link>
-            <Link href="#use-cases" className="text-sm font-medium text-slate-700 hover:text-purple-600">
-              {t[language].navUseCases}
+            <Link href="#training" className="text-sm font-medium text-slate-700 hover:text-purple-600">
+              {t[language].navTraining}
             </Link>
-            <Link href="#technology" className="text-sm font-medium text-slate-700 hover:text-purple-600">
-              {t[language].navTechnology}
+            <Link href="#analytics" className="text-sm font-medium text-slate-700 hover:text-purple-600">
+              {t[language].navAnalytics}
+            </Link>
+            <Link href="#proposals" className="text-sm font-medium text-slate-700 hover:text-purple-600">
+              {t[language].navProposals}
+            </Link>
+            <Link href="#contracts" className="text-sm font-medium text-slate-700 hover:text-purple-600">
+              {t[language].navContracts}
             </Link>
             <Link href="#pricing" className="text-sm font-medium text-slate-700 hover:text-purple-600">
               {t[language].navPricing}
@@ -490,12 +389,7 @@ export default function LandingPage() {
               <Globe className="h-5 w-5" />
               <span className="sr-only">Toggle Language</span>
             </Button>
-            <span className="text-sm font-medium text-slate-500 opacity-60 cursor-not-allowed hidden sm:inline-block">
-              {t[language].signIn}
-            </span>
-            <Button className="bg-purple-600 hover:bg-purple-700 opacity-60 cursor-not-allowed" disabled={true}>
-              {t[language].tryDemo}
-            </Button>
+            <Button className="bg-purple-600 hover:bg-purple-700">{t[language].requestDemo}</Button>
           </div>
         </div>
       </header>
@@ -508,7 +402,7 @@ export default function LandingPage() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <Badge className="inline-flex bg-purple-100 text-purple-800 hover:bg-purple-200" variant="secondary">
-                    Asistente IA Especializado
+                    Consultora IA Potenciada
                   </Badge>
                   <h1 className="text-3xl font-bold tracking-tighter text-purple-900 sm:text-5xl xl:text-6xl/none">
                     {t[language].heroTitle}
@@ -517,279 +411,473 @@ export default function LandingPage() {
                   <p className="max-w-[600px] text-slate-500 md:text-lg">{t[language].heroDescription}</p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button
-                    size="lg"
-                    className="bg-purple-600 hover:bg-purple-700 opacity-60 cursor-not-allowed"
-                    disabled={true}
-                  >
+                  <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
                     {t[language].heroCtaPrimary}
                   </Button>
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-purple-200 text-purple-700 hover:bg-purple-50 opacity-60 cursor-not-allowed"
-                    disabled={true}
+                    className="border-purple-200 text-purple-700 hover:bg-purple-50 bg-transparent"
                   >
                     <span className="flex items-center gap-1">
                       {t[language].heroCtaSecondary} <ChevronRight className="h-4 w-4" />
                     </span>
                   </Button>
                 </div>
-                <p className="text-sm text-slate-500">{t[language].noCardRequired}</p>
               </div>
               <div className="relative lg:order-last">
                 <Image
-                  src="/images/ia-boyscout-hero.jpg"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-bjei1srgnrNnUKw5n7Be4mZw9aZRfJ.png"
                   width={600}
                   height={600}
-                  alt="IA BoyScout - Tu Asistente Inteligente"
-                  className="relative mx-auto aspect-square overflow-hidden rounded-3xl object-contain object-center shadow-xl bg-[#0a192f]"
+                  alt="OutsourcingAI - Tu Asistente Inteligente para Consultoras"
+                  className="relative mx-auto aspect-square overflow-hidden rounded-3xl object-contain object-center shadow-xl"
                 />
               </div>
             </div>
           </div>
         </section>
 
-        {/* How It Works Section */}
-        <section id="how-it-works" className="w-full py-12 md:py-24 lg:py-32">
+        {/* Talent Search Section */}
+        <section id="talent-search" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
+            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+              <div className="space-y-4">
                 <Badge variant="outline" className="border-purple-200 text-purple-700">
-                  Proceso Simple
+                  Búsqueda Inteligente
                 </Badge>
                 <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
-                  {t[language].howItWorksTitle}
+                  {t[language].talentSearchTitle}
                 </h2>
+                <p className="text-xl text-slate-600">{t[language].talentSearchSubtitle}</p>
+                <p className="text-slate-600">{t[language].talentSearchDescription}</p>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-purple-600" />
+                    <span className="text-slate-600">{t[language].talentSearchFeature1}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-purple-600" />
+                    <span className="text-slate-600">{t[language].talentSearchFeature2}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-purple-600" />
+                    <span className="text-slate-600">{t[language].talentSearchFeature3}</span>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 md:grid-cols-3 lg:gap-12">
-              <Card className="border-purple-100 bg-white shadow-sm">
-                <CardHeader>
-                  <Upload className="h-10 w-10 text-purple-600 mb-2" />
-                  <CardTitle className="text-purple-900">{t[language].step1Title}</CardTitle>
-                  <CardDescription className="text-slate-600 font-medium">{t[language].step1Subtitle}</CardDescription>
-                  <CardDescription className="text-slate-600">{t[language].step1Description}</CardDescription>
-                </CardHeader>
-              </Card>
-              <Card className="border-purple-100 bg-white shadow-sm">
-                <CardHeader>
-                  <Settings className="h-10 w-10 text-purple-600 mb-2" />
-                  <CardTitle className="text-purple-900">{t[language].step2Title}</CardTitle>
-                  <CardDescription className="text-slate-600 font-medium">{t[language].step2Subtitle}</CardDescription>
-                  <CardDescription className="text-slate-600 whitespace-pre-line">
-                    {t[language].step2Description}
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-              <Card className="border-purple-100 bg-white shadow-sm">
-                <CardHeader>
-                  <LinkIcon className="h-10 w-10 text-purple-600 mb-2" />
-                  <CardTitle className="text-purple-900">{t[language].step3Title}</CardTitle>
-                  <CardDescription className="text-slate-600 font-medium">{t[language].step3Subtitle}</CardDescription>
-                  <CardDescription className="text-slate-600">{t[language].step3Description}</CardDescription>
-                </CardHeader>
-              </Card>
+              <div className="grid gap-4">
+                <Card className="border-purple-100 bg-white shadow-sm">
+                  <CardHeader className="pb-3">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
+                          <Users className="h-5 w-5 text-purple-600" />
+                        </div>
+                        <div>
+                          <CardTitle className="text-sm">Ana García</CardTitle>
+                          <CardDescription className="text-xs">Full Stack Developer</CardDescription>
+                        </div>
+                      </div>
+                      <Badge className="bg-green-100 text-green-800">95% Match</Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <div className="flex gap-2 flex-wrap">
+                      <Badge variant="outline" className="text-xs">
+                        React
+                      </Badge>
+                      <Badge variant="outline" className="text-xs">
+                        Node.js
+                      </Badge>
+                      <Badge variant="outline" className="text-xs">
+                        AWS
+                      </Badge>
+                    </div>
+                  </CardContent>
+                </Card>
+                <Card className="border-purple-100 bg-white shadow-sm">
+                  <CardHeader className="pb-3">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
+                          <Users className="h-5 w-5 text-purple-600" />
+                        </div>
+                        <div>
+                          <CardTitle className="text-sm">Carlos López</CardTitle>
+                          <CardDescription className="text-xs">DevOps Engineer</CardDescription>
+                        </div>
+                      </div>
+                      <Badge className="bg-yellow-100 text-yellow-800">87% Match</Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <div className="flex gap-2 flex-wrap">
+                      <Badge variant="outline" className="text-xs">
+                        Docker
+                      </Badge>
+                      <Badge variant="outline" className="text-xs">
+                        Kubernetes
+                      </Badge>
+                      <Badge variant="outline" className="text-xs">
+                        CI/CD
+                      </Badge>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Use Cases Section */}
-        <section id="use-cases" className="w-full py-12 md:py-24 lg:py-32 bg-purple-50">
+        {/* Training Section */}
+        <section id="training" className="w-full py-12 md:py-24 lg:py-32 bg-purple-50">
           <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
+            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+              <div className="order-2 lg:order-1">
+                <Card className="border-purple-100 bg-white shadow-sm">
+                  <CardHeader>
+                    <CardTitle className="text-lg">Análisis de Skills - Equipo Frontend</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div>
+                        <div className="flex justify-between text-sm mb-1">
+                          <span>React</span>
+                          <span>85%</span>
+                        </div>
+                        <div className="w-full bg-slate-200 rounded-full h-2">
+                          <div className="bg-green-500 h-2 rounded-full" style={{ width: "85%" }}></div>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="flex justify-between text-sm mb-1">
+                          <span>TypeScript</span>
+                          <span>60%</span>
+                        </div>
+                        <div className="w-full bg-slate-200 rounded-full h-2">
+                          <div className="bg-yellow-500 h-2 rounded-full" style={{ width: "60%" }}></div>
+                        </div>
+                        <div className="text-xs text-purple-600 mt-1">📚 Curso recomendado: TypeScript Avanzado</div>
+                      </div>
+                      <div>
+                        <div className="flex justify-between text-sm mb-1">
+                          <span>Next.js</span>
+                          <span>40%</span>
+                        </div>
+                        <div className="w-full bg-slate-200 rounded-full h-2">
+                          <div className="bg-red-500 h-2 rounded-full" style={{ width: "40%" }}></div>
+                        </div>
+                        <div className="text-xs text-purple-600 mt-1">📚 Curso recomendado: Next.js Fundamentals</div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+              <div className="order-1 lg:order-2 space-y-4">
                 <Badge variant="outline" className="border-purple-200 text-purple-700">
-                  Casos de Uso
+                  Formación Inteligente
                 </Badge>
                 <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
-                  {t[language].useCasesTitle}
+                  {t[language].trainingTitle}
                 </h2>
+                <p className="text-xl text-slate-600">{t[language].trainingSubtitle}</p>
+                <p className="text-slate-600">{t[language].trainingDescription}</p>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-purple-600" />
+                    <span className="text-slate-600">{t[language].trainingFeature1}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-purple-600" />
+                    <span className="text-slate-600">{t[language].trainingFeature2}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-purple-600" />
+                    <span className="text-slate-600">{t[language].trainingFeature3}</span>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="mx-auto grid max-w-6xl gap-6 py-12 md:grid-cols-2">
-              {/* Hospital Use Case */}
-              <Card className="border-purple-100 bg-white shadow-sm">
-                <CardHeader>
-                  <Heart className="h-10 w-10 text-purple-600 mb-2" />
-                  <CardTitle className="text-purple-900">{t[language].hospitalTitle}</CardTitle>
-                  <CardDescription className="text-lg font-medium text-purple-700">
-                    {t[language].hospitalSubtitle}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <p className="text-sm text-slate-600">{t[language].hospitalBefore}</p>
-                    <p className="text-sm text-slate-600 font-medium">{t[language].hospitalAfter}</p>
-                    <p className="text-sm text-slate-600 whitespace-pre-line">{t[language].hospitalFeatures}</p>
-                    <p className="text-sm text-green-700 font-medium">{t[language].hospitalResult}</p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Fintech Use Case */}
-              <Card className="border-purple-100 bg-white shadow-sm">
-                <CardHeader>
-                  <DollarSign className="h-10 w-10 text-purple-600 mb-2" />
-                  <CardTitle className="text-purple-900">{t[language].fintechTitle}</CardTitle>
-                  <CardDescription className="text-lg font-medium text-purple-700">
-                    {t[language].fintechSubtitle}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <p className="text-sm text-slate-600">{t[language].fintechBefore}</p>
-                    <p className="text-sm text-slate-600 font-medium">{t[language].fintechAfter}</p>
-                    <p className="text-sm text-slate-600 whitespace-pre-line">{t[language].fintechFeatures}</p>
-                    <p className="text-sm text-green-700 font-medium">{t[language].fintechResult}</p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* E-commerce Use Case */}
-              <Card className="border-purple-100 bg-white shadow-sm">
-                <CardHeader>
-                  <ShoppingCart className="h-10 w-10 text-purple-600 mb-2" />
-                  <CardTitle className="text-purple-900">{t[language].ecommerceTitle}</CardTitle>
-                  <CardDescription className="text-lg font-medium text-purple-700">
-                    {t[language].ecommerceSubtitle}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <p className="text-sm text-slate-600">{t[language].ecommerceBefore}</p>
-                    <p className="text-sm text-slate-600 font-medium">{t[language].ecommerceAfter}</p>
-                    <p className="text-sm text-slate-600 whitespace-pre-line">{t[language].ecommerceFeatures}</p>
-                    <p className="text-sm text-green-700 font-medium">{t[language].ecommerceResult}</p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Real Estate Use Case */}
-              <Card className="border-purple-100 bg-white shadow-sm">
-                <CardHeader>
-                  <Building className="h-10 w-10 text-purple-600 mb-2" />
-                  <CardTitle className="text-purple-900">{t[language].realEstateTitle}</CardTitle>
-                  <CardDescription className="text-lg font-medium text-purple-700">
-                    {t[language].realEstateSubtitle}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <p className="text-sm text-slate-600">{t[language].realEstateBefore}</p>
-                    <p className="text-sm text-slate-600 font-medium">{t[language].realEstateAfter}</p>
-                    <p className="text-sm text-slate-600 whitespace-pre-line">{t[language].realEstateFeatures}</p>
-                    <p className="text-sm text-green-700 font-medium">{t[language].realEstateResult}</p>
-                  </div>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </section>
 
-        {/* Competitive Advantages Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32">
+        {/* Churn Prediction Section */}
+        <section id="churn" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
+            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+              <div className="space-y-4">
                 <Badge variant="outline" className="border-purple-200 text-purple-700">
-                  Ventajas Competitivas
+                  Predicción Avanzada
                 </Badge>
                 <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
-                  {t[language].advantagesTitle}
+                  {t[language].churnTitle}
                 </h2>
+                <p className="text-xl text-slate-600">{t[language].churnSubtitle}</p>
+                <p className="text-slate-600">{t[language].churnDescription}</p>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-purple-600" />
+                    <span className="text-slate-600">{t[language].churnFeature1}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-purple-600" />
+                    <span className="text-slate-600">{t[language].churnFeature2}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-purple-600" />
+                    <span className="text-slate-600">{t[language].churnFeature3}</span>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-2">
-              <Card className="border-purple-100 bg-white shadow-sm">
-                <CardHeader>
-                  <CardTitle className="text-purple-900">{t[language].vsGenericTitle}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-2">
-                      <X className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" />
-                      <p className="text-sm text-slate-600">{t[language].vsGenericBad}</p>
+              <div className="grid gap-4">
+                <Card className="border-purple-100 bg-white shadow-sm">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg">Riesgo de Rotación - Equipo</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between p-3 rounded-lg bg-green-50">
+                        <div className="flex items-center gap-3">
+                          <div className="h-8 w-8 rounded-full bg-green-500"></div>
+                          <span className="font-medium">María Rodríguez</span>
+                        </div>
+                        <Badge className="bg-green-100 text-green-800">Bajo Riesgo</Badge>
+                      </div>
+                      <div className="flex items-center justify-between p-3 rounded-lg bg-yellow-50">
+                        <div className="flex items-center gap-3">
+                          <div className="h-8 w-8 rounded-full bg-yellow-500"></div>
+                          <span className="font-medium">Pedro Martín</span>
+                        </div>
+                        <Badge className="bg-yellow-100 text-yellow-800">Riesgo Medio</Badge>
+                      </div>
+                      <div className="flex items-center justify-between p-3 rounded-lg bg-red-50">
+                        <div className="flex items-center gap-3">
+                          <div className="h-8 w-8 rounded-full bg-red-500"></div>
+                          <span className="font-medium">Luis Fernández</span>
+                        </div>
+                        <Badge className="bg-red-100 text-red-800">Alto Riesgo</Badge>
+                      </div>
                     </div>
-                    <div className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <p className="text-sm text-slate-600">{t[language].vsGenericGood}</p>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <X className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" />
-                      <p className="text-sm text-slate-600">{t[language].vsGenericBad2}</p>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <p className="text-sm text-slate-600">{t[language].vsGenericGood2}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="border-purple-100 bg-white shadow-sm">
-                <CardHeader>
-                  <CardTitle className="text-purple-900">{t[language].vsCustomTitle}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-2">
-                      <X className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" />
-                      <p className="text-sm text-slate-600">{t[language].vsCustomBad}</p>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <p className="text-sm text-slate-600">{t[language].vsCustomGood}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Technology Section */}
-        <section id="technology" className="w-full py-12 md:py-24 lg:py-32 bg-purple-50">
+        {/* Market Analysis Section */}
+        <section id="analytics" className="w-full py-12 md:py-24 lg:py-32 bg-purple-50">
           <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
+            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+              <div className="order-2 lg:order-1">
+                <Card className="border-purple-100 bg-white shadow-sm">
+                  <CardHeader>
+                    <CardTitle className="text-lg">Demanda de Perfiles - Q1 2024</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium">Cloud Engineer</span>
+                        <div className="flex items-center gap-2">
+                          <div className="w-20 bg-slate-200 rounded-full h-2">
+                            <div className="bg-purple-600 h-2 rounded-full" style={{ width: "90%" }}></div>
+                          </div>
+                          <TrendingUp className="h-4 w-4 text-green-500" />
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium">IA/ML Engineer</span>
+                        <div className="flex items-center gap-2">
+                          <div className="w-20 bg-slate-200 rounded-full h-2">
+                            <div className="bg-purple-600 h-2 rounded-full" style={{ width: "85%" }}></div>
+                          </div>
+                          <TrendingUp className="h-4 w-4 text-green-500" />
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium">DevOps</span>
+                        <div className="flex items-center gap-2">
+                          <div className="w-20 bg-slate-200 rounded-full h-2">
+                            <div className="bg-purple-600 h-2 rounded-full" style={{ width: "75%" }}></div>
+                          </div>
+                          <TrendingUp className="h-4 w-4 text-green-500" />
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium">Frontend</span>
+                        <div className="flex items-center gap-2">
+                          <div className="w-20 bg-slate-200 rounded-full h-2">
+                            <div className="bg-purple-600 h-2 rounded-full" style={{ width: "60%" }}></div>
+                          </div>
+                          <TrendingDown className="h-4 w-4 text-red-500" />
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+              <div className="order-1 lg:order-2 space-y-4">
                 <Badge variant="outline" className="border-purple-200 text-purple-700">
-                  Tecnología
+                  Inteligencia de Mercado
                 </Badge>
                 <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
-                  {t[language].technologyTitle}
+                  {t[language].marketTitle}
                 </h2>
+                <p className="text-xl text-slate-600">{t[language].marketSubtitle}</p>
+                <p className="text-slate-600">{t[language].marketDescription}</p>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-purple-600" />
+                    <span className="text-slate-600">{t[language].marketFeature1}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-purple-600" />
+                    <span className="text-slate-600">{t[language].marketFeature2}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-purple-600" />
+                    <span className="text-slate-600">{t[language].marketFeature3}</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-2 lg:grid-cols-4">
-              <Card className="border-purple-100 bg-white shadow-sm">
-                <CardHeader>
-                  <Bot className="h-10 w-10 text-purple-600 mb-2" />
-                  <CardTitle className="text-purple-900 text-lg">{t[language].dualIntelligenceTitle}</CardTitle>
-                  <CardDescription className="text-slate-600">{t[language].dualIntelligenceDesc}</CardDescription>
-                </CardHeader>
-              </Card>
-              <Card className="border-purple-100 bg-white shadow-sm">
-                <CardHeader>
-                  <Shield className="h-10 w-10 text-purple-600 mb-2" />
-                  <CardTitle className="text-purple-900 text-lg">{t[language].enterpriseSecurityTitle}</CardTitle>
-                  <CardDescription className="text-slate-600">{t[language].enterpriseSecurityDesc}</CardDescription>
-                </CardHeader>
-              </Card>
-              <Card className="border-purple-100 bg-white shadow-sm">
-                <CardHeader>
-                  <Zap className="h-10 w-10 text-purple-600 mb-2" />
-                  <CardTitle className="text-purple-900 text-lg">{t[language].universalIntegrationTitle}</CardTitle>
-                  <CardDescription className="text-slate-600">{t[language].universalIntegrationDesc}</CardDescription>
-                </CardHeader>
-              </Card>
-              <Card className="border-purple-100 bg-white shadow-sm">
-                <CardHeader>
-                  <BarChart3 className="h-10 w-10 text-purple-600 mb-2" />
-                  <CardTitle className="text-purple-900 text-lg">{t[language].smartAnalyticsTitle}</CardTitle>
-                  <CardDescription className="text-slate-600">{t[language].smartAnalyticsDesc}</CardDescription>
-                </CardHeader>
-              </Card>
+          </div>
+        </section>
+
+        {/* Proposals Section */}
+        <section id="proposals" className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container px-4 md:px-6">
+            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+              <div className="space-y-4">
+                <Badge variant="outline" className="border-purple-200 text-purple-700">
+                  Propuestas Inteligentes
+                </Badge>
+                <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
+                  {t[language].proposalsTitle}
+                </h2>
+                <p className="text-xl text-slate-600">{t[language].proposalsSubtitle}</p>
+                <p className="text-slate-600">{t[language].proposalsDescription}</p>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-purple-600" />
+                    <span className="text-slate-600">{t[language].proposalsFeature1}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-purple-600" />
+                    <span className="text-slate-600">{t[language].proposalsFeature2}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-purple-600" />
+                    <span className="text-slate-600">{t[language].proposalsFeature3}</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <Card className="border-purple-100 bg-white shadow-sm">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-lg">Propuesta Comercial</CardTitle>
+                      <Badge className="bg-green-100 text-green-800">Generada</Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="p-4 bg-slate-50 rounded-lg">
+                        <h4 className="font-medium text-sm mb-2">Cliente: TechCorp S.A.</h4>
+                        <p className="text-xs text-slate-600 mb-3">Desarrollo de equipo DevOps - 6 meses</p>
+                        <div className="grid grid-cols-2 gap-4 text-xs">
+                          <div>
+                            <span className="text-slate-500">Perfiles:</span>
+                            <p className="font-medium">3 DevOps Engineers</p>
+                          </div>
+                          <div>
+                            <span className="text-slate-500">Inversión:</span>
+                            <p className="font-medium">$45,000/mes</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-purple-600">
+                        <Clock className="h-4 w-4" />
+                        <span>Generada en 2 minutos</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Contracts Section */}
+        <section id="contracts" className="w-full py-12 md:py-24 lg:py-32 bg-purple-50">
+          <div className="container px-4 md:px-6">
+            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+              <div className="order-2 lg:order-1">
+                <Card className="border-purple-100 bg-white shadow-sm">
+                  <CardHeader>
+                    <CardTitle className="text-lg">Dashboard de Contratos</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between p-3 rounded-lg border">
+                        <div>
+                          <p className="font-medium text-sm">Contrato TechCorp</p>
+                          <p className="text-xs text-slate-500">Vence: 15 Mar 2024</p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <CheckCircle className="h-4 w-4 text-green-500" />
+                          <span className="text-xs">Activo</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between p-3 rounded-lg border border-yellow-200 bg-yellow-50">
+                        <div>
+                          <p className="font-medium text-sm">Contrato InnovateLab</p>
+                          <p className="text-xs text-slate-500">Vence: 28 Feb 2024</p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <AlertTriangle className="h-4 w-4 text-yellow-500" />
+                          <span className="text-xs">Por renovar</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between p-3 rounded-lg border">
+                        <div>
+                          <p className="font-medium text-sm">Contrato StartupXYZ</p>
+                          <p className="text-xs text-slate-500">Vence: 10 Jun 2024</p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <CheckCircle className="h-4 w-4 text-green-500" />
+                          <span className="text-xs">Activo</span>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+              <div className="order-1 lg:order-2 space-y-4">
+                <Badge variant="outline" className="border-purple-200 text-purple-700">
+                  Gestión Automatizada
+                </Badge>
+                <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
+                  {t[language].contractsTitle}
+                </h2>
+                <p className="text-xl text-slate-600">{t[language].contractsSubtitle}</p>
+                <p className="text-slate-600">{t[language].contractsDescription}</p>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-purple-600" />
+                    <span className="text-slate-600">{t[language].contractsFeature1}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-purple-600" />
+                    <span className="text-slate-600">{t[language].contractsFeature2}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-purple-600" />
+                    <span className="text-slate-600">{t[language].contractsFeature3}</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -829,12 +917,7 @@ export default function LandingPage() {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button
-                    onClick={() => window.open("https://buy.stripe.com/test_14A8wP1XJ9eV1jR0ik7Zu00", "_blank")}
-                    className="w-full bg-purple-600 hover:bg-purple-700"
-                  >
-                    {t[language].startFreeTrial}
-                  </Button>
+                  <Button className="w-full bg-purple-600 hover:bg-purple-700">{t[language].startFreeTrial}</Button>
                 </CardFooter>
               </Card>
 
@@ -861,12 +944,7 @@ export default function LandingPage() {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button
-                    className="w-full bg-purple-600 hover:bg-purple-700 opacity-60 cursor-not-allowed"
-                    disabled={true}
-                  >
-                    {t[language].startFreeTrial}
-                  </Button>
+                  <Button className="w-full bg-purple-600 hover:bg-purple-700">{t[language].startFreeTrial}</Button>
                 </CardFooter>
               </Card>
 
@@ -892,72 +970,11 @@ export default function LandingPage() {
                 <CardFooter>
                   <Button
                     variant="outline"
-                    className="w-full border-purple-600 text-purple-600 hover:bg-purple-50 opacity-60 cursor-not-allowed"
-                    disabled={true}
+                    className="w-full border-purple-600 text-purple-600 hover:bg-purple-50 bg-transparent"
                   >
                     Contactar Ventas
                   </Button>
                 </CardFooter>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-purple-50">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8">
-              <div className="space-y-2">
-                <Badge variant="outline" className="border-purple-200 text-purple-700">
-                  FAQ
-                </Badge>
-                <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
-                  {t[language].faqTitle}
-                </h2>
-              </div>
-            </div>
-            <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
-              <Card className="border-purple-100 bg-white shadow-sm">
-                <CardHeader>
-                  <CardTitle className="text-purple-900 text-lg">{t[language].faq1Q}</CardTitle>
-                  <CardDescription className="text-slate-600">{t[language].faq1A}</CardDescription>
-                </CardHeader>
-              </Card>
-              <Card className="border-purple-100 bg-white shadow-sm">
-                <CardHeader>
-                  <CardTitle className="text-purple-900 text-lg">{t[language].faq2Q}</CardTitle>
-                  <CardDescription className="text-slate-600">{t[language].faq2A}</CardDescription>
-                </CardHeader>
-              </Card>
-              <Card className="border-purple-100 bg-white shadow-sm">
-                <CardHeader>
-                  <CardTitle className="text-purple-900 text-lg">{t[language].faq3Q}</CardTitle>
-                  <CardDescription className="text-slate-600">{t[language].faq3A}</CardDescription>
-                </CardHeader>
-              </Card>
-              <Card className="border-purple-100 bg-white shadow-sm">
-                <CardHeader>
-                  <CardTitle className="text-purple-900 text-lg">{t[language].faq4Q}</CardTitle>
-                  <CardDescription className="text-slate-600">{t[language].faq4A}</CardDescription>
-                </CardHeader>
-              </Card>
-              <Card className="border-purple-100 bg-white shadow-sm">
-                <CardHeader>
-                  <CardTitle className="text-purple-900 text-lg">{t[language].faq5Q}</CardTitle>
-                  <CardDescription className="text-slate-600">{t[language].faq5A}</CardDescription>
-                </CardHeader>
-              </Card>
-              <Card className="border-purple-100 bg-white shadow-sm">
-                <CardHeader>
-                  <CardTitle className="text-purple-900 text-lg">{t[language].faq6Q}</CardTitle>
-                  <CardDescription className="text-slate-600">{t[language].faq6A}</CardDescription>
-                </CardHeader>
-              </Card>
-              <Card className="border-purple-100 bg-white shadow-sm">
-                <CardHeader>
-                  <CardTitle className="text-purple-900 text-lg">{t[language].faq7Q}</CardTitle>
-                  <CardDescription className="text-slate-600">{t[language].faq7A}</CardDescription>
-                </CardHeader>
               </Card>
             </div>
           </div>
@@ -1002,39 +1019,18 @@ export default function LandingPage() {
                 <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
                   {t[language].finalCtaTitle}
                 </h2>
-                <div className="max-w-[600px] text-slate-600 whitespace-pre-line">{t[language].finalBenefits}</div>
+                <p className="max-w-[600px] text-slate-600 md:text-xl/relaxed">{t[language].finalCtaSubtitle}</p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button
-                  size="lg"
-                  className="bg-purple-600 hover:bg-purple-700 opacity-60 cursor-not-allowed"
-                  disabled={true}
-                >
+                <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
                   {t[language].finalCtaPrimary}
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-purple-200 text-purple-700 hover:bg-purple-50 opacity-60 cursor-not-allowed"
-                  disabled={true}
+                  className="border-purple-200 text-purple-700 hover:bg-purple-50 bg-transparent"
                 >
-                  {t[language].seeDemo}
-                </Button>
-              </div>
-              <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button
-                  variant="ghost"
-                  className="text-purple-600 hover:text-purple-700 opacity-60 cursor-not-allowed"
-                  disabled={true}
-                >
-                  {t[language].calculateRoi}
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="text-purple-600 hover:text-purple-700 opacity-60 cursor-not-allowed"
-                  disabled={true}
-                >
-                  {t[language].talkToSpecialist}
+                  {t[language].finalCtaSecondary}
                 </Button>
               </div>
             </div>
@@ -1048,31 +1044,45 @@ export default function LandingPage() {
           <div className="grid gap-8 md:grid-cols-3">
             <div className="space-y-4">
               <div className="flex items-center gap-2">
-                <Bot className="h-6 w-6 text-purple-600" />
-                <span className="text-lg font-bold text-purple-900">BoyScout IA</span>
+                <Image
+                  src="/images/outsourcing-ai-logo.png"
+                  alt="OutsourcingAI Logo"
+                  width={24}
+                  height={24}
+                  className="h-6 w-6"
+                />
+                <span className="text-lg font-bold text-purple-900">OutsourcingAI</span>
               </div>
               <p className="text-sm text-slate-600">{t[language].footerDescription}</p>
             </div>
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-purple-900">{t[language].guarantees}</h3>
+              <h3 className="text-lg font-semibold text-purple-900">Funcionalidades</h3>
               <div className="space-y-2">
-                <p className="text-sm text-slate-600">{t[language].guarantee1}</p>
-                <p className="text-sm text-slate-600">{t[language].guarantee2}</p>
-                <p className="text-sm text-slate-600">{t[language].guarantee3}</p>
-                <p className="text-sm text-slate-600">{t[language].guarantee4}</p>
+                <Link href="#talent-search" className="block text-sm text-slate-600 hover:text-purple-600">
+                  Búsqueda de Talento
+                </Link>
+                <Link href="#training" className="block text-sm text-slate-600 hover:text-purple-600">
+                  Formación IA
+                </Link>
+                <Link href="#analytics" className="block text-sm text-slate-600 hover:text-purple-600">
+                  Análisis de Mercado
+                </Link>
+                <Link href="#contracts" className="block text-sm text-slate-600 hover:text-purple-600">
+                  Gestión de Contratos
+                </Link>
               </div>
             </div>
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-purple-900">Contacto</h3>
               <div className="space-y-2">
-                <p className="text-sm text-slate-600">{t[language].support}</p>
-                <p className="text-sm text-slate-600">{t[language].liveChat}</p>
+                <p className="text-sm text-slate-600">📧 soporte@boyscout.com</p>
+                <p className="text-sm text-slate-600">💬 Chat en vivo disponible</p>
               </div>
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-purple-100 flex flex-col items-center justify-between gap-4 md:flex-row">
             <p className="text-sm text-slate-600">
-              © {new Date().getFullYear()} BoyScout IA. {t[language].allRightsReserved}
+              © {new Date().getFullYear()} OutsourcingAI. {t[language].allRightsReserved}
             </p>
             <div className="flex gap-4">
               <Link
