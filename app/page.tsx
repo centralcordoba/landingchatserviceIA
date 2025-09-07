@@ -219,6 +219,21 @@ export default function LandingPage() {
       terms: "Términos",
       privacy: "Privacidad",
       cookies: "Cookies",
+      // Footer sections
+      functionalitiesTitle: "Funcionalidades",
+      talentSearchLink: "Búsqueda de Talento",
+      trainingLink: "Formación IA",
+      marketAnalysisLink: "Análisis de Mercado",
+      contractManagementLink: "Gestión de Contratos",
+      contactTitle: "Contacto",
+      supportEmail: "📧 soporte@boyscout.dev",
+      liveChatAvailable: "💬 Chat en vivo disponible",
+      // Video Section
+      videoSectionBadge: "Demo en Vivo",
+      videoSectionTitle: "Ve a BoyScout AI en Acción",
+      videoSectionDescription:
+        "Descubre cómo nuestra plataforma revoluciona la gestión de consultoras de outsourcing. Una pequeña prueba de forma local.",
+      videoSectionCta: "Solicitar Demo Personalizada",
     },
     en: {
       // Navigation
@@ -342,6 +357,21 @@ export default function LandingPage() {
       terms: "Terms",
       privacy: "Privacy",
       cookies: "Cookies",
+      // Footer sections
+      functionalitiesTitle: "Features",
+      talentSearchLink: "Talent Search",
+      trainingLink: "AI Training",
+      marketAnalysisLink: "Market Analysis",
+      contractManagementLink: "Contract Management",
+      contactTitle: "Contact",
+      supportEmail: "📧 support@boyscout.dev",
+      liveChatAvailable: "💬 Live chat available",
+      // Video Section
+      videoSectionBadge: "Live Demo",
+      videoSectionTitle: "See BoyScout AI in Action",
+      videoSectionDescription:
+        "Discover how our platform revolutionizes outsourcing consultancy management. A small local test.",
+      videoSectionCta: "Request Personalized Demo",
     },
   }
 
@@ -574,6 +604,41 @@ export default function LandingPage() {
                     </CardContent>
                   </Card>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Video Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-8">
+              <div className="text-center space-y-4">
+                <Badge variant="outline" className="border-purple-200 text-purple-700">
+                  {t[language].videoSectionBadge}
+                </Badge>
+                <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
+                  {t[language].videoSectionTitle}
+                </h2>
+                <p className="max-w-[600px] text-slate-600 md:text-xl">{t[language].videoSectionDescription}</p>
+              </div>
+
+              <div className="w-full max-w-4xl">
+                <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl border border-purple-100">
+                  <iframe
+                    src="https://www.youtube.com/embed/uiFGVo02Ewk"
+                    title="BoyScout AI Demo"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full"
+                  ></iframe>
+                </div>
+              </div>
+
+              <div className="text-center">
+                <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
+                  {t[language].videoSectionCta}
+                </Button>
               </div>
             </div>
           </div>
@@ -1105,27 +1170,27 @@ export default function LandingPage() {
               <p className="text-sm text-slate-600">{t[language].footerDescription}</p>
             </div>
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-purple-900">Funcionalidades</h3>
+              <h3 className="text-lg font-semibold text-purple-900">{t[language].functionalitiesTitle}</h3>
               <div className="space-y-2">
                 <Link href="#talent-search" className="block text-sm text-slate-600 hover:text-purple-600">
-                  Búsqueda de Talento
+                  {t[language].talentSearchLink}
                 </Link>
                 <Link href="#training" className="block text-sm text-slate-600 hover:text-purple-600">
-                  Formación IA
+                  {t[language].trainingLink}
                 </Link>
                 <Link href="#analytics" className="block text-sm text-slate-600 hover:text-purple-600">
-                  Análisis de Mercado
+                  {t[language].marketAnalysisLink}
                 </Link>
                 <Link href="#contracts" className="block text-sm text-slate-600 hover:text-purple-600">
-                  Gestión de Contratos
+                  {t[language].contractManagementLink}
                 </Link>
               </div>
             </div>
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-purple-900">Contacto</h3>
+              <h3 className="text-lg font-semibold text-purple-900">{t[language].contactTitle}</h3>
               <div className="space-y-2">
-                <p className="text-sm text-slate-600">📧 soporte@boyscout.dev</p>
-                <p className="text-sm text-slate-600">💬 Chat en vivo disponible</p>
+                <p className="text-sm text-slate-600">{t[language].supportEmail}</p>
+                <p className="text-sm text-slate-600">{t[language].liveChatAvailable}</p>
               </div>
             </div>
           </div>
