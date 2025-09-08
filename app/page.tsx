@@ -16,6 +16,10 @@ import {
   AlertTriangle,
   TrendingUp,
   CheckCircle,
+  Zap,
+  Shield,
+  Cpu,
+  Database,
 } from "lucide-react"
 import { useState, useRef, type FormEvent } from "react"
 import { sendContactEmail } from "./actions"
@@ -125,6 +129,76 @@ export default function LandingPage() {
       talentSearchFeature1: "Filtrado automático por skills y experiencia",
       talentSearchFeature2: "Evaluación de compatibilidad cultural",
       talentSearchFeature3: "Ranking inteligente de candidatos",
+      // Talent Search Detailed Section
+      talentSearchBadge: "Búsqueda Inteligente",
+      talentSearchDetailedDescription:
+        "Nuestro agente de IA va más allá de los CVs tradicionales. Rastrea y analiza código real en GitHub, actividad técnica en Stack Overflow, contribuciones en comunidades de Dev.to, y perfiles profesionales a través de web scraping inteligente en múltiples plataformas.",
+
+      // Multi-Platform Search
+      multiPlatformTitle: "🔍 Búsqueda Multi-Plataforma Automatizada",
+      githubAnalytics:
+        "GitHub Analytics: Evalúa calidad de código, frecuencia de commits, tecnologías dominadas y contribuciones open source",
+      webScrapingAdvanced:
+        "Web Scraping Avanzado: Rastrea job boards, comunidades tech y plataformas profesionales con técnicas anti-detección",
+      socialCodingPlatforms: "Social Coding Platforms: Monitorea GitLab, Bitbucket y otras plataformas de desarrollo",
+
+      // Intelligent Filtering
+      intelligentFilteringTitle: "🎯 Filtrado Inteligente Basado en Evidencia Real",
+      skillsValidation: "Skills Validation: Verificación de habilidades basada en código real, no solo keywords en CV",
+      experienceScoring: "Experience Scoring: Algoritmo que evalúa años de experiencia real vs. proyectos completados",
+      techStackMatching:
+        "Tech Stack Matching: Coincidencia exacta entre tecnologías del proyecto y expertise demostrable",
+      activityPatterns: "Activity Patterns: Análisis de consistencia y evolución técnica del candidato",
+
+      // Multi-Dimensional Ranking
+      multiDimensionalRankingTitle: "📊 Ranking Inteligente Multi-Dimensional",
+      technicalExcellenceScore:
+        "Technical Excellence Score: Puntuación basada en calidad de código y contribuciones técnicas",
+      marketDemandIndex: "Market Demand Index: Análisis de qué tan demandado está el perfil en el mercado actual",
+      availabilityPrediction:
+        "Availability Prediction: Algoritmo que predice disponibilidad basado en patrones de actividad",
+      retentionProbability:
+        "Retention Probability: Predicción de permanencia en el puesto basado en historial de actividad",
+
+      // Competitive Advantages
+      competitiveAdvantagesTitle: "⚡ Ventajas Competitivas",
+      advantage1: "• 85% más rápido que métodos tradicionales de búsqueda",
+      advantage2: "• Datos en tiempo real de múltiples fuentes técnicas",
+      advantage3: "• Verificación automática de habilidades con evidencia tangible",
+      advantage4: "• Reducción del 70% en falsos positivos de candidatos",
+      advantage5: "• Acceso a desarrolladores pasivos que no buscan activamente trabajo",
+
+      // Result
+      resultTitle: "Resultado",
+      resultDescription:
+        "Candidatos pre-validados técnicamente con evidencia real de sus habilidades, listos para entrevistas técnicas directas.",
+
+      // Technology Stack Section
+      techStackBadge: "Tecnología de Vanguardia",
+      techStackTitle: "🚀 Potenciado por las Mejores Tecnologías",
+      techStackSubtitle: "Stack tecnológico de clase mundial para resultados excepcionales",
+      techStackDescription:
+        "Combinamos las tecnologías más avanzadas del mercado para ofrecerte una plataforma robusta, escalable y de alto rendimiento que supera las expectativas.",
+
+      // AI & LLM
+      aiLlmTitle: "🧠 Inteligencia Artificial Avanzada",
+      openRouterDesc: "OpenRouter: Acceso optimizado a múltiples modelos de IA con balanceador de carga inteligente",
+      openaiDesc: "OpenAI GPT-4: El modelo más avanzado para comprensión y generación de texto de alta calidad",
+      mistralDesc: "Mistral AI: Modelos europeos de última generación para procesamiento multilingüe superior",
+      deepseekDesc: "DeepSeek: IA especializada en análisis de código y evaluación técnica profunda",
+
+      // Development & Infrastructure
+      devInfraTitle: "⚙️ Desarrollo e Infraestructura",
+      nextjsDesc: "Next.js: Framework React de producción con renderizado híbrido y optimizaciones automáticas",
+      pythonDesc: "Python: Ecosistema robusto para machine learning, análisis de datos y automatización",
+      supabaseDesc: "Supabase: Base de datos PostgreSQL en tiempo real con autenticación y APIs automáticas",
+
+      // Performance Benefits
+      performanceTitle: "📈 Beneficios de Rendimiento",
+      benefit1: "• 99.9% de disponibilidad garantizada con infraestructura distribuida",
+      benefit2: "• Respuestas en menos de 200ms gracias a optimizaciones avanzadas",
+      benefit3: "• Escalabilidad automática para manejar miles de consultas simultáneas",
+      benefit4: "• Seguridad enterprise con cifrado end-to-end y cumplimiento GDPR",
 
       // Training Section
       trainingTitle: "🎓 Recomendaciones de Formación Personalizadas",
@@ -262,6 +336,73 @@ export default function LandingPage() {
       talentSearchFeature1: "Automatic filtering by skills and experience",
       talentSearchFeature2: "Cultural compatibility assessment",
       talentSearchFeature3: "Intelligent candidate ranking",
+      // Talent Search Detailed Section
+      talentSearchBadge: "Intelligent Search",
+      talentSearchDetailedDescription:
+        "Our AI agent goes beyond traditional CVs. It tracks and analyzes real code on GitHub, technical activity on Stack Overflow, contributions in Dev.to communities, and professional profiles through intelligent web scraping across multiple platforms.",
+
+      // Multi-Platform Search
+      multiPlatformTitle: "🔍 Automated Multi-Platform Search",
+      githubAnalytics:
+        "GitHub Analytics: Evaluates code quality, commit frequency, mastered technologies and open source contributions",
+      webScrapingAdvanced:
+        "Advanced Web Scraping: Tracks job boards, tech communities and professional platforms with anti-detection techniques",
+      socialCodingPlatforms: "Social Coding Platforms: Monitors GitLab, Bitbucket and other development platforms",
+
+      // Intelligent Filtering
+      intelligentFilteringTitle: "🎯 Intelligent Filtering Based on Real Evidence",
+      skillsValidation: "Skills Validation: Skill verification based on real code, not just CV keywords",
+      experienceScoring: "Experience Scoring: Algorithm that evaluates real years of experience vs. completed projects",
+      techStackMatching: "Tech Stack Matching: Exact match between project technologies and demonstrable expertise",
+      activityPatterns: "Activity Patterns: Analysis of consistency and technical evolution of the candidate",
+
+      // Multi-Dimensional Ranking
+      multiDimensionalRankingTitle: "📊 Multi-Dimensional Intelligent Ranking",
+      technicalExcellenceScore: "Technical Excellence Score: Score based on code quality and technical contributions",
+      marketDemandIndex: "Market Demand Index: Analysis of how in-demand the profile is in the current market",
+      availabilityPrediction:
+        "Availability Prediction: Algorithm that predicts availability based on activity patterns",
+      retentionProbability: "Retention Probability: Prediction of job permanence based on activity history",
+
+      // Competitive Advantages
+      competitiveAdvantagesTitle: "⚡ Competitive Advantages",
+      advantage1: "• 85% faster than traditional search methods",
+      advantage2: "• Real-time data from multiple technical sources",
+      advantage3: "• Automatic skill verification with tangible evidence",
+      advantage4: "• 70% reduction in candidate false positives",
+      advantage5: "• Access to passive developers not actively job searching",
+
+      // Result
+      resultTitle: "Result",
+      resultDescription:
+        "Technically pre-validated candidates with real evidence of their skills, ready for direct technical interviews.",
+
+      // Technology Stack Section
+      techStackBadge: "Cutting-Edge Technology",
+      techStackTitle: "🚀 Powered by the Best Technologies",
+      techStackSubtitle: "World-class technology stack for exceptional results",
+      techStackDescription:
+        "We combine the most advanced technologies in the market to offer you a robust, scalable, and high-performance platform that exceeds expectations.",
+
+      // AI & LLM
+      aiLlmTitle: "🧠 Advanced Artificial Intelligence",
+      openRouterDesc: "OpenRouter: Optimized access to multiple AI models with intelligent load balancing",
+      openaiDesc: "OpenAI GPT-4: The most advanced model for high-quality text understanding and generation",
+      mistralDesc: "Mistral AI: European cutting-edge models for superior multilingual processing",
+      deepseekDesc: "DeepSeek: AI specialized in code analysis and deep technical evaluation",
+
+      // Development & Infrastructure
+      devInfraTitle: "⚙️ Development & Infrastructure",
+      nextjsDesc: "Next.js: Production React framework with hybrid rendering and automatic optimizations",
+      pythonDesc: "Python: Robust ecosystem for machine learning, data analysis and automation",
+      supabaseDesc: "Supabase: Real-time PostgreSQL database with authentication and automatic APIs",
+
+      // Performance Benefits
+      performanceTitle: "📈 Performance Benefits",
+      benefit1: "• 99.9% guaranteed uptime with distributed infrastructure",
+      benefit2: "• Sub-200ms responses thanks to advanced optimizations",
+      benefit3: "• Automatic scaling to handle thousands of simultaneous queries",
+      benefit4: "• Enterprise security with end-to-end encryption and GDPR compliance",
 
       // Training Section
       trainingTitle: "🎓 Personalized Training Recommendations",
@@ -473,22 +614,18 @@ export default function LandingPage() {
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
                 <Badge variant="outline" className="border-purple-200 text-purple-700 mb-4">
-                  Búsqueda Inteligente
+                  {t[language].talentSearchBadge}
                 </Badge>
                 <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl mb-6">
-                  🔍 Búsqueda de Talento Inteligente
+                  {t[language].talentSearchTitle}
                 </h2>
               </div>
 
               <div className="space-y-8">
                 <div className="text-center">
-                  <h3 className="text-xl font-semibold text-purple-800 mb-4">
-                    Encuentra a los mejores candidatos en minutos, no en semanas
-                  </h3>
+                  <h3 className="text-xl font-semibold text-purple-800 mb-4">{t[language].talentSearchSubtitle}</h3>
                   <p className="text-slate-600 text-lg leading-relaxed">
-                    Nuestro agente de IA va más allá de los CVs tradicionales. Rastrea y analiza código real en GitHub,
-                    actividad técnica en Stack Overflow, contribuciones en comunidades de Dev.to, y perfiles
-                    profesionales a través de web scraping inteligente en múltiples plataformas.
+                    {t[language].talentSearchDetailedDescription}
                   </p>
                 </div>
 
@@ -496,23 +633,14 @@ export default function LandingPage() {
                   <Card className="border-purple-100 bg-white shadow-sm">
                     <CardHeader>
                       <CardTitle className="text-lg text-purple-900 flex items-center gap-2">
-                        🔍 Búsqueda Multi-Plataforma Automatizada
+                        {t[language].multiPlatformTitle}
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-3">
                       <div className="space-y-2">
-                        <p className="text-sm">
-                          <strong>GitHub Analytics:</strong> Evalúa calidad de código, frecuencia de commits,
-                          tecnologías dominadas y contribuciones open source
-                        </p>
-                        <p className="text-sm">
-                          <strong>Web Scraping Avanzado:</strong> Rastrea job boards, comunidades tech y plataformas
-                          profesionales con técnicas anti-detección
-                        </p>
-                        <p className="text-sm">
-                          <strong>Social Coding Platforms:</strong> Monitorea GitLab, Bitbucket y otras plataformas de
-                          desarrollo
-                        </p>
+                        <p className="text-sm">{t[language].githubAnalytics}</p>
+                        <p className="text-sm">{t[language].webScrapingAdvanced}</p>
+                        <p className="text-sm">{t[language].socialCodingPlatforms}</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -520,26 +648,15 @@ export default function LandingPage() {
                   <Card className="border-purple-100 bg-white shadow-sm">
                     <CardHeader>
                       <CardTitle className="text-lg text-purple-900 flex items-center gap-2">
-                        🎯 Filtrado Inteligente Basado en Evidencia Real
+                        {t[language].intelligentFilteringTitle}
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-3">
                       <div className="space-y-2">
-                        <p className="text-sm">
-                          <strong>Skills Validation:</strong> Verificación de habilidades basada en código real, no solo
-                          keywords en CV
-                        </p>
-                        <p className="text-sm">
-                          <strong>Experience Scoring:</strong> Algoritmo que evalúa años de experiencia real vs.
-                          proyectos completados
-                        </p>
-                        <p className="text-sm">
-                          <strong>Tech Stack Matching:</strong> Coincidencia exacta entre tecnologías del proyecto y
-                          expertise demostrable
-                        </p>
-                        <p className="text-sm">
-                          <strong>Activity Patterns:</strong> Análisis de consistencia y evolución técnica del candidato
-                        </p>
+                        <p className="text-sm">{t[language].skillsValidation}</p>
+                        <p className="text-sm">{t[language].experienceScoring}</p>
+                        <p className="text-sm">{t[language].techStackMatching}</p>
+                        <p className="text-sm">{t[language].activityPatterns}</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -547,27 +664,15 @@ export default function LandingPage() {
                   <Card className="border-purple-100 bg-white shadow-sm">
                     <CardHeader>
                       <CardTitle className="text-lg text-purple-900 flex items-center gap-2">
-                        📊 Ranking Inteligente Multi-Dimensional
+                        {t[language].multiDimensionalRankingTitle}
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-3">
                       <div className="space-y-2">
-                        <p className="text-sm">
-                          <strong>Technical Excellence Score:</strong> Puntuación basada en calidad de código y
-                          contribuciones técnicas
-                        </p>
-                        <p className="text-sm">
-                          <strong>Market Demand Index:</strong> Análisis de qué tan demandado está el perfil en el
-                          mercado actual
-                        </p>
-                        <p className="text-sm">
-                          <strong>Availability Prediction:</strong> Algoritmo que predice disponibilidad basado en
-                          patrones de actividad
-                        </p>
-                        <p className="text-sm">
-                          <strong>Retention Probability:</strong> Predicción de permanencia en el puesto basado en
-                          historial de actividad
-                        </p>
+                        <p className="text-sm">{t[language].technicalExcellenceScore}</p>
+                        <p className="text-sm">{t[language].marketDemandIndex}</p>
+                        <p className="text-sm">{t[language].availabilityPrediction}</p>
+                        <p className="text-sm">{t[language].retentionProbability}</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -575,16 +680,16 @@ export default function LandingPage() {
                   <Card className="border-purple-100 bg-white shadow-sm">
                     <CardHeader>
                       <CardTitle className="text-lg text-purple-900 flex items-center gap-2">
-                        ⚡ Ventajas Competitivas
+                        {t[language].competitiveAdvantagesTitle}
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-3">
                       <div className="space-y-2">
-                        <p className="text-sm">• 85% más rápido que métodos tradicionales de búsqueda</p>
-                        <p className="text-sm">• Datos en tiempo real de múltiples fuentes técnicas</p>
-                        <p className="text-sm">• Verificación automática de habilidades con evidencia tangible</p>
-                        <p className="text-sm">• Reducción del 70% en falsos positivos de candidatos</p>
-                        <p className="text-sm">• Acceso a desarrolladores pasivos que no buscan activamente trabajo</p>
+                        <p className="text-sm">{t[language].advantage1}</p>
+                        <p className="text-sm">{t[language].advantage2}</p>
+                        <p className="text-sm">{t[language].advantage3}</p>
+                        <p className="text-sm">{t[language].advantage4}</p>
+                        <p className="text-sm">{t[language].advantage5}</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -595,12 +700,9 @@ export default function LandingPage() {
                     <CardContent className="p-6">
                       <div className="flex items-center justify-center gap-2 mb-3">
                         <span className="text-2xl">💡</span>
-                        <h4 className="text-lg font-semibold text-purple-900">Resultado</h4>
+                        <h4 className="text-lg font-semibold text-purple-900">{t[language].resultTitle}</h4>
                       </div>
-                      <p className="text-purple-800 font-medium">
-                        Candidatos pre-validados técnicamente con evidencia real de sus habilidades, listos para
-                        entrevistas técnicas directas.
-                      </p>
+                      <p className="text-purple-800 font-medium">{t[language].resultDescription}</p>
                     </CardContent>
                   </Card>
                 </div>
@@ -639,6 +741,176 @@ export default function LandingPage() {
                 <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
                   {t[language].videoSectionCta}
                 </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Technology Stack Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-slate-50 to-white">
+          <div className="container px-4 md:px-6">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <Badge variant="outline" className="border-purple-200 text-purple-700 mb-4">
+                  {t[language].techStackBadge}
+                </Badge>
+                <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl mb-6">
+                  {t[language].techStackTitle}
+                </h2>
+                <p className="text-xl text-slate-600 mb-4">{t[language].techStackSubtitle}</p>
+                <p className="text-slate-600 max-w-3xl mx-auto">{t[language].techStackDescription}</p>
+              </div>
+
+              <div className="space-y-12">
+                {/* AI & LLM Section */}
+                <div>
+                  <div className="flex items-center gap-3 mb-8">
+                    <div className="p-3 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500">
+                      <Cpu className="h-6 w-6 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-purple-900">{t[language].aiLlmTitle}</h3>
+                  </div>
+                  <div className="grid gap-6 md:grid-cols-2">
+                    <Card className="border-purple-100 bg-white shadow-sm hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-3">
+                        <div className="flex items-center gap-3">
+                          <div className="p-2 rounded-lg bg-green-100">
+                            <Zap className="h-5 w-5 text-green-600" />
+                          </div>
+                          <CardTitle className="text-lg text-purple-900">OpenRouter</CardTitle>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-slate-600">{t[language].openRouterDesc}</p>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="border-purple-100 bg-white shadow-sm hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-3">
+                        <div className="flex items-center gap-3">
+                          <div className="p-2 rounded-lg bg-blue-100">
+                            <Cpu className="h-5 w-5 text-blue-600" />
+                          </div>
+                          <CardTitle className="text-lg text-purple-900">OpenAI GPT-4</CardTitle>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-slate-600">{t[language].openaiDesc}</p>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="border-purple-100 bg-white shadow-sm hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-3">
+                        <div className="flex items-center gap-3">
+                          <div className="p-2 rounded-lg bg-orange-100">
+                            <Shield className="h-5 w-5 text-orange-600" />
+                          </div>
+                          <CardTitle className="text-lg text-purple-900">Mistral AI</CardTitle>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-slate-600">{t[language].mistralDesc}</p>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="border-purple-100 bg-white shadow-sm hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-3">
+                        <div className="flex items-center gap-3">
+                          <div className="p-2 rounded-lg bg-purple-100">
+                            <Cpu className="h-5 w-5 text-purple-600" />
+                          </div>
+                          <CardTitle className="text-lg text-purple-900">DeepSeek</CardTitle>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-slate-600">{t[language].deepseekDesc}</p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+
+                {/* Development & Infrastructure Section */}
+                <div>
+                  <div className="flex items-center gap-3 mb-8">
+                    <div className="p-3 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-500">
+                      <Database className="h-6 w-6 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-purple-900">{t[language].devInfraTitle}</h3>
+                  </div>
+                  <div className="grid gap-6 md:grid-cols-3">
+                    <Card className="border-purple-100 bg-white shadow-sm hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-3">
+                        <div className="flex items-center gap-3">
+                          <div className="p-2 rounded-lg bg-black">
+                            <span className="text-white font-bold text-sm">▲</span>
+                          </div>
+                          <CardTitle className="text-lg text-purple-900">Next.js</CardTitle>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-slate-600">{t[language].nextjsDesc}</p>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="border-purple-100 bg-white shadow-sm hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-3">
+                        <div className="flex items-center gap-3">
+                          <div className="p-2 rounded-lg bg-yellow-100">
+                            <span className="text-yellow-600 font-bold text-sm">🐍</span>
+                          </div>
+                          <CardTitle className="text-lg text-purple-900">Python</CardTitle>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-slate-600">{t[language].pythonDesc}</p>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="border-purple-100 bg-white shadow-sm hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-3">
+                        <div className="flex items-center gap-3">
+                          <div className="p-2 rounded-lg bg-green-100">
+                            <Database className="h-5 w-5 text-green-600" />
+                          </div>
+                          <CardTitle className="text-lg text-purple-900">Supabase</CardTitle>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-slate-600">{t[language].supabaseDesc}</p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+
+                {/* Performance Benefits */}
+                <div className="text-center">
+                  <Card className="border-purple-200 bg-gradient-to-r from-purple-50 to-blue-50 shadow-lg max-w-4xl mx-auto">
+                    <CardContent className="p-8">
+                      <div className="flex items-center justify-center gap-2 mb-6">
+                        <span className="text-3xl">📈</span>
+                        <h4 className="text-2xl font-bold text-purple-900">{t[language].performanceTitle}</h4>
+                      </div>
+                      <div className="grid gap-4 md:grid-cols-2 text-left">
+                        <p className="text-sm text-slate-700 flex items-start gap-2">
+                          <Check className="h-4 w-4 text-purple-600 mt-0.5 flex-shrink-0" />
+                          {t[language].benefit1}
+                        </p>
+                        <p className="text-sm text-slate-700 flex items-start gap-2">
+                          <Check className="h-4 w-4 text-purple-600 mt-0.5 flex-shrink-0" />
+                          {t[language].benefit2}
+                        </p>
+                        <p className="text-sm text-slate-700 flex items-start gap-2">
+                          <Check className="h-4 w-4 text-purple-600 mt-0.5 flex-shrink-0" />
+                          {t[language].benefit3}
+                        </p>
+                        <p className="text-sm text-slate-700 flex items-start gap-2">
+                          <Check className="h-4 w-4 text-purple-600 mt-0.5 flex-shrink-0" />
+                          {t[language].benefit4}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
             </div>
           </div>
