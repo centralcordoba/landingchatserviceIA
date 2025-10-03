@@ -308,6 +308,16 @@ export default function LandingPage() {
       videoSectionDescription:
         "Descubre cómo nuestra plataforma revoluciona la gestión de consultoras de outsourcing. Una pequeña prueba de forma local.",
       videoSectionCta: "Solicitar Demo Personalizada",
+
+      // Events Section
+      eventsBadge: "Próximos Eventos",
+      eventsTitle: "🎯 Encuéntranos en Function1",
+      eventsSubtitle: "Donde el mundo de la IA se reúne",
+      eventsDescription:
+        "BoyScout AI estará presente en Function1, el evento más importante de inteligencia artificial. Únete a nosotros en Dubai para descubrir el futuro de la IA aplicada a consultoras de outsourcing.",
+      eventsDate: "18-19 Noviembre, 2025",
+      eventsLocation: "Festival Arena, Dubai",
+      eventsButton: "Más información del evento",
     },
     en: {
       // Navigation
@@ -513,6 +523,16 @@ export default function LandingPage() {
       videoSectionDescription:
         "Discover how our platform revolutionizes outsourcing consultancy management. A small local test.",
       videoSectionCta: "Request Personalized Demo",
+
+      // Events Section
+      eventsBadge: "Upcoming Events",
+      eventsTitle: "🎯 Meet Us at Function1",
+      eventsSubtitle: "Where the AI world gathers",
+      eventsDescription:
+        "BoyScout AI will be present at Function1, the most important artificial intelligence event. Join us in Dubai to discover the future of AI applied to outsourcing consultancies.",
+      eventsDate: "November 18-19, 2025",
+      eventsLocation: "Festival Arena, Dubai",
+      eventsButton: "Learn more about the event",
     },
   }
 
@@ -910,6 +930,59 @@ export default function LandingPage() {
                       </div>
                     </CardContent>
                   </Card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Events Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
+          <div className="container px-4 md:px-6">
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-12">
+                <Badge variant="outline" className="border-purple-200 text-purple-700 mb-4">
+                  {t[language].eventsBadge}
+                </Badge>
+                <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl mb-6">
+                  {t[language].eventsTitle}
+                </h2>
+                <p className="text-xl text-slate-600 mb-4">{t[language].eventsSubtitle}</p>
+              </div>
+
+              <div className="grid gap-8 lg:grid-cols-2 items-center">
+                <div className="space-y-6">
+                  <p className="text-slate-600 text-lg leading-relaxed">{t[language].eventsDescription}</p>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 rounded-lg bg-purple-100">
+                        <span className="text-2xl">📅</span>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-purple-900">{t[language].eventsDate}</p>
+                        <p className="text-sm text-slate-600">{t[language].eventsLocation}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <Button
+                    size="lg"
+                    className="bg-purple-600 hover:bg-purple-700"
+                    onClick={() => window.open("https://fnctn1.com/", "_blank")}
+                  >
+                    {t[language].eventsButton}
+                  </Button>
+                </div>
+
+                <div className="relative">
+                  <div className="rounded-xl overflow-hidden shadow-2xl border border-purple-100">
+                    <Image
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-PKKIIm9dh1IngkyogyHJWx5XMYvanL.png"
+                      alt="Function1 Event - Where the AI World Gathers"
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
