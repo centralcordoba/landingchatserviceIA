@@ -748,7 +748,7 @@ export default function LandingPage() {
               <div className="w-full max-w-4xl">
                 <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl border border-purple-100">
                   <iframe
-                    src="https://www.youtube.com/embed/uiFGVo02Ewk"
+                    src="https://www.youtube.com/embed/PB0g47wexWk"
                     title="BoyScout AI Demo"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -1347,7 +1347,7 @@ export default function LandingPage() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8">
               <div className="space-y-2">
                 <Badge variant="outline" className="border-purple-200 text-purple-700">
-                  Precios
+                  {t[language].pricingTitle}
                 </Badge>
                 <h2 className="text-3xl font-bold tracking-tighter text-purple-900 md:text-4xl">
                   {t[language].pricingTitle}
