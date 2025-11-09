@@ -247,22 +247,22 @@ export default function LandingPage() {
 
       // Pricing Section
       pricingTitle: "Planes Transparentes, ROI Inmediato",
-      starterTitle: "STARTER",
-      starterPrice: "$299/mes",
-      starterSubtitle: "Perfecto para consultoras pequeñas",
-      starterFeatures: "Hasta 50 perfiles gestionados,Búsqueda IA básica,Dashboard de contratos,Soporte por email",
+      freelancerTitle: "FREELANCER",
+      freelancerPrice: "$49 USD/mes",
+      freelancerSubtitle: "Para profesionales independientes",
+      freelancerFeatures: "Hasta 10 perfiles gestionados,Búsqueda IA básica,Dashboard de contratos,Soporte por email",
 
       professionalTitle: "PROFESSIONAL",
-      professionalPrice: "$599/mes",
+      professionalPrice: "$149 USD/mes",
       professionalSubtitle: "Para consultoras en crecimiento",
       professionalFeatures:
-        "Hasta 200 perfiles gestionados,IA avanzada + predicción de rotación,Analytics de mercado completos,Generación automática de propuestas,Soporte prioritario",
+        "Hasta 100 perfiles gestionados,IA avanzada + predicción de rotación,Analytics de mercado completos,Generación automática de propuestas,Soporte prioritario",
 
-      enterpriseTitle: "ENTERPRISE",
-      enterprisePrice: "Precio personalizado",
-      enterpriseSubtitle: "Para grandes operaciones",
-      enterpriseFeatures:
-        "Perfiles ilimitados,API personalizada,White-label disponible,Integración con sistemas existentes,Soporte dedicado con SLA",
+      businessTitle: "BUSINESS",
+      businessPrice: "$349 USD/mes",
+      businessSubtitle: "Para grandes operaciones",
+      businessFeatures:
+        "Hasta 500 perfiles gestionados,API personalizada,White-label disponible,Integración con sistemas existentes,Soporte dedicado con SLA",
 
       startFreeTrial: "EMPEZAR PRUEBA GRATIS",
 
@@ -461,22 +461,22 @@ export default function LandingPage() {
 
       // Pricing Section
       pricingTitle: "Transparent Plans, Immediate ROI",
-      starterTitle: "STARTER",
-      starterPrice: "$299/month",
-      starterSubtitle: "Perfect for small consultancies",
-      starterFeatures: "Up to 50 managed profiles,Basic AI search,Contract dashboard,Email support",
+      freelancerTitle: "FREELANCER",
+      freelancerPrice: "$49 USD/month",
+      freelancerSubtitle: "For independent professionals",
+      freelancerFeatures: "Up to 10 managed profiles,Basic AI search,Contract dashboard,Email support",
 
       professionalTitle: "PROFESSIONAL",
-      professionalPrice: "$599/month",
+      professionalPrice: "$149 USD/month",
       professionalSubtitle: "For growing consultancies",
       professionalFeatures:
-        "Up to 200 managed profiles,Advanced AI + churn prediction,Complete market analytics,Automatic proposal generation,Priority support",
+        "Up to 100 managed profiles,Advanced AI + churn prediction,Complete market analytics,Automatic proposal generation,Priority support",
 
-      enterpriseTitle: "ENTERPRISE",
-      enterprisePrice: "Custom pricing",
-      enterpriseSubtitle: "For large operations",
-      enterpriseFeatures:
-        "Unlimited profiles,Custom API,White-label available,Integration with existing systems,Dedicated support with SLA",
+      businessTitle: "BUSINESS",
+      businessPrice: "$349 USD/month",
+      businessSubtitle: "For large operations",
+      businessFeatures:
+        "Up to 500 managed profiles,Custom API,White-label available,Integration with existing systems,Dedicated support with SLA",
 
       startFreeTrial: "START FREE TRIAL",
 
@@ -1356,18 +1356,18 @@ export default function LandingPage() {
             </div>
 
             <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
-              {/* Starter Plan */}
+              {/* Freelancer Plan */}
               <Card className="border-purple-300 shadow-md bg-white">
                 <CardHeader className="text-center">
-                  <CardTitle className="text-2xl text-purple-900">{t[language].starterTitle}</CardTitle>
+                  <CardTitle className="text-2xl text-purple-900">{t[language].freelancerTitle}</CardTitle>
                   <CardDescription className="text-3xl font-bold text-purple-700 mt-2">
-                    {t[language].starterPrice}
+                    {t[language].freelancerPrice}
                   </CardDescription>
-                  <CardDescription className="text-slate-600">{t[language].starterSubtitle}</CardDescription>
+                  <CardDescription className="text-slate-600">{t[language].freelancerSubtitle}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
-                    {t[language].starterFeatures.split(",").map((feature, index) => (
+                    {t[language].freelancerFeatures.split(",").map((feature, index) => (
                       <div key={index} className="flex items-start">
                         <Check className="h-5 w-5 text-purple-600 mr-2 flex-shrink-0 mt-0.5" />
                         <span className="text-sm text-slate-600">{feature}</span>
@@ -1376,7 +1376,12 @@ export default function LandingPage() {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button className="w-full bg-purple-600 hover:bg-purple-700">{t[language].startFreeTrial}</Button>
+                  <Button
+                    className="w-full bg-purple-600 hover:bg-purple-700"
+                    onClick={() => window.open("https://buy.stripe.com/test_fZu00jfOz2Qx2nV0ik7Zu02", "_blank")}
+                  >
+                    {t[language].startFreeTrial}
+                  </Button>
                 </CardFooter>
               </Card>
 
@@ -1403,22 +1408,27 @@ export default function LandingPage() {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button className="w-full bg-purple-600 hover:bg-purple-700">{t[language].startFreeTrial}</Button>
+                  <Button
+                    className="w-full bg-purple-600 hover:bg-purple-700"
+                    onClick={() => window.open("https://buy.stripe.com/test_fZubJ1eKv62J3rZghi7Zu01", "_blank")}
+                  >
+                    {t[language].startFreeTrial}
+                  </Button>
                 </CardFooter>
               </Card>
 
-              {/* Enterprise Plan */}
+              {/* Business Plan */}
               <Card className="border-purple-300 shadow-md bg-white">
                 <CardHeader className="text-center">
-                  <CardTitle className="text-2xl text-purple-900">{t[language].enterpriseTitle}</CardTitle>
+                  <CardTitle className="text-2xl text-purple-900">{t[language].businessTitle}</CardTitle>
                   <CardDescription className="text-3xl font-bold text-purple-700 mt-2">
-                    {t[language].enterprisePrice}
+                    {t[language].businessPrice}
                   </CardDescription>
-                  <CardDescription className="text-slate-600">{t[language].enterpriseSubtitle}</CardDescription>
+                  <CardDescription className="text-slate-600">{t[language].businessSubtitle}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
-                    {t[language].enterpriseFeatures.split(",").map((feature, index) => (
+                    {t[language].businessFeatures.split(",").map((feature, index) => (
                       <div key={index} className="flex items-start">
                         <Check className="h-5 w-5 text-purple-600 mr-2 flex-shrink-0 mt-0.5" />
                         <span className="text-sm text-slate-600">{feature}</span>
@@ -1428,10 +1438,10 @@ export default function LandingPage() {
                 </CardContent>
                 <CardFooter>
                   <Button
-                    variant="outline"
-                    className="w-full border-purple-600 text-purple-600 hover:bg-purple-50 bg-transparent"
+                    className="w-full bg-purple-600 hover:bg-purple-700"
+                    onClick={() => window.open("https://buy.stripe.com/test_cNi14n45R76N6Eb5CE7Zu03", "_blank")}
                   >
-                    Contactar Ventas
+                    {t[language].startFreeTrial}
                   </Button>
                 </CardFooter>
               </Card>
